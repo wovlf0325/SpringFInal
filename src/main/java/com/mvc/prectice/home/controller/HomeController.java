@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,6 +17,11 @@ public class HomeController {
 	public String MoveHome(Model model) {
 		logger.info("Move Home");
 		return "section";
+	}
+	
+	@GetMapping("/write.do")
+	public String boardWrite() {
+	  return "board/BoardWrite";
 	}
 	
 }

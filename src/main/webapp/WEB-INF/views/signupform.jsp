@@ -23,7 +23,7 @@ function uploadimg(){
 
   <h3 id="logo">SignUp</h3><br/><br/><br/>
   <input type='file' name="profileimg" value="" onchange="readURL(this);" style="display:none;"/>
-  <img id="blah" alt="defaultimg" src="resources/images/defaulthuman.png" style="max-width: 100%; width: 150px; height:150px; border-radius:200px; margin: 0% 0% 0% 40%; border:1px solid #e4cbcb;"/>
+  <img id="blah" alt="defaultimg" src="resources/images/profileimgstorage/defaulthuman.png" style="max-width: 100%; width: 150px; height:150px; border-radius:200px; margin: 0% 0% 0% 40%; border:1px solid #e4cbcb;"/>
   <br/><br/><br/>
   <input type="button" value="프로필사진 등록" onclick="uploadimg();" style="width: 30%; margin-left:35%; background:#ead3d3; color: white; font-weight:bold; cursor:pointer;"/><br/>
   
@@ -62,7 +62,7 @@ function uploadimg(){
 
 </form>
 </div>
-<%@ include file="footer.jsp" %>
+<%@ include file="form/footer.jsp" %>
 <script type="text/javascript">
 function idchk(){
 	var id = $("input[name=id]").val();
