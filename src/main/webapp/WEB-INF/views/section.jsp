@@ -9,9 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="form/header.jsp" %>
 <section style="height:800px;">
-adfsa
+<h1>Main Home Page</h1>
 </section>
-<%@ include file="footer.jsp" %>
+<%@ include file="form/footer.jsp" %>
 </body>
 </html>

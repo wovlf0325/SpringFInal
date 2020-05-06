@@ -17,26 +17,26 @@
 		height:1000px;		
 	}
 	.agreementOne{
-		width:1000px;
+		width:940px;
 		height:200px;
 		border: 2px solid #e2a8bc;
 		overflow: scroll;
-		margin: 0px 0px 0px 300px;
+		margin: 0px 0px 0px 230px;
 		border-radius:10px;
 	}
 	.agreementTwo{
-		width:1000px;
+		width:940px;
 		height:200px;
 		border: 2px solid #e2a8bc;
 		overflow: scroll;
-	    margin: 0px 0px 0px 300px;
+	    margin: 0px 0px 0px 230px;
 		border-radius:10px;
 	}
 	.titleOne{
-		    margin: 50px 0px 0px 300px;
+		    margin: 50px 0px 0px 230px;
 	}
 	.titleTwo{
-		    margin: 50px 0px 0px 300px;
+		    margin: 50px 0px 0px 230px;
 	}
 	.chkbox{
 	    width: 20px;
@@ -44,7 +44,7 @@
     	margin: 0px 0px 0px 1100px;
 	}
 	.btn{
-		 margin: 0px 0px 0px 700px;
+		 margin: 0px 0px 0px 550px;
    		 width: 250px;
    		 height: 50px;
     	 color: white;
@@ -58,7 +58,7 @@
   margin: 1% 0% 0% 17%;
   border: 3px solid #ddd;
   background-color: #eee;
-  max-width: 55.7%;
+  max-width: 65.7%;
 }
 
 input {
@@ -81,7 +81,6 @@ $(function(){
 </script>
 </head>
 <body>
-
 <section style="    height: 1200px;">
 <div class="agreementall" style="margin-left:150px;">
 	<img alt="agreement" src="resources/images/termsandcondition.png" style="margin-left:22%;"/><br/>
@@ -297,6 +296,6 @@ EveryFarm 회원은 자신의 개인정보 처리와 관련하여 아래와 같�
 <input type="button" class="btn" value="회원가입"/>
 </div>
 </section>
-<%@ include file="footer.jsp" %>
+<%@ include file="form/footer.jsp"%>
 </body>
 </html>
