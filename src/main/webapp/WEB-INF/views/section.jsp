@@ -11,6 +11,7 @@
 <body>
 <section style="height:800px;">
 adfsa
+<a href="boardlist.do?nowPage=1">게시판</a>
 </section>
 <%@ include file="footer.jsp" %>
 </body>
