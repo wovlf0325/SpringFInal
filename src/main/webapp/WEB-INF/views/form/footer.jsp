@@ -11,7 +11,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <style type="text/css">
 	footer {
-    	height:150px;
+    	height:100px;
     	width: 100%;
 		border: 1px dotted red;
 	}

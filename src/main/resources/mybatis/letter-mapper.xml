@@ -7,7 +7,7 @@
 		(SELECT ROWNUM
      	 , B.*
   	 	 FROM (SELECT A.*
-           	   FROM TESTLETTER A  
+           	   FROM LETTER A  
            	   WHERE A.LETTEREAD = 1 AND A.ID = #{id}        	   
            	   ORDER BY A.LETTERSEQ DESC) B)
 		WHERE ROWNUM = 1
