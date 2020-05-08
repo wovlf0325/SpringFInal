@@ -1,5 +1,11 @@
 package com.mvc.prectice.board.dto;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 public class PagingDto {
 	
 	private int nowPage; //현재페이지
@@ -49,7 +55,7 @@ public class PagingDto {
 		setEnd(nowPage * cntPerPage);
 		setStart(getEnd() - cntPerPage + 1);
 	}
-
+	
 	public int getNowPage() {
 		return nowPage;
 	}

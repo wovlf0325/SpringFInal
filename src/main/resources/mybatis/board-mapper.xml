@@ -44,13 +44,50 @@
 	<select id="countBoard" resultType="int">
 		SELECT COUNT(*) FROM BOARD
 	</select>
-	 	
 	
- 	
- 	
-
-
-
-
-
+	<select id="listSearch" resultType="boardDto" parameterType="map">
+		SELECT B.*
+		FROM (SELECT A.*, ROWNUM AS RNUM
+		FROM (SELECT * FROM BOARD 
+		<choose>
+			<when test="searchType == 't'.toString()">
+				WHERE BOARD_TITLE LIKE '%'||'${keyword}'||'%'
+			</when>
+			
+			<when test="searchType == 'w'.toString()">
+				WHERE BOARD_WRITER LIKE '%'||'${keyword}'||'%'
+			</when>
+			
+			<when test="searchType == 'tc'.toString()">
+				WHERE BOARD_TITLE LIKE '%'||'${keyword}'||'%' OR (BOARD_CONTENT LIKE '%'||'${keyword}'||'%')
+			</when>
+		</choose>
+		ORDER BY BOARD_NO DESC) A)B
+		WHERE RNUM BETWEEN ${start} AND ${end}
+	</select>
+	
+	
+	
+	<select id="countSearch" resultType="int" parameterType="String">
+		SELECT COUNT(BOARD_NO)
+		FROM BOARD
+		
+		<if test="searchType != null">
+		<choose>
+			<when test="searchType == 't'.toString()">
+				WHERE BOARD_TITLE LIKE '%'||'${keyword}'||'%' AND BOARD_NO >0
+			</when>
+			
+			<when test="searchType == 'w'.toString()">
+				WHERE BOARD_WRITER LIKE '%'||'${keyword}'||'%' AND BOARD_NO >0
+			</when>
+			
+			<when test="searchType == 'tc'.toString()">
+				WHERE BOARD_TITLE LIKE '%'||'${keyword}'||'%' OR (BOARD_CONTENT LIKE '%'||'${keyword}'||'%') AND BOARD_NO >0
+			</when>
+		</choose>
+		
+		</if>
+	</select>
+	
 </mapper>
