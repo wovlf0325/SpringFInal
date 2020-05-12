@@ -9,4 +9,6 @@ public interface LoginDao {
 
 	String NAMESPACE = "loginquery.";
 	public LoginDto selectInfo(LoginDto logindto);
+	
+	
 }
