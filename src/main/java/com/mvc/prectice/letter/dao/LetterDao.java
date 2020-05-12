@@ -7,6 +7,6 @@ import com.mvc.prectice.letter.dto.LetterDto;
 @Repository
 public interface LetterDao {
 
-	String NAMESPACE = "letterquery.";
+	String NAMESPACE = "letter.";
 	public LetterDto selectNewLetter(String id);
 }
