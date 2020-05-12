@@ -11,6 +11,6 @@
 	</select>
 	<insert id="insertAllinfo" parameterType="signupDto">
 		INSERT INTO TESTMEMBER
-		VALUES(#{id},#{pw},#{name},#{email},#{phone},#{address},#{addone},#{detailadd},#{profileimg})
+		VALUES(#{id},#{password},#{name},#{email},#{phone},#{address},#{addone},#{detailadd},#{profileimg})
 	</insert>
 </mapper>

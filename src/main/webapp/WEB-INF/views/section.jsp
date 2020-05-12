@@ -4,14 +4,19 @@
 <% response.setContentType("text/html; charset=UTF-8");%>     
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <section style="height:800px;">
-adfsa
+adfsa <a href="updateform.do">내 정보</a> 
+
 </section>
+
+
+
 <%@ include file="footer.jsp" %>
 </body>
 </html>

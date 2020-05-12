@@ -3,6 +3,25 @@
 <mapper namespace="loginquery">
 	<select id="selectInfo" resultType="loginDto" parameterType="loginDto">
 		SELECT * FROM TESTMEMBER
-		WHERE ID=#{id} AND PW=#{pw}
+		WHERE ID=#{id} AND PW=#{password}
 	</select>
+	<select id="selectInfoWhereId" resultType="loginDto" parameterType="loginDto">
+		SELECT * FROM TESTMEMBER
+		WHERE ID=#{id}
+	</select>
+	<update id = "updateMypage" parameterType="loginDto">
+		update TESTMEMBER
+		set AREA = #{area}
+		
+		, NAME= #{name}
+		, ADDRESS = #{address}
+		, PHONE = #{phone}
+		, EMAIL = #{email}
+		
+		, INTEREST = #{interest}
+		, ROLE = #{role}
+		, STATUS = #{status}
+		WHERE ID = #{id}
+			
+	</update>
 </mapper>
