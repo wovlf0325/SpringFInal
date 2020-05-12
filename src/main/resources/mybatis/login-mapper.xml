@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="loginquery">
 	<select id="selectInfo" resultType="loginDto" parameterType="loginDto">
-		SELECT * FROM TESTMEMBER
-		WHERE ID=#{id} AND PW=#{pw}
+		SELECT * FROM MEMBER
+		WHERE MEMBER_ID=#{member_id} AND MEMBER_PW=#{member_pw}
 	</select>
 </mapper>
