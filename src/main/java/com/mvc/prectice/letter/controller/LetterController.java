@@ -35,7 +35,7 @@ public class LetterController {
 		LetterDto letterdto = letterbiz.selectNewLetter(id);
 		if(letterdto != null) {
 			PrintWriter out = response.getWriter();
-			out.println(letterdto.getLetterseq());
+			out.println(letterdto.getLetter_no());
 		}
 	}
 	
@@ -55,6 +55,8 @@ public class LetterController {
 			System.out.println("JSON으로 변환된 객체::" + jsonLetter);
 			
 			out.println(jsonLetter);
+		} else {
+			System.out.println("letterdto : null");
 		}
 	}
 }

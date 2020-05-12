@@ -3,6 +3,6 @@
 <mapper namespace="loginquery">
 	<select id="selectInfo" resultType="loginDto" parameterType="loginDto">
 		SELECT * FROM MEMBER
-		WHERE ID=#{id} AND PW=#{pw}
+		WHERE MEMBER_ID=#{member_id} AND MEMBER_PW=#{member_pw}
 	</select>
 </mapper>

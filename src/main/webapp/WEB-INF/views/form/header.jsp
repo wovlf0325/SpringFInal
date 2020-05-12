@@ -27,7 +27,7 @@
 		</c:when>
 		<c:otherwise>
 			<input type="button" value="내정보" onclick="">
-			<input type="button" value="로그아웃" onclick="">
+			<input type="button" value="로그아웃" onclick="logout.do">
 		</c:otherwise>
 	</c:choose>
 

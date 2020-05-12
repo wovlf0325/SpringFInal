@@ -17,7 +17,7 @@
 		height:1000px;		
 	}
 	.agreementOne{
-		width:940px;
+		width:840px;
 		height:200px;
 		border: 2px solid #e2a8bc;
 		overflow: scroll;
@@ -25,7 +25,7 @@
 		border-radius:10px;
 	}
 	.agreementTwo{
-		width:940px;
+		width:840px;
 		height:200px;
 		border: 2px solid #e2a8bc;
 		overflow: scroll;
@@ -58,7 +58,7 @@
   margin: 1% 0% 0% 17%;
   border: 3px solid #ddd;
   background-color: #eee;
-  max-width: 65.7%;
+  max-width: 58.7%;
 }
 
 input {
