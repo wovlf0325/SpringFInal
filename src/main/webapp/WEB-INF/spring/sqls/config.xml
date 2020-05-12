@@ -8,6 +8,7 @@
 		<typeAlias type="com.mvc.prectice.login.dto.LoginDto" alias="loginDto"/>
 		<typeAlias type="com.mvc.prectice.board.dto.BoardDto" alias="boardDto"/>
 		<typeAlias type="com.mvc.prectice.board.dto.PagingDto" alias="pagingDto"/>
+		
 	</typeAliases>
 	
     <mappers>

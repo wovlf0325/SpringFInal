@@ -8,12 +8,27 @@
 <meta charset="UTF-8">
 <title>게시판 목록</title>
 </head>
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <script type="text/javascript">
+	
 	function selChange(){
-		var sel = document.getElementById('cntPerPage').value;
+		var sel = $('#cntPerPage').val()
 		location.href="boardlist.do?nowPage=${paging.nowPage}&cntPerPage="+sel;
 	}
 	
+
+	$(function(){
+		  $('#searchBtn').click(function() {
+		   self.location = "boardlist.do"
+		     + '?nowPage=1'
+		     + "&searchType="
+		     + $("#search_type option:selected").val()
+		     + "&keyword="
+		     + encodeURIComponent($('#keywordInput').val());
+		    });
+		 });   
+
+
 	function kindChange(){
 		var kind = document.getElementById('kind').value;
 		location.href="boardlist.do?boardkind="+kind;
@@ -49,7 +64,13 @@
 			</select>
 		</div>
 	
+<<<<<<< HEAD
+		<input type="hidden" name="command" value="list">
+		<input type="hidden" name="nowPage" value="1">
+	<table border="1">
+=======
 	<table border="1" style="width:100%">
+>>>>>>> adc8306d43b97c3dd4877a178b6763459aed44e6
 		<colgroup>
 			<col width="50"/>
 			<col width="100"/>
@@ -120,6 +141,22 @@
 			<a href="boardlist.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
 		</c:if>
 	</div>
+	
+	<div class="search">
+			
+		<select id="search_type" name="searchType">
+			<option value="n"<c:out value="${boarddto.searchType == null ? 'selected' : ''}"/>>---------</option>
+			<option value="t"<c:out value="${boarddto.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+			<option value="w"<c:out value="${boarddto.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+			<option value="tc"<c:out value="${boarddto.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+		</select>
+		
+		<input type="text" name="keyword" id="keywordInput" value="${boarddto.keyword}"/>
+		<button id="searchBtn">검색</button>	
+		
+	</div>
+	
+
 
 </body>
 </html>

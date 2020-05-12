@@ -1,6 +1,7 @@
 package com.mvc.prectice.board.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -101,6 +102,47 @@ public class BoardDaoImpl implements BoardDao {
 		}
 		
 		return boardlist;
+	}
+
+	@Override
+	public List<BoardDto> listSearch(BoardDto boarddto, PagingDto pagingdto) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("searchType",boarddto.getSearchType());
+		map.put("keyword", boarddto.getKeyword());
+		map.put("start", pagingdto.getStart());
+		map.put("end", pagingdto.getEnd());
+		
+		System.out.print("searchType: "+map.get("searchType"));
+		System.out.print(" / keyword: "+map.get("keyword"));
+		System.out.print(" / start: "+map.get("start"));
+		System.out.print(" / end: "+map.get("end"));
+		System.out.println();
+		
+		List<BoardDto> boardlist = new ArrayList<BoardDto>();
+		
+		try {
+			boardlist = sqlSession.selectList(NAMESPACE+"listSearch", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("[ERROR]: listSearch");
+		}
+		
+		return boardlist;
+	}
+
+	@Override
+	public int countSearch(BoardDto boarddto) {
+		
+		int res =0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"countSearch", boarddto.getKeyword());
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("[ERROR]: countSearch");
+		}
+		
+		return res;
 	}
 
 }

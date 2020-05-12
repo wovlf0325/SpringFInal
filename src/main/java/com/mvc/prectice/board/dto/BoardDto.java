@@ -13,12 +13,16 @@ public class BoardDto {
 	private int board_like;
 	private int board_kind;
 	
+	//검색
+	private String searchType;
+	private String keyword;
+	
 	public BoardDto() {
 	
 	}
 	
 	public BoardDto(int board_no, String board_writer, String board_title, String board_content, Date board_regdate,
-			int board_views, int board_like, int board_kind) {
+			int board_views, int board_like, int board_kind, String searchType, String keyword) {
 		super();
 		this.board_no = board_no;
 		this.board_writer = board_writer;
@@ -28,7 +32,12 @@ public class BoardDto {
 		this.board_views = board_views;
 		this.board_like = board_like;
 		this.board_kind = board_kind;
+		this.searchType = searchType;
+		this.keyword = keyword;
 	}
+
+
+
 	public int getBoard_no() {
 		return board_no;
 	}
@@ -78,6 +87,23 @@ public class BoardDto {
 		this.board_kind = board_kind;
 	}
 	
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	
+
 	
 }

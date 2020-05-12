@@ -49,7 +49,7 @@ public class PagingDto {
 		setEnd(nowPage * cntPerPage);
 		setStart(getEnd() - cntPerPage + 1);
 	}
-
+	
 	public int getNowPage() {
 		return nowPage;
 	}
