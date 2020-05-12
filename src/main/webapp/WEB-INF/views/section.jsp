@@ -10,13 +10,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="form/header.jsp" %>
 <section style="height:800px;">
-adfsa <a href="updateform.do">내 정보</a> 
+
+<h1>Main Home Page</h1>
+<a href="updateform.do">내 정보</a> 
+<a href="boardlist.do?nowPage=1">게시판</a>
+<a href="read.do">read.jsp</a>
 
 </section>
-
-
-
-<%@ include file="footer.jsp" %>
+<%@ include file="form/footer.jsp" %>
 </body>
 </html>

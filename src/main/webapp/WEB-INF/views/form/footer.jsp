@@ -11,7 +11,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <style type="text/css">
 	footer {
-    	height:150px;
+    	height:100px;
     	width: 100%;
 		border: 1px dotted red;
 	}
@@ -49,7 +49,7 @@
 </style>
 </head>
 <body>
-<div id="toast" style="border:1px dotted blue; 
+<div id="toast" style="border:1px dotted blue;
 	width:25%; 
 	height:130px;
 	float:right; 
@@ -57,7 +57,7 @@
 	margin: -2% 0% 0% 69%;
 	cursor:pointer;"><img alt="letter" src="resources/images/letteralram.png" style="width:27%; height:130px;"/>
 		<div style="margin:-28% 0% 0% 37%;">
-			<p>보낸사람: <a id="sender"></a><p>
+			<p>보낸사람: <a id="letterfrom"></a><p>
 			<p>제목: <a id="lettertitle"></a></p>
 			<p>내용: 
 				<a id="lettercontent"></a>
@@ -73,10 +73,10 @@
 	var lastLetterSeq = 0;
 	const toast = document.getElementById('toast');  // id가 toast인 요소 div
 	let isToastShown = false;
+	memberid = "${sessionScope.logininfo.id}";
 	
 	$(function(){
-		if(${!empty sessionScope.logininfo }){       // 세션에 로그인정보가 있을시에만 작동
-			memberid = "${sessionScope.logininfo.id}";
+		if(${!empty sessionScope.logininfo}){       // 세션에 로그인정보가 있을시에만 작동
 			getLastLetterSeq();         // 처음에 마지막 쪽지번호를 먼저 알아야된다.(시간차보다 먼저 실행되어야 함)
 			AjaxLetterCall();           // 시간차로 계속해서 처음에 뽑은 쪽지번호와 비교 & 쪽지내용 출력		
 		}	
@@ -109,22 +109,21 @@
 			success:function(data){
 				//console.log(data);
 				$.each(data, function(key, val){
-					
-					if(key == "sender"){         //Toast방식의 쪽지에 내용을 지속적으로 갱신
-						$("#sender").text(val);
+					if(key == "letter_from"){         //Toast방식의 쪽지에 내용을 지속적으로 갱신
+						$("#letterfrom").text(data.letter_from);
 					}
-					if(key == "lettertitle"){    //Toast방식의 쪽지에 내용을 지속적으로 갱신
-						$("#lettertitle").text(val);
+					if(key == "letter_title"){    //Toast방식의 쪽지에 내용을 지속적으로 갱신
+						$("#lettertitle").text(data.letter_title);
 					}
-					if(key =="lettercontent"){   //Toast방식의 쪽지에 내용을 지속적으로 갱신
-						var lettercontent = val.substr(0,7)+".....";
+					if(key =="letter_content"){   //Toast방식의 쪽지에 내용을 지속적으로 갱신
+						var lettercontent = data.letter_content.substr(0,7)+".....";
 						$("#lettercontent").text(lettercontent);
 					}
-					if(key == "letterseq"){
-						console.log("letterseq::" + val);            //지속적으로 갱신할 letterseq
+					if(key == "letter_no"){
+						console.log("letterseq::" + data.letter_no);            //지속적으로 갱신할 letterseq
 						console.log("lastLetterSeq::" + lastLetterSeq);     //처음에 한번만 사용할 lastLetterSeq
 
-						if(lastLetterSeq < val){            // 새로운 쪽지가 도착하면
+						if(lastLetterSeq < data.letter_no){            // 새로운 쪽지가 도착하면
 							//if (isToastShown) return;   // 토스트 메시지가 띄어져 있다면(true상태일 경우) 함수를 끝냄
 					  		 isToastShown = true;
 					  		 toast.classList.add('show');    // show라는 클래스를 추가해서 토스트 메시지를 띄우는 애니메이션을 발동시킴

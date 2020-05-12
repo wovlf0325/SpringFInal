@@ -12,5 +12,6 @@ public interface LoginDao {
 	public LoginDto selectInfo(LoginDto logindto);
 	int updateMypage(LoginDto logindto);
 	public LoginDto selectInfoWhereId(LoginDto logindto);
+
 	
 }

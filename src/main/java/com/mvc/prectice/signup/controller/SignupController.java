@@ -170,17 +170,17 @@ public class SignupController {
 				e.printStackTrace();
 			}
 		}
-		signupdto.setProfileimg(rename);
-		signupdto.setId(id);
-		signupdto.setPw(pw);
-		signupdto.setName(rename);
-		signupdto.setEmail(email);
-		signupdto.setPhone(phone);
-		signupdto.setAddress(address);
-		signupdto.setAddone(addone);
-		signupdto.setDetailadd(detailadd);
+		signupdto.setMember_profileimg(rename);
+		signupdto.setMember_id(id);
+		signupdto.setMember_pw(pw);
+		signupdto.setMember_name(rename);
+		signupdto.setMember_email(email);
+		signupdto.setMember_phone(phone);
+		signupdto.setMember_address(address);
+		signupdto.setMember_addone(addone);
+		signupdto.setMember_detailadd(detailadd);
 		
-		System.out.println(signupdto.getProfileimg()+"::****************");
+		System.out.println(signupdto.getMember_profileimg()+"::****************");
 		res = signupbiz.insertAllinfo(signupdto);
 		
 		if(res > 0) {
