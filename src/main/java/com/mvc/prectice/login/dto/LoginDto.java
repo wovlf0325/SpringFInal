@@ -172,6 +172,7 @@ public class LoginDto {
 		return member_delflag;
 	}
 
+
 	public void setMember_delflag(String member_delflag) {
 		this.member_delflag = member_delflag;
 	}
@@ -191,8 +192,6 @@ public class LoginDto {
 	public void setId(String id) {
 		this.member_id = id;
 	}
-	
-	
 	
 	
 	

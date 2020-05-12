@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="letterquery">
+	<select id="selectNewLetter" resultType="letterDto" parameterType="String">
+		SELECT *
+		FROM
+		(SELECT ROWNUM
+     	 , B.*
+  	 	 FROM (SELECT A.*
+           	   FROM TESTLETTER A  
+           	   WHERE A.LETTEREAD = 1 AND A.ID = #{id}        	   
+           	   ORDER BY A.LETTERSEQ DESC) B)
+		WHERE ROWNUM = 1
+	</select>
+</mapper>
