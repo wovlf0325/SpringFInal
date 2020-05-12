@@ -28,7 +28,8 @@ public class BoardController {
 	@RequestMapping(value="/boardlist.do")
 	public String selectList(PagingDto pagingdto, Model model
 			,@RequestParam(value="nowPage", required = false)String nowPage
-			,@RequestParam(value="cntPerPage", required = false)String cntPerPage) {
+			,@RequestParam(value="cntPerPage", required = false)String cntPerPage
+			,@RequestParam(value="boardkinds", required = false)String boardkind) {
 				
 		logger.info("SELECT LIST");
 		

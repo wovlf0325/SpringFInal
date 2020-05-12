@@ -28,6 +28,16 @@ public class LoginController {
 		return "login";
 	}
 	
+	@RequestMapping(value = "/logout.do")
+	public String Logout(Model model, HttpServletRequest request) {
+		logger.info("Logout");
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		return "redirect:index.jsp";
+	}
+	
 	@RequestMapping(value = "/loginRes.do",method = RequestMethod.POST)
 	public String LoginRes(LoginDto logindto, HttpServletRequest request) {
 		LoginDto dto = new LoginDto();
