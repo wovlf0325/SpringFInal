@@ -24,4 +24,11 @@ public class HomeController {
 	  return "board/BoardWrite";
 	}
 	
+	@RequestMapping("/read.do")
+	public String read() {
+		return "chat/read";
+	}
+	
+	
+	
 }
