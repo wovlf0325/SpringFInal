@@ -11,7 +11,7 @@ public class PagingDto {
 	private int start; //SQL쿼리에 쓸 start
 	private int end; //SQL쿼리에 쓸 end
 	
-	private int cntPage = 5;
+	private int cntPage = 10;
 
 	public PagingDto() {
 		super();

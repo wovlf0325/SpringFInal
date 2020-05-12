@@ -16,6 +16,7 @@
 		location.href="boardlist.do?nowPage=${paging.nowPage}&cntPerPage="+sel;
 	}
 	
+
 	$(function(){
 		  $('#searchBtn').click(function() {
 		   self.location = "boardlist.do"
@@ -28,7 +29,17 @@
 		 });   
 
 
+	function kindChange(){
+		var kind = document.getElementById('kind').value;
+		location.href="boardlist.do?boardkind="+kind;
+	}
+	
 </script>
+<style type="text/css">
+	*{
+		border: 1px dotted red;
+	}
+</style>
 <body>
 	<h1>LIST</h1>
 	
@@ -43,11 +54,23 @@
 				<option value="20"
 					<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
 			</select>
+			
+			<select id="kind" name="boardkinds" onchange="kindChange()" style="float:right;">
+				<option value="0">전체</option>
+				<option value="1">공지사항</option>
+				<option value="2">자유게시판</option>
+				<option value="3">불만사항</option>
+				<option value="4">카풀리스트</option>
+			</select>
 		</div>
 	
+<<<<<<< HEAD
 		<input type="hidden" name="command" value="list">
 		<input type="hidden" name="nowPage" value="1">
 	<table border="1">
+=======
+	<table border="1" style="width:100%">
+>>>>>>> adc8306d43b97c3dd4877a178b6763459aed44e6
 		<colgroup>
 			<col width="50"/>
 			<col width="100"/>
@@ -97,7 +120,7 @@
 	
 	</table>
 	
-	<div style="display: block;">
+	<div style="display: block;" align="center">
 		<c:if test="${paging.startPage != 1 }">
 			<a href="boardlist.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
 		</c:if>

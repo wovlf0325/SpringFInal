@@ -24,12 +24,14 @@ public class BoardController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
-	/*
-	// 글목록+페이징
-	@RequestMapping(value = "/boardlist.do")
-	public String selectList(PagingDto pagingdto, Model model,
-			@RequestParam(value = "nowPage", required = false) String nowPage,
-			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+
+	
+	@RequestMapping(value="/boardlist.do")
+	public String selectList(PagingDto pagingdto, Model model
+			,@RequestParam(value="nowPage", required = false)String nowPage
+			,@RequestParam(value="cntPerPage", required = false)String cntPerPage
+			,@RequestParam(value="boardkinds", required = false)String boardkind) {
+				
 
 		logger.info("SELECT LIST");
 
@@ -51,7 +53,7 @@ public class BoardController {
 		return "board/boardlist";
 
 	}
-	*/
+
 
 	// 글목록 +페이징+검색
 	@RequestMapping(value = "/boardlist.do", method = RequestMethod.GET)
