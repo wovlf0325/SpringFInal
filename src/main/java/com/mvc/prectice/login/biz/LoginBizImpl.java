@@ -18,4 +18,16 @@ public class LoginBizImpl implements LoginBiz{
 		return dao.selectInfo(logindto);
 	}
 
+	@Override
+	public LoginDto selectInfoWhereId(LoginDto logindto) {
+		// TODO Auto-generated method stub
+		return dao.selectInfoWhereId(logindto);
+	}
+
+	@Override
+	public int updateMypage(LoginDto logindto) {
+		// TODO Auto-generated method stub
+		return dao.updateMypage(logindto);
+	}
+
 }
