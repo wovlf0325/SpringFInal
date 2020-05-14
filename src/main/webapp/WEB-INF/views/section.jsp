@@ -18,6 +18,7 @@
 <a href="boardlist.do?nowPage=1">게시판</a>
 <a href="read.do">read.jsp</a>
 
+
 </section>
 <%@ include file="form/footer.jsp" %>
 </body>

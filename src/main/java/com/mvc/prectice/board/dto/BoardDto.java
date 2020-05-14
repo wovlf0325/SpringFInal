@@ -11,7 +11,9 @@ public class BoardDto {
 	private Date board_regdate;
 	private int board_views;
 	private int board_like;
+	private int recnt;
 	private int board_category;
+
 	
 	//검색
 	private String searchType;
@@ -20,9 +22,12 @@ public class BoardDto {
 	public BoardDto() {
 	
 	}
+
 	
-	public BoardDto(int board_no, String board_writer, String board_title, String board_content, Date board_regdate,
-			int board_views, int board_like, int board_category, String searchType, String keyword) {
+
+
+	public BoardDto(int board_no, String board_writer, String board_title, String board_content, Date board_regdate, int board_views, int board_like, int board_category, String searchType, String keyword, int recnt) {
+
 		super();
 		this.board_no = board_no;
 		this.board_writer = board_writer;
@@ -31,10 +36,12 @@ public class BoardDto {
 		this.board_regdate = board_regdate;
 		this.board_views = board_views;
 		this.board_like = board_like;
+		this.recnt = recnt;
 		this.board_category = board_category;
 		this.searchType = searchType;
 		this.keyword = keyword;
 	}
+
 
 
 
@@ -103,7 +110,14 @@ public class BoardDto {
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
-	
+
+	public int getRecnt() {
+		return recnt;
+	}
+
+	public void setRecnt(int recnt) {
+		this.recnt = recnt;
+	}
 
 	
 }

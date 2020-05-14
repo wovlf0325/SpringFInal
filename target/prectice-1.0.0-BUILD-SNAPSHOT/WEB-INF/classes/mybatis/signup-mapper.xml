@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="signupquery">
 	<select id="idchk" resultType="Integer" parameterType="String">
-		SELECT COUNT(*) FROM TESTMEMBER
-		WHERE ID=#{id}
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_ID=#{member_id}
 	</select>
 	<select id="emailchk" resultType="Integer" parameterType="String">
-		SELECT COUNT(*) FROM TESTMEMBER
-		WHERE EMAIL=#{email}
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_EMAIL=#{member_email}
 	</select>
 	<insert id="insertAllinfo" parameterType="signupDto">
-		INSERT INTO TESTMEMBER
-		VALUES(#{id},#{password},#{name},#{email},#{phone},#{address},#{addone},#{detailadd},#{profileimg})
+		INSERT INTO MEMBER
+		VALUES(#{member_id},#{member_pw},#{member_name},#{member_email},#{member_phone},#{member_address},#{member_addone},#{member_detailadd},#{member_profileimg})
 	</insert>
 </mapper>

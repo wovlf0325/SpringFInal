@@ -71,6 +71,7 @@
 						<when test="searchType == 't'.toString()">
 							BOARD_TITLE LIKE '%'||'${keyword}'||'%' 
 						</when>
+
 			
 						<when test="searchType == 'w'.toString()">
 							BOARD_WRITER LIKE '%'||'${keyword}'||'%' 
@@ -126,6 +127,12 @@
 	
 	<select id="selectNotice" resultType="boardDto">
 		SELECT B.* FROM (SELECT A.*, ROWNUM AS RNUM FROM (SELECT * FROM BOARD WHERE BOARD_CATEGORY = 2 ORDER BY BOARD_NO DESC )A )B WHERE RNUM BETWEEN 1 AND 3
+	</select>
+	
+	<select id="countComments" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM REPLY
+		WHERE BOARD_NO = #{board_no}
 	</select>
 	
 </mapper>
