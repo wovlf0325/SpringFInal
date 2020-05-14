@@ -124,7 +124,7 @@ public class LoginController {
 			@RequestParam("area")String area,
 			@RequestParam("role")String role,
 			@RequestParam("status")String status) {
-		loginbiz.updateMypage(new LoginDto(id, pw, name, phone, email, address, null, null, null, area, interest, role, status));
+		loginbiz.updateMypage(new LoginDto(id, pw, name, phone, email, address, role, area, interest, status));
 		return "redirect:updateform.do";
 	}
 	
