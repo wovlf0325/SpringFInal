@@ -114,6 +114,10 @@ html, body {
 			
 			  eventClick: function(event) {
 				    var title = event.event._def.title;
+				    
+				    $.ajax({
+				    	url : '/prectice/'
+				    });
 				  },
 			  eventResize: function(info) {
 				    alert(info.event.title + " end is now " + info.event.end.toISOString());
