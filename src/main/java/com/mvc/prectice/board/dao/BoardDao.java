@@ -25,4 +25,8 @@ public interface BoardDao {
 	
 	// 검색 결과 갯수
 	public int countSearch(BoardDto boarddto);
+	
+	// 댓글 갯수
+	public int countComments(int board_no);
+	
 }

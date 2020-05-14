@@ -48,7 +48,7 @@
 	<select id="listSearch" resultType="boardDto" parameterType="map">
 		SELECT B.*
 		FROM (SELECT A.*, ROWNUM AS RNUM
-		FROM (SELECT * FROM BOARD 
+		FROM (SELECT *<!-- , (SELECT COUNT(*) FROM REPLY WHERE BOARD_NO = ${board_no}) AS RECNT --> FROM BOARD 
 		<choose>
 			<when test="searchType == 't'.toString()">
 				WHERE BOARD_TITLE LIKE '%'||'${keyword}'||'%'
@@ -88,6 +88,12 @@
 		</choose>
 		
 		</if>
+	</select>
+	
+	<select id="countComments" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM REPLY
+		WHERE BOARD_NO = #{board_no}
 	</select>
 	
 </mapper>

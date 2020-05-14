@@ -10,12 +10,16 @@ import org.springframework.stereotype.Repository;
 
 import com.mvc.prectice.board.dto.BoardDto;
 import com.mvc.prectice.board.dto.PagingDto;
+import com.mvc.prectice.reply.dto.ReplyDto;
 
 @Repository
 public class BoardDaoImpl implements BoardDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
+	//private ReplyDto comment;
+	//private ArrayList<ReplyDto> comments;
 	
 	@Override
 	public BoardDto selectOne(int board_no) {
@@ -107,6 +111,7 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public List<BoardDto> listSearch(BoardDto boarddto, PagingDto pagingdto) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("board_no", boarddto.getBoard_no());
 		map.put("searchType",boarddto.getSearchType());
 		map.put("keyword", boarddto.getKeyword());
 		map.put("start", pagingdto.getStart());
@@ -143,6 +148,12 @@ public class BoardDaoImpl implements BoardDao {
 		}
 		
 		return res;
+	}
+
+	@Override
+	public int countComments(int board_no) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
