@@ -11,114 +11,69 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/signupform.css"/>
 </head>
-<!-- 버튼 클릭 시 다른 함수 실행 -->
-<script type="text/javascript">
-function uploadimg(){
-<<<<<<< HEAD
-	$("input[name=member_profileimg]").trigger('click');
-}
-</script>
-<style type="text/css">
-	#home{
-		text-decoration: none;
-	}
-</style>
 <body>
-<div class="body">
-  <form id="signupTotalChk" method="post" action="signupRes.do">
 
-  <a id="home" href="index.jsp"><h3 id="logo">SignUp</h3></a><br/><br/><br/>
-  <input type='file' name="member_profileimg" value="" onchange="readURL(this);" style="display:none;"/>
-  <img id="blah" alt="defaultimg" src="resources/images/profileimgstorage/defaulthuman.png" style="max-width: 100%; width: 150px; height:150px; border-radius:200px; margin: 0% 0% 0% 40%; border:1px solid #e4cbcb;"/>
-=======
-	$("input[name=profileimg]").trigger('click');
-}
-</script>
-<body>
 <div class="body">	
-  <form id="signupTotalChk" method="post" action="signupRes.do">
+  <form id="updateForm" method="post" action="updateMember.do">
 
-  <h3 id="logo">SignUp</h3><br/><br/><br/>
+  <h3 id="logo">Update Member</h3><br/><br/><br/>
   <input type='file' name="profileimg" value="" onchange="readURL(this);" style="display:none;"/>
-  <img id="blah" alt="defaultimg" src="resources/images/defaulthuman.png" style="max-width: 100%; width: 150px; height:150px; border-radius:200px; margin: 0% 0% 0% 40%; border:1px solid #e4cbcb;"/>
->>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
-  <br/><br/><br/>
+<img id="blah" alt="defaultimg" src="resources/images/defaulthuman.png" style="max-width: 100%; width: 150px; height:150px; border-radius:200px; margin: 0% 0% 0% 40%; border:1px solid #e4cbcb;"/>
+    <br/><br/><br/>
   <input type="button" value="프로필사진 등록" onclick="uploadimg();" style="width: 30%; margin-left:35%; background:#ead3d3; color: white; font-weight:bold; cursor:pointer;"/><br/>
   
   <label for="username">ID</label>
-<<<<<<< HEAD
-  <input type="text" name="member_id" placeholder="아이디를 입력해주세요." autocomplete="off" required />
-=======
-  <input type="text" name="id" placeholder="아이디를 입력해주세요." autocomplete="off" required />
->>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
-  <input type='button' value='중복확인' onclick='idchk();' style="background:#ead3d3; color:white; width:30%; font-weight:bold; cursor:pointer;"/>
+  <input type="text" name="id" id = "userId" placeholder="아이디를 입력해주세요." autocomplete="off" required />
+ <!--  <input type='button' value='중복확인' onclick='idchk();' style="background:#ead3d3; color:white; width:30%; font-weight:bold; cursor:pointer;"/> -->
   <div class="idchkRes" title="n"></div>
-  
-  <label for="password">Password</label>
-<<<<<<< HEAD
-  <input type="password" id="password" name="member_pw" placeholder="비밀번호를 입력해주세요." autocomplete="off" required />
-
-  <label for="username">Name</label>
-  <input type="text" name="member_name" placeholder="이름을 입력해주세요." autocomplete="off" required />
-  
-  <label for="username">Email</label>
-  <input type="email"  name="member_email" placeholder="이메일을 입력해주세요." autocomplete="off" required />
-=======
+    <label for="password">Password</label>
   <input type="password" id="password" name="pw" placeholder="비밀번호를 입력해주세요." autocomplete="off" required />
-
-  <label for="username">Name</label>
-  <input type="text" name="name" placeholder="이름을 입력해주세요." autocomplete="off" required />
+    <label for="username">Name</label>
+  <input type="text" name="name" id="name" placeholder="이름을 입력해주세요." autocomplete="off" required />
   
   <label for="username">Email</label>
-  <input type="email"  name="email" placeholder="이메일을 입력해주세요." autocomplete="off" required />
->>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
-  <input type="button" value="이메일 인증" onclick="emailchk();" style="width: 30%; background:#ead3d3; color: white; font-weight:bold; cursor:pointer;"/>
+  <input type="email"  name="email" id = "email" placeholder="이메일을 입력해주세요." autocomplete="off" required />
+  <!-- <input type="button" value="이메일 인증" onclick="emailchk();" style="width: 30%; background:#ead3d3; color: white; font-weight:bold; cursor:pointer;"/> -->
   <br/>
   <img id="loading" alt="loading" src="resources/images/loading.gif" style="display:none; width:50%; height:300px;"/>
   <div class="emailchkRes" title="n"></div>
   <br/>
-  <label for="username">Phone</label>
-<<<<<<< HEAD
-  <input type="text" name="member_phone" placeholder="전화번호를 입력해주세요." autocomplete="off" required />	
+  <label for="username">PHONE</label>
+  <input type="text" name="phone" id = "userPhone" placeholder="연락처를 입력해주세요." autocomplete="off" required />
   
-    
   <label for="username">Address</label>
-  <input type="text" name="member_address" onclick="Postcode();" placeholder="클릭 후 주소를 입력해주세요." autocomplete="off" readonly/>	
-
-  <label for="username">PostCode</label>
-  <input type="text" name="member_addone" onclick="Postcode();" placeholder="클릭 후 주소를 입력해주세요." autocomplete="off" readonly/>	
-  
-  <label for="username">Detail Address</label>
-  <input type="text" name="member_detailadd" placeholder="상세주소를 입력해주세요" autocomplete="off" required />	
-=======
-  <input type="text" name="phone" placeholder="전화번호를 입력해주세요." autocomplete="off" required />	
-  
-    
-  <label for="username">Address</label>
-  <input type="text" name="address" onclick="Postcode();" placeholder="클릭 후 주소를 입력해주세요." autocomplete="off" readonly/>	
+  <input type="text" name="address" id="address" onclick="Postcode();" placeholder="클릭 후 주소를 입력해주세요." autocomplete="off" readonly/>	
 
   <label for="username">PostCode</label>
   <input type="text" name="addone" onclick="Postcode();" placeholder="클릭 후 주소를 입력해주세요." autocomplete="off" readonly/>	
   
   <label for="username">Detail Address</label>
-  <input type="text" name="detailadd" placeholder="상세주소를 입력해주세요" autocomplete="off" required />	
->>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
-  
-  <input type="button" onclick="chkAll();" value="Signup" style="background:red; color:white; font-weight:bold; cursor:pointer;"/>
+  <input type="text" name="detailadd" id = "detailadd" placeholder="상세주소를 입력해주세요" autocomplete="off" required />	
+
+    <label for="username">관심사</label>
+  <input type="text" name="interest" id="interest" placeholder="관심사를 입력해주세요." autocomplete="off" required />
+
+    <label for="username">지역</label>
+  <input type="text" name="area" id="area" placeholder="지역을 입력해주세요." autocomplete="off" required />
+
+    <label for="username">등급</label>
+  <input type="text" name="role" id="role" placeholder="등급을 입력해주세요." autocomplete="off" required />
+
+    <label for="username">거주 유무</label>
+	<input type="text" name="status" id="status" placeholder="거주 유무 입력해주세요." autocomplete="off" required />
+
+
+  <input type="button" onclick="update();" value="Update" style="background:red; color:white; font-weight:bold; cursor:pointer;"/>
 
 </form>
 </div>
-<<<<<<< HEAD
-<%@ include file="form/footer.jsp" %>
+</body>
 <script type="text/javascript">
-function idchk(){
-	var id = $("input[name=member_id]").val();
-=======
-<%@ include file="footer.jsp" %>
-<script type="text/javascript">
+function update() {
+	$("#updateForm").submit();
+}
 function idchk(){
 	var id = $("input[name=id]").val();
->>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
 	if(id == ""){
 		alert("아이디를 입력해주세요.");
 	}else{
@@ -140,9 +95,28 @@ function idchk(){
 		})
 	}
 }
-</script>
-<!-- 이미지 미리보기 & 이메일 중복체크-->
-<script type="text/javascript">
+$.ajax({
+	url:"getLoginInfo.do",
+	type:"get",
+	dataType:"json",
+	success:function(data){
+		console.log(data)
+		$("#userId").val(data.id);
+		$("#userPhone").val(data.phone);
+		$("#address").val(data.address);
+		
+		$("#email").val(data.email);
+		$("#name").val(data.name);
+
+		$("#interest").val(data.interest);
+		$("#area").val(data.area);
+		$("#role").val(data.role);
+		$("#status").val(data.status);
+	},
+	error:function(){
+		console.log("통신 실패");
+	}
+})	
 
 var getAuthNum = "";
 
@@ -246,43 +220,9 @@ function emailchk(){
         }).open();
     }
 </script>
-<!-- 도로명API -->
-<!-- 유효성 검사 -->
 <script type="text/javascript">
-	
-	function chkAll(){
-		//alert("클릭했다.");
-		if($("input[name=id]").val()==""){
-			alert("아이디를 입력해주세요.");
-			return false;
-		}else if($("#idchkRes").title=="n"){
-			alert("아이디 중복체크를 진행해주세요.");
-			return false;
-		}else if($("input[name=pw]").val()==""){
-			alert("비밀번호를 입력해주세요.");
-			return false;
-		}else if($("input[name=name]").val()==""){
-			alert("이름을 입력해주세요.");
-			return false;
-		}else if($("input[name=email]").val()==""||$(".emailchkRes").title=="n"){
-			alert("이메일을 확인해주세요.");
-			return false;
-		}else if($("input[name=phone]").val()==""){
-			alert("전화번호를 입력해주세요.");
-			return false;
-		}else if($("input[name=address]").val() ==""){
-			alert("주소를 확인해주세요.");
-			return false;
-		}else if($("input[name=addone]").val() ==""){
-			alert("주소를 확인해주세요.");
-			return false;
-		}else if($("input[name=detailadd]").val()==""){
-			alert("상세주소를 입력해주세요.");
-			return false;
-		}else{
-			$("#signupTotalChk").submit();
-		}
-	}
+function uploadimg(){
+	$("input[name=profileimg]").trigger('click');
+}
 </script>
-</body>
 </html>

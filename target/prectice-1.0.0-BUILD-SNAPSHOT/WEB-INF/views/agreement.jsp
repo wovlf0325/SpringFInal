@@ -17,6 +17,7 @@
 		height:1000px;		
 	}
 	.agreementOne{
+<<<<<<< HEAD
 		width:840px;
 		height:200px;
 		border: 2px solid #e2a8bc;
@@ -37,6 +38,28 @@
 	}
 	.titleTwo{
 		    margin: 50px 0px 0px 230px;
+=======
+		width:1000px;
+		height:200px;
+		border: 2px solid #e2a8bc;
+		overflow: scroll;
+		margin: 0px 0px 0px 300px;
+		border-radius:10px;
+	}
+	.agreementTwo{
+		width:1000px;
+		height:200px;
+		border: 2px solid #e2a8bc;
+		overflow: scroll;
+	    margin: 0px 0px 0px 300px;
+		border-radius:10px;
+	}
+	.titleOne{
+		    margin: 50px 0px 0px 300px;
+	}
+	.titleTwo{
+		    margin: 50px 0px 0px 300px;
+>>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
 	}
 	.chkbox{
 	    width: 20px;
@@ -44,7 +67,11 @@
     	margin: 0px 0px 0px 1100px;
 	}
 	.btn{
+<<<<<<< HEAD
 		 margin: 0px 0px 0px 550px;
+=======
+		 margin: 0px 0px 0px 700px;
+>>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
    		 width: 250px;
    		 height: 50px;
     	 color: white;
@@ -58,7 +85,11 @@
   margin: 1% 0% 0% 17%;
   border: 3px solid #ddd;
   background-color: #eee;
+<<<<<<< HEAD
   max-width: 58.7%;
+=======
+  max-width: 55.7%;
+>>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
 }
 
 input {
@@ -81,6 +112,10 @@ $(function(){
 </script>
 </head>
 <body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
 <section style="    height: 1200px;">
 <div class="agreementall" style="margin-left:150px;">
 	<img alt="agreement" src="resources/images/termsandcondition.png" style="margin-left:22%;"/><br/>
@@ -296,6 +331,10 @@ EveryFarm 회원은 자신의 개인정보 처리와 관련하여 아래와 같�
 <input type="button" class="btn" value="회원가입"/>
 </div>
 </section>
+<<<<<<< HEAD
 <%@ include file="form/footer.jsp"%>
+=======
+<%@ include file="footer.jsp" %>
+>>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
 </body>
 </html>

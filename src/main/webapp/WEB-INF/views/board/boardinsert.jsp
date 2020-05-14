@@ -35,7 +35,7 @@ $(document).ready(function() {
 		<table border="1">
 			<tr>
 				<th>작성자</th>
-				<td><input type="text" name="board_writer"></td>
+				<td><input type="text" name="board_writer" value="${sessionScope.logininfo.member_id }"></td>
 			</tr>
 			
 			<tr>
@@ -48,12 +48,10 @@ $(document).ready(function() {
 				<td>
 					<textarea id="summernote" name="board_content"></textarea>
 					<input type="button" value="취소" style="float: right;" onclick="history.back()">
-					<input id="subBtn" type="button" value="글 작성" style="float: right;" onclick="goWrite(this.form)"/>
+					<input id="subBtn" type="submit" value="글 작성" style="float: right;" onclick="goWrite(this.form)"/>
 				</td>
 				<!-- 총 6개의 row들! -->
 			</tr>
-
-		
 		
 		</table>
 	</form>

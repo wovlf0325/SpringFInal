@@ -10,7 +10,9 @@
 		WHERE MEMBER_EMAIL=#{member_email}
 	</select>
 	<insert id="insertAllinfo" parameterType="signupDto">
+
 		INSERT INTO MEMBER
 		VALUES(#{member_id},#{member_pw},#{member_name},#{member_email},#{member_phone},#{member_address},#{member_addone},#{member_detailadd},#{member_profileimg})
+
 	</insert>
 </mapper>
