@@ -25,4 +25,7 @@ public interface BoardDao {
 	
 	// 검색 결과 갯수
 	public int countSearch(BoardDto boarddto);
+	
+	// 공지사항 3개 가져오기
+	public List<BoardDto> selectNotice();
 }

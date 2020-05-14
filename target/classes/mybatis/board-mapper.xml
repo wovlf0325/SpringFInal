@@ -49,45 +49,83 @@
 		SELECT B.*
 		FROM (SELECT A.*, ROWNUM AS RNUM
 		FROM (SELECT * FROM BOARD 
-		<choose>
-			<when test="searchType == 't'.toString()">
-				WHERE BOARD_TITLE LIKE '%'||'${keyword}'||'%'
-			</when>
+			<if test="category != 1">
+				WHERE BOARD_CATEGORY = ${category}
+			</if>
+		
+			<if test="searchType != null">
+				<choose>
+					<when test="category == 1">
+						<if test="keyword != null">
+							WHERE					
+						</if>
+					</when>
+					<when test="category != 1">
+						AND
+					</when>
+				</choose>
+					<choose>
+						<when test="searchType == 'n'.toString()">
+							BOARD_WRITER LIKE '%'||'${keyword}'||'%'
+						</when>
+						<when test="searchType == 't'.toString()">
+							BOARD_TITLE LIKE '%'||'${keyword}'||'%' 
+						</when>
 			
-			<when test="searchType == 'w'.toString()">
-				WHERE BOARD_WRITER LIKE '%'||'${keyword}'||'%'
-			</when>
-			
-			<when test="searchType == 'tc'.toString()">
-				WHERE BOARD_TITLE LIKE '%'||'${keyword}'||'%' OR (BOARD_CONTENT LIKE '%'||'${keyword}'||'%')
-			</when>
-		</choose>
-		ORDER BY BOARD_NO DESC) A)B
+						<when test="searchType == 'w'.toString()">
+							BOARD_WRITER LIKE '%'||'${keyword}'||'%' 
+						</when>
+				
+						<when test="searchType == 'tc'.toString()">
+							BOARD_TITLE LIKE '%'||'${keyword}'||'%' OR BOARD_CONTENT LIKE '%'||'${keyword}'||'%' 
+						</when>
+					</choose>
+			</if>
+		ORDER BY BOARD_NO DESC) A )B
 		WHERE RNUM BETWEEN ${start} AND ${end}
 	</select>
 	
 	
 	
-	<select id="countSearch" resultType="int" parameterType="String">
+	<select id="countSearch" resultType="int" parameterType="map">
 		SELECT COUNT(BOARD_NO)
 		FROM BOARD
+		<if test="category != 1">
+			WHERE BOARD_CATEGORY = ${category}
+		</if>
 		
 		<if test="searchType != null">
-		<choose>
-			<when test="searchType == 't'.toString()">
-				WHERE BOARD_TITLE LIKE '%'||'${keyword}'||'%' AND BOARD_NO >0
-			</when>
+			<choose>
+				<when test="category == 1">
+					<if test="keyword != null">
+						WHERE					
+					</if>
+				</when>
+				<when test="category != 1">
+					AND
+				</when>
+			</choose>
+				<choose>
+					<when test="searchType == 'n'.toString()">
+						BOARD_WRITER LIKE '%'||'${keyword}'||'%'
+					</when>
+					<when test="searchType == 't'.toString()">
+						BOARD_TITLE LIKE '%'||'${keyword}'||'%' 
+					</when>
 			
-			<when test="searchType == 'w'.toString()">
-				WHERE BOARD_WRITER LIKE '%'||'${keyword}'||'%' AND BOARD_NO >0
-			</when>
-			
-			<when test="searchType == 'tc'.toString()">
-				WHERE BOARD_TITLE LIKE '%'||'${keyword}'||'%' OR (BOARD_CONTENT LIKE '%'||'${keyword}'||'%') AND BOARD_NO >0
-			</when>
-		</choose>
-		
-		</if>
+					<when test="searchType == 'w'.toString()">
+						BOARD_WRITER LIKE '%'||'${keyword}'||'%' 
+					</when>
+				
+					<when test="searchType == 'tc'.toString()">
+						BOARD_TITLE LIKE '%'||'${keyword}'||'%' OR BOARD_CONTENT LIKE '%'||'${keyword}'||'%' 
+					</when>
+				</choose>
+		</if>			
+	</select>
+	
+	<select id="selectNotice" resultType="boardDto">
+		SELECT B.* FROM (SELECT A.*, ROWNUM AS RNUM FROM (SELECT * FROM BOARD WHERE BOARD_CATEGORY = 2 ORDER BY BOARD_NO DESC )A )B WHERE RNUM BETWEEN 1 AND 3
 	</select>
 	
 </mapper>
