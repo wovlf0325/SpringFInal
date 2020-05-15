@@ -196,4 +196,17 @@ public class SignupController {
 	    SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd-HH-mm-ss", Locale.KOREA);
 	    return dayTime.format(new Date(time));
 	}
+	
+	@RequestMapping(value="naverSignupRes.do", method = RequestMethod.POST)
+	public String naverSignup(Model model, @RequestParam("member_id")String memeber_id, @RequestParam("member_name")String member_name, @RequestParam("member_email")String member_email) {
+		
+		logger.info("naverJoin");
+		int res = 0;
+		
+		
+		return "";
+		
+	}
+	
+	
 }

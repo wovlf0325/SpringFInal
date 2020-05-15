@@ -101,6 +101,8 @@ public class LoginController {
 		JsonNode node = KakaoLoginBO.getAccessToken(code);
 		JsonNode accessToken = node.get("access_token");
 		JsonNode userInfo = KakaoLoginBO.getKakaoUserInfo(accessToken);
+		apiResult = userInfo.toString();
+		System.out.println(userInfo);
 		
 		// 카카오에서 유저정보 가져오기 
  		String id = userInfo.path("id").asText();
@@ -111,6 +113,8 @@ public class LoginController {
 
         // 유저정보 카톡에서 가져오기 Get properties
 		JsonNode properties = userInfo.path("properties");
+		System.out.println(properties);
+		
 
 		if (properties.isMissingNode()) {
 			// if "name" node is missing
@@ -123,6 +127,7 @@ public class LoginController {
 			//System.out.println("profileImage : " + profileImage);
 		}
 		model.addAttribute("result", apiResult);
+		System.out.println(apiResult);
 		
 		return "testview";
 		
@@ -145,6 +150,7 @@ public class LoginController {
 		System.out.println("여기는 callback");
 		OAuth2AccessToken oauthToken;
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
+		apiResult = naverLoginBO.getUserProfile(oauthToken);
 		// 로그인 사용자 정보를 읽어온다.
         System.out.println(naverLoginBO.getUserProfile(oauthToken).toString());
         model.addAttribute("result", apiResult);
