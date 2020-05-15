@@ -96,7 +96,7 @@ public class LoginController {
 		return "updateform";
 	}
 	
-
+	// 내 정보
 	@RequestMapping(value = "/getLoginInfo",method = RequestMethod.GET)
 	@ResponseBody
 	public LoginDto getLastLetterSeq(HttpServletRequest request) throws IOException {
@@ -107,12 +107,13 @@ public class LoginController {
 		
 		//로그인 문제가 해결되면 위 3줄 제거후 아래 주석 해제하자
 //		HttpSession session = request.getSession();
-//		dto = loginDao.selectInfoWhereId((LoginDto) session.getAttribute("logininfo"));
+//		dto = loginbiz.selectInfoWhereId((LoginDto) session.getAttribute("logininfo"));
 
 		return dto;
 	}
 	@RequestMapping(value = "/updateMember",method = RequestMethod.POST)
 	public String updateMember(
+
 
 			@RequestParam("id")String id, 
 			@RequestParam("pw")String pw,
