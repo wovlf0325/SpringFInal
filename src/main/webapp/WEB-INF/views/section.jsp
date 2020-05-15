@@ -18,6 +18,7 @@
 <a href="boardlist.do?nowPage=1">게시판</a>
 <a href="read.do">read.jsp</a>
 <a href="payment.do">결제하기</a>
+<a href="fullcalendar.do">풀캘린더</a>
 
 </section>
 <%@ include file="form/footer.jsp" %>

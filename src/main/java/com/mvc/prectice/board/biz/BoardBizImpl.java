@@ -1,5 +1,8 @@
 package com.mvc.prectice.board.biz;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +56,11 @@ public class BoardBizImpl implements BoardBiz {
 	@Override
 	public int countSearch(BoardDto boarddto) {
 		return boarddao.countSearch(boarddto);
+	}
+
+	@Override
+	public List<BoardDto> selectNotice() {
+		return boarddao.selectNotice();
 	}
 
 }

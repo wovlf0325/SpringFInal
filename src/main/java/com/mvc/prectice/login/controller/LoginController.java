@@ -113,19 +113,19 @@ public class LoginController {
 	}
 	@RequestMapping(value = "/updateMember",method = RequestMethod.POST)
 	public String updateMember(
-			@RequestParam("no")String member_no,
-			@RequestParam("no")String house_no,
-			@RequestParam("id")String member_id, 
-			@RequestParam("pw")String member_pw,
-			@RequestParam("name")String member_name,
-			@RequestParam("email")String member_email,
-			@RequestParam("phone")String member_phone,
-			@RequestParam("address")String member_address,
-			@RequestParam("interest")String member_interest,
-			@RequestParam("area")String member_area,
-			@RequestParam("role")String member_role,
-			@RequestParam("status")String member_status) {
-		loginbiz.updateMypage(new LoginDto(0, 0, member_id, member_pw, member_name, member_phone, member_email, member_address, null, null, null, member_area, member_interest, member_role, member_status, member_status, member_status));
+
+
+			@RequestParam("id")String id, 
+			@RequestParam("pw")String pw,
+			@RequestParam("name")String name,
+			@RequestParam("email")String email,
+			@RequestParam("phone")String phone,
+			@RequestParam("address")String address,
+			@RequestParam("interest")String interest,
+			@RequestParam("area")String area,
+			@RequestParam("role")String role,
+			@RequestParam("status")String status) {
+		loginbiz.updateMypage(new LoginDto(id, pw, name, phone, email, address, role, area, interest, status));
 		return "redirect:updateform.do";
 	}
 	
