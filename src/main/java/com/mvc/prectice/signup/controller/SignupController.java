@@ -203,6 +203,10 @@ public class SignupController {
 		logger.info("naverJoin");
 		int res = 0;
 		
+		System.out.println(member_id);
+		System.out.println(member_name);
+		System.out.println(member_);
+		
 		
 		return "";
 		

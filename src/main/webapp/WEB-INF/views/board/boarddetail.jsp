@@ -6,6 +6,47 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		listReply();//댓글 목록 불러오기
+		
+		$("#btnReply").click(function(){
+			var reply_content = $("#reply_content").val();
+			var board_no = "${boarddto.board_no}";
+			var param ="reply_content="+reply_content+"&board_no="+board_no;
+			$.ajax({
+				type:"post",
+				url:"replyinsert.do",
+				data:param,
+				success:function(){
+					alert("댓글이 등록되었습니다.");
+					$('textarea[id=reply_content]').val("");
+					listReply();
+				},
+				error:function(){
+					alert("ajax실패");
+					console.log(res);
+					listReply();
+				}
+			});
+		});
+		
+	});
+	
+	function listReply(){
+		$.ajax({
+			type:"get",
+			url:"replylist.do?board_no=${boarddto.board_no}",
+			success: function(result){
+				$("#listReply").html(result);
+			}		
+		})
+	}
+	
+
+</script>
 </head>
 <body>
 	<h1>Detail</h1>
@@ -33,9 +74,21 @@
 			<input type="button" value="목록" onclick="location.href='boardlist.do'">
 		</tr>
 		
-		
-		
 	</table>
+	<!-- 댓글 입력 -->
+	<div>
+		<br>
+		<textarea rows="4" cols="60" id="reply_content" placeholder="댓글을 작성해주세요"></textarea>
+		<br>
+		<input type="button" id="btnReply" value="댓글작성"/>
+	
+	</div>
+	
+	<!-- 댓글 출력 -->
+	<div>
+		<div id="listReply"></div>
+	</div>
+	
 
 </body>
 </html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="signupquery">
+	<select id="idchk" resultType="Integer" parameterType="String">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_ID=#{member_id}
+	</select>
+	<select id="emailchk" resultType="Integer" parameterType="String">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_EMAIL=#{member_email}
+	</select>
+	<insert id="insertAllinfo" parameterType="signupDto">
+		INSERT INTO MEMBER
+		VALUES(#{member_id},#{member_pw},#{member_name},#{member_email},#{member_phone},#{member_address},#{member_addone},#{member_detailadd},#{member_profileimg})
+	</insert>
+</mapper>

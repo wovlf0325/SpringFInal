@@ -18,12 +18,9 @@ public class PagingDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PagingDto(int total, int nowPage, int cntPerPage) {
+	public PagingDto(int nowPage, int cntPerPage) {
 		setNowPage(nowPage);
 		setCntPerPage(cntPerPage);
-		setTotal(total);
-		calcLastPage(getTotal(), getCntPerPage());
-		calcStartEndPage(getNowPage(), cntPage);
 		calcStartEnd(getNowPage(), getCntPerPage());
 	}
 	
