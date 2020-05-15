@@ -20,9 +20,7 @@ public class LoginDto {
 	private String member_delflag;
 	private String member_status;
 	
-	public LoginDto() {
-	
-	}
+
 
 	public LoginDto(int member_no, int house_no, String member_id, String member_pw, String member_name,
 			String member_phone, String member_email, String member_address, String member_addone,
@@ -48,6 +46,10 @@ public class LoginDto {
 		this.member_status = member_status;
 	}
 
+
+	public LoginDto() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public LoginDto(String member_id, String member_pw, String member_name, String member_phone, String member_email,
 			String member_address, String member_role, String member_area, String member_interest,

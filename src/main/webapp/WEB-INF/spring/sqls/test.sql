@@ -11,9 +11,7 @@ CREATE TABLE MEMBER(
     PROFILEIMG VARCHAR2(4000)
 );
 
-DROP TABLE MEMBER;
-delete from member;
-SELECT * FROM MEMBER;
+
 ---------------------------------------------------------
 
 DROP SEQUENCE LETTERSEQ;
@@ -31,8 +29,7 @@ CREATE TABLE LETTER(
 	REFERENCES MEMBER(ID) ON DELETE CASCADE
 );
 
-INSERT INTO LETTER
-VALUES(LETTERSEQ.NEXTVAL,'GUEST','DONG','제목테스트','내용테스트',1,sysdate);
+
 
 
 SELECT *
@@ -44,4 +41,3 @@ SELECT *
            	   WHERE A.LETTEREAD = 1 AND A.ID = 'GUEST'
            	   ORDER BY A.LETTERSEQ DESC) B)
 		WHERE ROWNUM = 1;
-
