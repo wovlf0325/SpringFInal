@@ -17,6 +17,7 @@
 <a href="updateform.do">내 정보</a> 
 <a href="boardlist.do?nowPage=1">게시판</a>
 <a href="read.do">read.jsp</a>
+<a href="fullcalendar.do">풀캘린더</a>
 
 
 </section>
