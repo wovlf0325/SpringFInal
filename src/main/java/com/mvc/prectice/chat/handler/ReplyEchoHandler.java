@@ -28,6 +28,4 @@ public class ReplyEchoHandler extends TextWebSocketHandler{
 		System.out.println("afterConnectionClosed:" + session+":"+status);
 	}
 	
-		
-	
 }

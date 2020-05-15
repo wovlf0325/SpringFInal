@@ -64,13 +64,9 @@
 			</select>
 		</div>
 	
-<<<<<<< HEAD
 		<input type="hidden" name="command" value="list">
 		<input type="hidden" name="nowPage" value="1">
-	<table border="1">
-=======
 	<table border="1" style="width:100%">
->>>>>>> adc8306d43b97c3dd4877a178b6763459aed44e6
 		<colgroup>
 			<col width="50"/>
 			<col width="100"/>
