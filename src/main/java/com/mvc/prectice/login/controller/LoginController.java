@@ -96,7 +96,7 @@ public class LoginController {
 		return "updateform";
 	}
 	
-
+	// 내 정보
 	@RequestMapping(value = "/getLoginInfo",method = RequestMethod.GET)
 	@ResponseBody
 	public LoginDto getLastLetterSeq(HttpServletRequest request) throws IOException {
@@ -107,24 +107,25 @@ public class LoginController {
 		
 		//로그인 문제가 해결되면 위 3줄 제거후 아래 주석 해제하자
 //		HttpSession session = request.getSession();
-//		dto = loginDao.selectInfoWhereId((LoginDto) session.getAttribute("logininfo"));
+//		dto = loginbiz.selectInfoWhereId((LoginDto) session.getAttribute("logininfo"));
 
 		return dto;
 	}
 	@RequestMapping(value = "/updateMember",method = RequestMethod.POST)
 	public String updateMember(
-
-			@RequestParam("id")String id, 
-			@RequestParam("pw")String pw,
-			@RequestParam("name")String name,
-			@RequestParam("email")String email,
-			@RequestParam("phone")String phone,
-			@RequestParam("address")String address,
-			@RequestParam("interest")String interest,
-			@RequestParam("area")String area,
-			@RequestParam("role")String role,
-			@RequestParam("status")String status) {
-		loginbiz.updateMypage(new LoginDto(id, pw, name, phone, email, address, null, null, null, area, interest, role, status));
+			@RequestParam("no")String member_no,
+			@RequestParam("no")String house_no,
+			@RequestParam("id")String member_id, 
+			@RequestParam("pw")String member_pw,
+			@RequestParam("name")String member_name,
+			@RequestParam("email")String member_email,
+			@RequestParam("phone")String member_phone,
+			@RequestParam("address")String member_address,
+			@RequestParam("interest")String member_interest,
+			@RequestParam("area")String member_area,
+			@RequestParam("role")String member_role,
+			@RequestParam("status")String member_status) {
+		loginbiz.updateMypage(new LoginDto(0, 0, member_id, member_pw, member_name, member_phone, member_email, member_address, null, null, null, member_area, member_interest, member_role, member_status, member_status, member_status));
 		return "redirect:updateform.do";
 	}
 	
