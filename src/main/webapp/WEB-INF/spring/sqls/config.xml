@@ -8,7 +8,7 @@
 		<typeAlias type="com.mvc.prectice.login.dto.LoginDto" alias="loginDto"/>
 		<typeAlias type="com.mvc.prectice.fullcalendar.dto.FullCalendarDto" alias="fullcalendarDto"/>
 		<typeAlias type="com.mvc.prectice.board.dto.BoardDto" alias="boardDto"/>
-		<typeAlias type="com.mvc.prectice.board.dto.PagingDto" alias="pagingDto"/>
+		<typeAlias type="com.mvc.prectice.reply.dto.ReplyDto" alias="replyDto"/>
 
 	</typeAliases>
 	
@@ -18,6 +18,7 @@
      	<mapper resource="/mybatis/login-mapper.xml"/>
      	<mapper resource="/mybatis/fullcalendar-mapper.xml"/>
      	<mapper resource="/mybatis/board-mapper.xml"/>
+     	<mapper resource="/mybatis/reply-mapper.xml"/>
     </mappers>
     <!-- resource : src/main/resources 를 뜻한다. -->
   

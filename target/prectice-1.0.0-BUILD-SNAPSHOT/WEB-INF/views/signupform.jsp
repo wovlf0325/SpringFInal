@@ -14,6 +14,23 @@
 <!-- 버튼 클릭 시 다른 함수 실행 -->
 <script type="text/javascript">
 function uploadimg(){
+<<<<<<< HEAD
+	$("input[name=member_profileimg]").trigger('click');
+}
+</script>
+<style type="text/css">
+	#home{
+		text-decoration: none;
+	}
+</style>
+<body>
+<div class="body">
+  <form id="signupTotalChk" method="post" action="signupRes.do">
+
+  <a id="home" href="index.jsp"><h3 id="logo">SignUp</h3></a><br/><br/><br/>
+  <input type='file' name="member_profileimg" value="" onchange="readURL(this);" style="display:none;"/>
+  <img id="blah" alt="defaultimg" src="resources/images/profileimgstorage/defaulthuman.png" style="max-width: 100%; width: 150px; height:150px; border-radius:200px; margin: 0% 0% 0% 40%; border:1px solid #e4cbcb;"/>
+=======
 	$("input[name=profileimg]").trigger('click');
 }
 </script>
@@ -24,15 +41,29 @@ function uploadimg(){
   <h3 id="logo">SignUp</h3><br/><br/><br/>
   <input type='file' name="profileimg" value="" onchange="readURL(this);" style="display:none;"/>
   <img id="blah" alt="defaultimg" src="resources/images/defaulthuman.png" style="max-width: 100%; width: 150px; height:150px; border-radius:200px; margin: 0% 0% 0% 40%; border:1px solid #e4cbcb;"/>
+>>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
   <br/><br/><br/>
   <input type="button" value="프로필사진 등록" onclick="uploadimg();" style="width: 30%; margin-left:35%; background:#ead3d3; color: white; font-weight:bold; cursor:pointer;"/><br/>
   
   <label for="username">ID</label>
+<<<<<<< HEAD
+  <input type="text" name="member_id" placeholder="아이디를 입력해주세요." autocomplete="off" required />
+=======
   <input type="text" name="id" placeholder="아이디를 입력해주세요." autocomplete="off" required />
+>>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
   <input type='button' value='중복확인' onclick='idchk();' style="background:#ead3d3; color:white; width:30%; font-weight:bold; cursor:pointer;"/>
   <div class="idchkRes" title="n"></div>
   
   <label for="password">Password</label>
+<<<<<<< HEAD
+  <input type="password" id="password" name="member_pw" placeholder="비밀번호를 입력해주세요." autocomplete="off" required />
+
+  <label for="username">Name</label>
+  <input type="text" name="member_name" placeholder="이름을 입력해주세요." autocomplete="off" required />
+  
+  <label for="username">Email</label>
+  <input type="email"  name="member_email" placeholder="이메일을 입력해주세요." autocomplete="off" required />
+=======
   <input type="password" id="password" name="pw" placeholder="비밀번호를 입력해주세요." autocomplete="off" required />
 
   <label for="username">Name</label>
@@ -40,12 +71,26 @@ function uploadimg(){
   
   <label for="username">Email</label>
   <input type="email"  name="email" placeholder="이메일을 입력해주세요." autocomplete="off" required />
+>>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
   <input type="button" value="이메일 인증" onclick="emailchk();" style="width: 30%; background:#ead3d3; color: white; font-weight:bold; cursor:pointer;"/>
   <br/>
   <img id="loading" alt="loading" src="resources/images/loading.gif" style="display:none; width:50%; height:300px;"/>
   <div class="emailchkRes" title="n"></div>
   <br/>
   <label for="username">Phone</label>
+<<<<<<< HEAD
+  <input type="text" name="member_phone" placeholder="전화번호를 입력해주세요." autocomplete="off" required />	
+  
+    
+  <label for="username">Address</label>
+  <input type="text" name="member_address" onclick="Postcode();" placeholder="클릭 후 주소를 입력해주세요." autocomplete="off" readonly/>	
+
+  <label for="username">PostCode</label>
+  <input type="text" name="member_addone" onclick="Postcode();" placeholder="클릭 후 주소를 입력해주세요." autocomplete="off" readonly/>	
+  
+  <label for="username">Detail Address</label>
+  <input type="text" name="member_detailadd" placeholder="상세주소를 입력해주세요" autocomplete="off" required />	
+=======
   <input type="text" name="phone" placeholder="전화번호를 입력해주세요." autocomplete="off" required />	
   
     
@@ -57,15 +102,23 @@ function uploadimg(){
   
   <label for="username">Detail Address</label>
   <input type="text" name="detailadd" placeholder="상세주소를 입력해주세요" autocomplete="off" required />	
+>>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
   
   <input type="button" onclick="chkAll();" value="Signup" style="background:red; color:white; font-weight:bold; cursor:pointer;"/>
 
 </form>
 </div>
+<<<<<<< HEAD
+<%@ include file="form/footer.jsp" %>
+<script type="text/javascript">
+function idchk(){
+	var id = $("input[name=member_id]").val();
+=======
 <%@ include file="footer.jsp" %>
 <script type="text/javascript">
 function idchk(){
 	var id = $("input[name=id]").val();
+>>>>>>> 1cbbb4ca7bda480e14cadefac219ab82fba0c273
 	if(id == ""){
 		alert("아이디를 입력해주세요.");
 	}else{

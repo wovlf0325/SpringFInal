@@ -148,6 +148,7 @@
 							<td>${boarddto.board_no }</td>
 							<td>${boarddto.board_writer }</td>
 							<td><a href="boarddetail.do?board_no=${boarddto.board_no }">${boarddto.board_title }</a></td>
+
 							<td>
 							<c:set var="reg_date" value="${boarddto.board_regdate }"/>
 							<%
@@ -167,6 +168,7 @@
 								}
 							%>
 							</td>
+
 						</tr>
 					</c:forEach>
 				</c:otherwise>
