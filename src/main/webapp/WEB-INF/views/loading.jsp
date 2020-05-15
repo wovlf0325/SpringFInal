@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("UTF-8");%>
-<% response.setContentType("text/html; charset=UTF-8");%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
+<script type="text/javascript">
+//Inspired by http://dribbble.com/shots/963799-Animation-Loading-gif
+</script>
+<style>
 body {
   background: #ede9de; 
 }
@@ -177,32 +177,11 @@ body {
 }
 .shadow-r {
   -webkit-animation: shadow-r-n .425s ease-in-out infinite alternate;
-  animatio
-  }
+  animation: shadow-r-n .425s ease-in-out infinite alternate;
+}
 </style>
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-  	requestAnimationFrame(function() {
-			document.getElementById("wall").style.width = "100%";
-      });
-    });
-</script>
 </head>
 <body>
-<header align="right">
-
-	<c:choose>
-		<c:when test="${empty logininfo }">
-			<a href="login.do">로그인</a> <a href="agreement.do">회원가입</a>	
-			<a href="fullcalendar.do">풀캘린더</a>
-			<a href="loading.do">로딩</a>
-		</c:when>
-		<c:otherwise>
-			<input type="button" value="내정보" onclick="">
-			<input type="button" value="로그아웃" onclick="logout.do">
-		</c:otherwise>
-	</c:choose>
-
 <div aria-busy="true" aria-label="Loading" role="progressbar" class="container">
   <div class="swing">
     <div class="swing-l"></div>
@@ -223,9 +202,5 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="shadow-r"></div>
   </div>
  </div>
-
-
-
-</header>
 </body>
 </html>

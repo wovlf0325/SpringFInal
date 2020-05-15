@@ -81,7 +81,10 @@ public class FullCalendarController {
 			return map;
 		}
 		
-	//
+		@RequestMapping("/loading.do")
+		public String loading() {
+			return "loading";
+		}
 		
 
 	}
