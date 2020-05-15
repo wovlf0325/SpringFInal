@@ -25,65 +25,39 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
 
-	
-	@RequestMapping(value="/boardlist.do")
-	public String selectList(PagingDto pagingdto, Model model
-			,@RequestParam(value="nowPage", required = false)String nowPage
-			,@RequestParam(value="cntPerPage", required = false)String cntPerPage
-			,@RequestParam(value="boardkinds", required = false)String boardkind) {
-				
-
-		logger.info("SELECT LIST");
-
-		int total = boardbiz.countBoard();
-		if (nowPage == null && cntPerPage == null) {
-			nowPage = "1";
-			cntPerPage = "5";
-		} else if (nowPage == null) {
-			nowPage = "1";
-		} else if (cntPerPage == null) {
-			cntPerPage = "5";
-		}
-
-		pagingdto = new PagingDto(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-
-		model.addAttribute("paging", pagingdto);
-		model.addAttribute("boardlist", boardbiz.selectBoard(pagingdto));
-
-		return "board/boardlist";
-
-	}
-
-
 	// 글목록 +페이징+검색
 	@RequestMapping(value = "/boardlist.do", method = RequestMethod.GET)
 	public String listPage(@ModelAttribute("boarddto") BoardDto boarddto,
 			@ModelAttribute("pagingdto") PagingDto pagingdto, Model model,
 			@RequestParam(value = "nowPage", required = false) String nowPage,
-			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage,
+			@RequestParam(value = "boardcategory", required = false) String category){
 
 		logger.info("LISTSEARCH");
+		
 
-		int total = boardbiz.countSearch(boarddto);
-
-		if (nowPage == null && cntPerPage == null) {
+		if (nowPage == null) {
 			nowPage = "1";
-			cntPerPage = "5";
-		} else if (nowPage == null) {
-			nowPage = "1";
-		} else if (cntPerPage == null) {
-			cntPerPage = "5";
 		}
-
-		pagingdto = new PagingDto(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-
+		if (cntPerPage == null) {
+			cntPerPage = Integer.toString(pagingdto.getCntPage());
+		}
+		if (category == null) {
+			category = "1";
+		}
+		
+		
+		boarddto.setBoard_category(Integer.parseInt(category));
+		pagingdto = new PagingDto(Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		List<BoardDto> searchlist = boardbiz.listSearch(boarddto, pagingdto);
-
-		pagingdto.setTotal(total);
+		int total = boardbiz.countSearch(boarddto);
+		pagingdto.calcLastPage(total, Integer.parseInt(cntPerPage));
+		pagingdto.calcStartEndPage(Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 
 		model.addAttribute("boardlist", searchlist);
 		model.addAttribute("paging", pagingdto);
 		model.addAttribute("boarddto", boarddto);
+		model.addAttribute("notice", boardbiz.selectNotice());
 
 		return "board/boardlist";
 

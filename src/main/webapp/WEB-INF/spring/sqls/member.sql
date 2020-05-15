@@ -21,3 +21,4 @@ CREATE TABLE MEMBER(
 SELECT * FROM MEMBER;
 
 INSERT INTO MEMBER VALUES(MEMBER_SEQ.NEXTVAL, 0, 'admin', '1234', 'abc@naver.com', '관리자', 'ADMIN', '', '', '', '', 'N', '1');
+INSERT INTO MEMBER VALUES(MEMBER_SEQ.NEXTVAL, 0, 'test', '1234', 'test@naver.com', '테스트', 'TEST', '', '', '', '', 'N', '1');

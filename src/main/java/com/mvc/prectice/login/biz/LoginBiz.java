@@ -8,4 +8,7 @@ import com.mvc.prectice.login.dto.LoginDto;
 public interface LoginBiz {
 
 	public LoginDto selectInfo(LoginDto logindto);
+	public LoginDto selectInfoWhereId(LoginDto logindto);
+	public int updateMypage(LoginDto logindto);
+	
 }

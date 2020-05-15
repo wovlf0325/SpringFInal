@@ -4,6 +4,7 @@
 <% response.setContentType("text/html; charset=UTF-8");%>     
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -11,9 +12,12 @@
 <body>
 <%@ include file="form/header.jsp" %>
 <section style="height:800px;">
+
 <h1>Main Home Page</h1>
+<a href="updateform.do">내 정보</a> 
 <a href="boardlist.do?nowPage=1">게시판</a>
 <a href="read.do">read.jsp</a>
+
 
 </section>
 <%@ include file="form/footer.jsp" %>

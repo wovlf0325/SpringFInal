@@ -48,6 +48,23 @@ public class LoginDto {
 		this.member_status = member_status;
 	}
 
+
+	public LoginDto(String member_id, String member_pw, String member_name, String member_phone, String member_email,
+			String member_address, String member_role, String member_area, String member_interest,
+			String member_status) {
+		super();
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_name = member_name;
+		this.member_phone = member_phone;
+		this.member_email = member_email;
+		this.member_address = member_address;
+		this.member_role = member_role;
+		this.member_area = member_area;
+		this.member_interest = member_interest;
+		this.member_status = member_status;
+	}
+
 	public int getMember_no() {
 		return member_no;
 	}
@@ -172,6 +189,7 @@ public class LoginDto {
 		return member_delflag;
 	}
 
+
 	public void setMember_delflag(String member_delflag) {
 		this.member_delflag = member_delflag;
 	}
@@ -191,8 +209,6 @@ public class LoginDto {
 	public void setId(String id) {
 		this.member_id = id;
 	}
-	
-	
 	
 	
 	

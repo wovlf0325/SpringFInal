@@ -1,3 +1,7 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="com.mvc.prectice.board.dto.BoardDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -11,16 +15,36 @@
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <script type="text/javascript">
 	
-	function selChange(){
-		var sel = $('#cntPerPage').val()
-		location.href="boardlist.do?nowPage=${paging.nowPage}&cntPerPage="+sel;
+	function pageChange(){
+		var sel = $('#cntPerPage').val();
+		var category = $('#category').val();
+		location.href="boardlist.do?nowPage=${paging.nowPage}&cntPerPage="+sel+"&boardcategory="+category;
 	}
 	
-
+	function movePage(p){
+		var sel = $('#cntPerPage').val();
+		var category = $('#category').val();
+		location.href="boardlist.do?nowPage="+p+"&cntPerPage="+sel+"&boardcategory="+category;
+	}
+	
+	function prevPage(){
+		var sel = $('#cntPerPage').val();
+		var category = $('#category').val();
+		location.href="boardlist.do?nowPage=${paging.startPage - 1 }&cntPerPage="+sel+"&boardcategory="+category;
+	}
+	
+	function nextPage(){
+		var sel = $('#cntPerPage').val();
+		var category = $('#category').val();
+		location.href="boardlist.do?nowPage=${paging.endPage+1 }&cntPerPage="+sel+"&boardcategory="+category;
+	}
+	
 	$(function(){
 		  $('#searchBtn').click(function() {
 		   self.location = "boardlist.do"
 		     + '?nowPage=1'
+		     + "&cntPerPage=" + $('#cntPerPage').val()
+		     + "&boardcategory="+$('#category').val()
 		     + "&searchType="
 		     + $("#search_type option:selected").val()
 		     + "&keyword="
@@ -29,22 +53,21 @@
 		 });   
 
 
-	function kindChange(){
-		var kind = document.getElementById('kind').value;
-		location.href="boardlist.do?boardkind="+kind;
-	}
 	
 </script>
 <style type="text/css">
 	*{
 		border: 1px dotted red;
 	}
+	#pageselect a {
+		cursor: pointer;
+	}
 </style>
 <body>
 	<h1>LIST</h1>
 	
 		<div><!-- 옵션선택 -->
-			<select id="cntPerPage" name="sel" onchange="selChange()">
+			<select id="cntPerPage" name="sel" onchange="pageChange()">
 				<option value="5"
 					<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
 				<option value="10"
@@ -55,23 +78,25 @@
 					<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
 			</select>
 			
-			<select id="kind" name="boardkinds" onchange="kindChange()" style="float:right;">
-				<option value="0">전체</option>
-				<option value="1">공지사항</option>
-				<option value="2">자유게시판</option>
-				<option value="3">불만사항</option>
-				<option value="4">카풀리스트</option>
+			<select id="category" name="board_category" onchange="pageChange()" style="float:right;">
+				<option value="1" <c:if test="${boarddto.board_category == 1}">selected</c:if>>전체</option>
+				<option value="2" <c:if test="${boarddto.board_category == 2}">selected</c:if>>공지사항</option>
+				<option value="3" <c:if test="${boarddto.board_category == 3}">selected</c:if>>자유게시판</option>
+				<option value="4" <c:if test="${boarddto.board_category == 4}">selected</c:if>>불만사항</option>
+				<option value="5" <c:if test="${boarddto.board_category == 5}">selected</c:if>>카풀리스트</option>
 			</select>
 		</div>
 	
 		<input type="hidden" name="command" value="list">
 		<input type="hidden" name="nowPage" value="1">
+
 	<table border="1" style="width:100%">
+
 		<colgroup>
 			<col width="50"/>
 			<col width="100"/>
 			<col width="300"/>
-			<col width="100"/>
+			<col width="50"/>
 		</colgroup>
 		
 		<thead>
@@ -84,6 +109,32 @@
 		</thead>
 		
 		<tbody>
+			<c:forEach items="${notice }" var="boarddto">
+				 <tr style="font-weight:bold;">
+					<td>${boarddto.board_no }</td>
+					<td>${boarddto.board_writer }</td>
+					<td><a href="boarddetail.do?board_no=${boarddto.board_no }">${boarddto.board_title }</a></td>
+					<td>
+					<c:set var="reg_date" value="${boarddto.board_regdate }"/>
+					<%
+						Date now = new Date();
+						SimpleDateFormat format_date = new SimpleDateFormat("MM-dd");
+						String nowdate = format_date.format(now);
+						Date date = (Date)pageContext.getAttribute("reg_date");
+						String regdate = format_date.format(date);
+						if(nowdate.equals(regdate)){
+					%>
+						<fmt:formatDate value="${boarddto.board_regdate }" pattern="HH:mm"/>
+					<%
+						} else {
+					%>
+						<fmt:formatDate value="${boarddto.board_regdate }" pattern="MM-dd"/>
+					<%
+						}
+					%>
+					</td>
+				</tr>
+			</c:forEach>
 			<c:choose>
 				<c:when test="${empty boardlist }">
 				<tr>
@@ -97,7 +148,27 @@
 							<td>${boarddto.board_no }</td>
 							<td>${boarddto.board_writer }</td>
 							<td><a href="boarddetail.do?board_no=${boarddto.board_no }">${boarddto.board_title }</a></td>
-							<td>${boarddto.board_regdate }</td>
+
+							<td>
+							<c:set var="reg_date" value="${boarddto.board_regdate }"/>
+							<%
+								Date now = new Date();
+								SimpleDateFormat format_date = new SimpleDateFormat("MM-dd");
+								String nowdate = format_date.format(now);
+								Date date = (Date)pageContext.getAttribute("reg_date");
+								String regdate = format_date.format(date);
+								if(nowdate.equals(regdate)){
+							%>
+								<fmt:formatDate value="${boarddto.board_regdate }" pattern="HH:mm"/>
+							<%
+								} else {
+							%>
+								<fmt:formatDate value="${boarddto.board_regdate }" pattern="MM-dd"/>
+							<%
+								}
+							%>
+							</td>
+
 						</tr>
 					</c:forEach>
 				</c:otherwise>
@@ -116,9 +187,9 @@
 	
 	</table>
 	
-	<div style="display: block;" align="center">
+	<div id="pageselect" style="display: block;" align="center">
 		<c:if test="${paging.startPage != 1 }">
-			<a href="boardlist.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+			<a onclick="prevPage()">&lt;</a>
 		</c:if>
 		
 		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
@@ -128,13 +199,13 @@
 				</c:when>
 				
 				<c:when test="${p != paging.nowPage }">
-					<a href="boardlist.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+					<a onclick="movePage(${p })">${p }</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 		
-		<c:if test="${paging.endPage != paging.lastPage}">
-			<a href="boardlist.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+		<c:if test="${paging.endPage > paging.lastPage}">
+			<a onclick="nextPage()">&gt;</a>
 		</c:if>
 	</div>
 	
