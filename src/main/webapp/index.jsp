@@ -13,6 +13,7 @@
   <title>Document</title>
 </head>
 <body class="postid-4397">
+<%@ include file="WEB-INF/views/form/header.jsp" %>
   <div class="outer-container">
 <%@ include file="WEB-INF/views/form/header.jsp" %>
     <div class="header-img-container">
@@ -572,8 +573,5 @@
   </div>
 <!--     SECTION 4: END -->
   </div>
-</body>
-
-</html>
 </body>
 </html>

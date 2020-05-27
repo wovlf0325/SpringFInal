@@ -67,7 +67,14 @@
 <h1>Main Home Page</h1>
 <a href="updateform.do">내 정보</a> 
 <a href="boardlist.do?nowPage=1">게시판</a>
+<<<<<<< HEAD
 
+=======
+<a href="houselist.do">코리빙 하우스</a>
+<a href="read.do">read.jsp</a>
+<a href="payment.do">결제하기</a>
+<a href="fullcalendar.do">풀캘린더</a>
+>>>>>>> a1d5a26bea4b1cafe177edd21b79b44fd313d1d4
 
 </section>
 <%@ include file="form/footer.jsp" %>

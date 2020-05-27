@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mvc.prectice.login.dto.LoginDto;
+import com.mvc.prectice.payment.dto.Payment;
 
 
 @Repository
@@ -48,5 +49,9 @@ public class LoginDaoImpl implements LoginDao{
 			e.printStackTrace();
 		}
 		return row;
+	}
+	@Override
+	public int addPayment(Payment p) {
+		return sqlSession.insert("addPayment", p);
 	}
 }

@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="loginquery">
+
 	<select id="selectInfo" resultType="loginDto" parameterType="loginDto">
 
 		SELECT * FROM MEMBER
 		WHERE MEMBER_ID=#{member_id} AND MEMBER_PW=#{member_pw}
 	</select>
 	<select id="selectInfoWhereId" resultType="loginDto" parameterType="loginDto">
-		SELECT * FROM TESTMEMBER
-		WHERE ID=#{id}
+		SELECT * FROM MEMBER
+		WHERE MEMBER_ID=#{id}
 	</select>
 	<update id = "updateMypage" parameterType="loginDto">
-		update TESTMEMBER
-		set AREA = #{area}
+		UPDATE MEMBER
+		SET MEMBER_AREA =#{member_area}
 		
-		, NAME= #{name}
-		, ADDRESS = #{address}
-		, PHONE = #{phone}
-		, EMAIL = #{email}
+		, MEMBER_NAME =#{member_name}
+		, MEMBER_ADDRESS =#{member_address}
+		, MEMBER_PHONE =#{member_phone}
+		, MEMBER_EMAIL =#{member_email}
 		
-		, INTEREST = #{interest}
-		, ROLE = #{role}
-		, STATUS = #{status}
-		WHERE ID = #{id}
+		, MEMBER_INTEREST =#{member_interest}
+		, MEMBER_ROLE =#{member_role}
+		, MEMBER_STATUS =#{member_status}
+		WHERE MEMBER_ID =#{member_id}
 			
 	</update>
+	<insert id = "addPayment" parameterType="paymentDto">
+		insert into PAYMENT VALUES(PAYMENT_SEQ.NEXTVAL, #{memberName}, #{paymentUID}, #{paymentAmount})
+	</insert>
 </mapper>
