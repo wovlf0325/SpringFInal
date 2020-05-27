@@ -70,19 +70,17 @@ public class LoginController {
 	
 	@RequestMapping(value = "/loginRes.do",method = RequestMethod.POST)
 	public String LoginRes(LoginDto logindto, HttpServletRequest request) {
-		System.out.println("ok");
 		LoginDto dto = new LoginDto();
-
-		dto = loginbiz.selectInfo(logindto); 
+		dto = loginbiz.selectInfo(logindto);
+		if (dto == null || dto.getId() == null) return "redirect:login.do";
 		System.out.println(dto.getId());
-		if(dto != null) {
+		System.out.println(dto.getMember_pw());
+		if (logindto.getId().equals(dto.getId())) {
 			HttpSession session = request.getSession();
 			System.out.println("정상 - " + dto.getId());
 			session.setAttribute("logininfo", dto);
 			return "section";
-
-		}else {
-
+		} else {
 			System.out.println("로그인 실패");
 			return "redirect:login.do";
 		}
@@ -100,32 +98,25 @@ public class LoginController {
 	@RequestMapping(value = "/getLoginInfo",method = RequestMethod.GET)
 	@ResponseBody
 	public LoginDto getLastLetterSeq(HttpServletRequest request) throws IOException {
-		// 임의적으로 아이디: admin 값 받는지 확인
-		LoginDto dto = new LoginDto();
-		dto.setId("admin");
-		dto = loginbiz.selectInfoWhereId(dto);
-		
-		//로그인 문제가 해결되면 위 3줄 제거후 아래 주석 해제하자
-//		HttpSession session = request.getSession();
-//		dto = loginbiz.selectInfoWhereId((LoginDto) session.getAttribute("logininfo"));
-
-		return dto;
+		HttpSession session = request.getSession();
+		LoginDto dto = (LoginDto) session.getAttribute("logininfo");
+		return loginbiz.selectInfoWhereId(dto);
 	}
 	@RequestMapping(value = "/updateMember",method = RequestMethod.POST)
 	public String updateMember(
 
 
-			@RequestParam("id")String id, 
-			@RequestParam("pw")String pw,
-			@RequestParam("name")String name,
-			@RequestParam("email")String email,
-			@RequestParam("phone")String phone,
-			@RequestParam("address")String address,
-			@RequestParam("interest")String interest,
-			@RequestParam("area")String area,
-			@RequestParam("role")String role,
-			@RequestParam("status")String status) {
-		loginbiz.updateMypage(new LoginDto(id, pw, name, phone, email, address, role, area, interest, status));
+			@RequestParam("member_id")String member_id, 
+			@RequestParam("member_pw")String member_pw,
+			@RequestParam("member_name")String member_name,
+			@RequestParam("member_email")String member_email,
+			@RequestParam("member_phone")String member_phone,
+			@RequestParam("member_address")String member_address,
+			@RequestParam("member_interest")String member_interest,
+			@RequestParam("member_area")String member_area,
+			@RequestParam("member_role")String member_role,
+			@RequestParam("member_status")String member_status) {
+		loginbiz.updateMypage(new LoginDto(member_id, member_pw, member_name, member_phone, member_email, member_address, member_role, member_area, member_interest, member_status));
 		return "redirect:updateform.do";
 	}
 	
