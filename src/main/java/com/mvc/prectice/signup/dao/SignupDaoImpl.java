@@ -51,5 +51,22 @@ public class SignupDaoImpl implements SignupDao{
 		}
 		return res;
 	}
+	
+	@Override
+	public int insertSNSinfo(SignupDto signupdto) {
+
+		int res = 0;
+		
+		try {
+			res = sqlSession.insert(NAMESPACE + "insertSNSinfo", signupdto);
+		} catch (Exception e) {
+			System.out.println("[error]:insertSNSinfo");
+			e.printStackTrace();
+		}
+		
+		return res;
+		
+
+	}
 
 }

@@ -191,6 +191,13 @@
 
 	
 
+		<!-- https://mvnrepository.com/artifact/org.imgscalr/imgscalr-lib -->
+		<dependency>
+			<groupId>org.imgscalr</groupId>
+			<artifactId>imgscalr-lib</artifactId>
+			<version>4.2</version>
+		</dependency>
+
 		<!-- Java Mail API -->
 
 
@@ -268,7 +275,7 @@
 		</dependency>
 		<!-- 웹소켓 -->
 
-	
+
 
 
 	</dependencies>

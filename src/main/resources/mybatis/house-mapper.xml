@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="house">
+
+	<resultMap type="houseDto" id="houseMap" >
+		<result column="HOUSE_ID" property="house_id" />
+		<result column="HOUSE_KEEPER" property="house_keeper" />
+		<result column="HOUSE_NAME" property="house_name" />
+		<result column="HOUSE_PHONE" property="house_phone" />
+		<result column="HOUSE_ADDR" property="house_addr" />
+		<result column="HOUSE_IMAGE" property="house_image" />
+		<result column="HOUSE_CONTENT" property="house_content" />
+		<result column="HOUSE_DOCUMENT" property="house_document" />
+		<result column="HOUSE_STATUS" property="house_status" />
+	</resultMap>
+
+	<select id="selectList" resultMap="houseMap">
+		SELECT HOUSE_ID, HOUSE_KEEPER, HOUSE_NAME, HOUSE_PHONE, HOUSE_ADDR, HOUSE_IMAGE, HOUSE_CONTENT, HOUSE_DOCUMENT, HOUSE_STATUS
+		FROM HOUSE
+		ORDER BY HOUSE_ID DESC </select>
+
+	<select id="selectOne" resultType="houseDto" parameterType="int">
+		SELECT HOUSE_ID, HOUSE_KEEPER, HOUSE_NAME, HOUSE_PHONE, HOUSE_ADDR, HOUSE_IMAGE, HOUSE_CONTENT, HOUSE_DOCUMENT, HOUSE_STATUS
+		FROM HOUSE
+		WHERE HOUSE_ID = #{house_id} </select>
+
+	<insert id="insert" parameterType="houseDto">
+		INSERT INTO HOUSE VALUES (HOUSE_SEQ.NEXTVAL, #{house_keeper}, #{house_name}, #{house_phone}, #{house_addr}, #{house_image}, #{house_content}, #{house_document}, #{house_status})  
+		</insert>
+
+	<update id="update" parameterType="houseDto">
+		UPDATE HOUSE SET HOUSE_NAME = #{house_name}, HOUSE_PHONE= #{house_phone}, HOUSE_ADDR= #{house_addr}, HOUSE_IMAGE= #{house_image}, HOUSE_CONTENT= #{house_content}, HOUSE_DOCUMENT= #{house_document}, HOUSE_STATUS= #{house_status}
+		WHERE HOUSE_ID = #{house_id} </update>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM HOUSE WHERE HOUSE_ID = #{house_id} 
+	</delete>
+
+</mapper>
