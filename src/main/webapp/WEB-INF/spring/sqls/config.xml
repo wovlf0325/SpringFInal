@@ -9,7 +9,7 @@
 		<typeAlias type="com.mvc.prectice.fullcalendar.dto.FullCalendarDto" alias="fullcalendarDto"/>
 		<typeAlias type="com.mvc.prectice.board.dto.BoardDto" alias="boardDto"/>
 		<typeAlias type="com.mvc.prectice.reply.dto.ReplyDto" alias="replyDto"/>
-
+		<typeAlias type="com.mvc.prectice.board.dto.PagingDto" alias="pagingDto"/>
 	</typeAliases>
 	
     <mappers>
