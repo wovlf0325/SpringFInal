@@ -14,22 +14,21 @@
 	charset="utf-8"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-
 <script type="text/javascript">
 
 	$(document).ready(function() {
+		$("#signForm").hide();
+		//naver 정보 
 		var id = ${result }.response.id;
 		var name = ${result }.response.name;
 		var email = ${result }.response.email;
-		 $("input[name=member_id]").val(id);
-		 $("input[name=member_name]").val(name);
-		 $("input[name=member_email]").val(email);
+		
 		
 	  });
 	
 	$(document).ready(function(){
 		var id = ${result }.response.id;
-		var profile_image = ${result }.response.profile_image_url;
+		var pw = "1111";
 		
 		$.ajax({
 				url:"idchk.do",
@@ -37,9 +36,18 @@
 				data:{"id":id},
 				success:function(data){
 					if(data == 0){  //db저장x
-	    				$(".idchkRes").html("<label class='idchkRes' title='y'>회원가입</label>");
-	    			}else{			//db저장o 
-	    				$(".idchkRes").html("<label class='idchkRes' title='n'>로그인</label>");
+						  $("#signForm").show();
+						  $("input[name=member_id]").val(id);
+						  $("input[name=member_name]").val(name);
+						  $("input[name=member_email]").val(email);
+						
+	    			}else{	//db 저장o -> 로그인페이지	
+	    				$("#signForm").hide();
+	    				$("#loginForm").show();
+	    				$("input[name=member_id]").val(id);
+	    				$("#loginSNS").submit();
+	    				
+	    				
 	    			}
 				},
 				error:function(){
@@ -48,19 +56,15 @@
 		});
 	});	
 	
+
 	
 </script>
 
 </head>
 <body>
 
-	<br>
-	<h2 style="text-align: center" id="name"></h2>
-	<h4 style="text-align: center" id="email"></h4>
-
-
-	<div class="sign form">
-	<form id="signupSNS" method="post" action="naverSignupRes.do">
+	<div id="signForm">
+	<form id="signupSNS" method="post" action="snsSignupRes.do">
 		<input type="hidden" name="command" value=""><br/>
 		<input type="hidden" name="member_id" value=""><br/>
 		<input type="hidden" name="member_pw" value="1111"><br/>
@@ -73,9 +77,19 @@
 	
 		<input type="submit" name="" value="회원가입">
 	
-
 	</form>
 	</div>
+	
+	<div id="loginForm">
+		<form id="loginSNS" method="post" action="loginRes.do">
+			<input type="hidden" name="member_id" value=""><br/>
+			<input type="hidden" name="member_pw" value="1111"><br/>
+		</form>
+	
+	</div>
+	
+	
+	
 	<!-- 
 <script>
     $(function () {
