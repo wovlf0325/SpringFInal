@@ -4,4 +4,27 @@
 	<select id="selectNewLetter" resultType="letterDto" parameterType="String">
 		SELECT B.* FROM ( SELECT ROWNUM AS RNUM, A.* FROM (SELECT * FROM LETTER WHERE LETTER_READ = 'N' AND LETTER_TO = #{id} ORDER BY LETTER_NO DESC)A )B WHERE RNUM = 1
 	</select>
+	
+	<select id="letterList" resultType="letterDto" parameterType="String">
+		SELECT * FROM LETTER WHERE LETTER_TO = #{id} ORDER BY LETTER_NO DESC
+	</select>
+	
+	<select id="letterSend" resultType="letterDto" parameterType="String">
+		SELECT * FROM LETTER WHERE LETTER_FROM =#{letter_from} ORDER BY LETTER_NO DESC
+	</select>
+	
+	<select id="letterOne" resultType="letterDto" parameterType="map">
+		SELECT * FROM LETTER WHERE LETTER_TO = #{letter_to} AND LETTER_NO =#{letter_no}
+	</select>
+	
+	<insert id="letterInsert" parameterType="letterDto">
+		INSERT INTO LETTER VALUES(LETTER_SEQ.NEXTVAL, #{letter_to},#{letter_from},#{letter_title},#{letter_content}, SYSDATE,'N')
+	</insert>
+	
+	<delete id="letterDelete" parameterType="map">
+		DELETE FROM LETTER WHERE LETTER_NO IN
+		<foreach collection="seqs" index="index" item="seq" open="(" separator="," close=")">
+			#{seq}
+		</foreach>
+	</delete>
 </mapper>

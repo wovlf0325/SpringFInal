@@ -10,8 +10,12 @@
 		<typeAlias type="com.mvc.prectice.board.dto.BoardDto" alias="boardDto"/>
 		<typeAlias type="com.mvc.prectice.board.dto.PagingDto" alias="pagingDto"/>
 		<typeAlias type="com.mvc.prectice.reply.dto.ReplyDto" alias="replyDto"/>
+<<<<<<< HEAD
+		<typeAlias type="com.mvc.prectice.gagu.dto.GaguDto" alias="gaguDto"/>
+=======
 		<typeAlias type="com.mvc.prectice.payment.dto.Payment" alias="paymentDto"/>
 		<typeAlias type="com.mvc.prectice.house.dto.HouseDto" alias="houseDto" />
+>>>>>>> a1d5a26bea4b1cafe177edd21b79b44fd313d1d4
 	</typeAliases>
 	
     <mappers>
@@ -21,8 +25,12 @@
      	<mapper resource="/mybatis/fullcalendar-mapper.xml"/>
      	<mapper resource="/mybatis/board-mapper.xml"/>
      	<mapper resource="/mybatis/reply-mapper.xml"/>
+<<<<<<< HEAD
+		<mapper resource="/mybatis/gagu-mapper.xml"/>     	
+=======
      	<mapper resource="/mybatis/house-mapper.xml"/>
 
+>>>>>>> a1d5a26bea4b1cafe177edd21b79b44fd313d1d4
     </mappers>
     <!-- resource : src/main/resources 를 뜻한다. -->
   
