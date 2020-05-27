@@ -28,6 +28,7 @@
 		<c:otherwise>
 			<input type="button" value="내정보" onclick="">
 			<input type="button" value="로그아웃" onclick="logout.do">
+			<input type="button" value="쪽지함" onclick="location.href='letterlist.do'">
 		</c:otherwise>
 	</c:choose>
 
