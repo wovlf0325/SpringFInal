@@ -74,7 +74,9 @@ public class LoginController {
 		LoginDto dto = new LoginDto();
 
 		dto = loginbiz.selectInfo(logindto); 
+		
 		System.out.println(dto.getId());
+		
 		if(dto != null) {
 			HttpSession session = request.getSession();
 			System.out.println("정상 - " + dto.getId());
@@ -87,6 +89,8 @@ public class LoginController {
 			return "redirect:login.do";
 		}
 	}
+	
+	
 	@RequestMapping("/updateform.do")
 	public String updateform(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -144,40 +148,30 @@ public class LoginController {
 	@RequestMapping(value="/kakaoLoginRes.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String KaKaoLoginRes(Model model, @RequestParam("code") String code, HttpServletRequest request, HttpServletResponse response) {
 		// 로그인 후에 code get
-		System.out.println(code);
+System.out.println(code);
 		
 		JsonNode node = KakaoLoginBO.getAccessToken(code);
 		JsonNode accessToken = node.get("access_token");
 		JsonNode userInfo = KakaoLoginBO.getKakaoUserInfo(accessToken);
-		apiResult = userInfo.toString();
-		System.out.println(userInfo);
 		
-		// 카카오에서 유저정보 가져오기 
- 		String id = userInfo.path("id").asText();
- 		String nickname = null;
- 		String email = null;
- 		String thumbnailImage = null;
- 		String profileImage = null;
-
-        // 유저정보 카톡에서 가져오기 Get properties
 		JsonNode properties = userInfo.path("properties");
-		System.out.println(properties);
-		
+		JsonNode kakao_account = userInfo.path("kakao_account");
+				
+		// 카카오에서 유저정보 가져오기 
+		 String id = userInfo.get("id").toString();
+		 //System.out.println(id);
+		 String email = kakao_account.get("email").toString();
+		 //System.out.println(email);
+		 //String image = userInfo.get("properties").get("profile_image").toString();
+		 String name = userInfo.get("properties").get("nickname").toString();
+		 //System.out.println(name);
 
-		if (properties.isMissingNode()) {
-			// if "name" node is missing
-		} else {
-			nickname = properties.path("nickname").asText();
-			thumbnailImage = properties.path("thumbnail_image").asText();
-			profileImage = properties.path("profile_image").asText();
-			//System.out.println("nickname : " + nickname);
-			//System.out.println("thumbnailImage : " + thumbnailImage);
-			//System.out.println("profileImage : " + profileImage);
-		}
-		model.addAttribute("result", apiResult);
-		System.out.println(apiResult);
+      
+		model.addAttribute("id", id);
+		model.addAttribute("email", email);
+		model.addAttribute("name", name);
 		
-		return "testview";
+		return "kakaologin";
 		
 	}
 	
@@ -200,12 +194,12 @@ public class LoginController {
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
 		apiResult = naverLoginBO.getUserProfile(oauthToken);
 		// 로그인 사용자 정보를 읽어온다.
-        System.out.println(naverLoginBO.getUserProfile(oauthToken).toString());
+        //System.out.println(naverLoginBO.getUserProfile(oauthToken).toString());
         model.addAttribute("result", apiResult);
-        System.out.println("result"+apiResult);
+        //System.out.println("result"+apiResult);
 		
 		/* 네이버 로그인 성공 페이지 View 호출 */
-		return "testview";
+		return "naverlogin";
 	}
 
 }

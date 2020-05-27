@@ -49,22 +49,6 @@
 		SELECT B.*
 		FROM (SELECT A.*, ROWNUM AS RNUM
 		FROM (SELECT * FROM BOARD 
-<<<<<<< HEAD
-		<choose>
-			<when test="searchType == 't'.toString()">
-				WHERE BOARD_TITLE LIKE '%'||'${keyword}'||'%'
-			</when>
-			
-			<when test="searchType == 'w'.toString()">
-				WHERE BOARD_WRITER LIKE '%'||'${keyword}'||'%'
-			</when>
-			
-			<when test="searchType == 'tc'.toString()">
-				WHERE BOARD_TITLE LIKE '%'||'${keyword}'||'%' OR (BOARD_CONTENT LIKE '%'||'${keyword}'||'%')
-			</when>
-		</choose>
-		ORDER BY BOARD_NO DESC) A)B
-=======
 			<if test="category != 1">
 				WHERE BOARD_CATEGORY = ${category}
 			</if>
@@ -99,34 +83,11 @@
 					</choose>
 			</if>
 		ORDER BY BOARD_NO DESC) A )B
->>>>>>> 9687002ac38ef25060b772e92240cb614accb3dd
 		WHERE RNUM BETWEEN ${start} AND ${end}
 	</select>
 	
 	
 	
-<<<<<<< HEAD
-	<select id="countSearch" resultType="int" parameterType="String">
-		SELECT COUNT(BOARD_NO)
-		FROM BOARD
-		
-		<if test="searchType != null">
-		<choose>
-			<when test="searchType == 't'.toString()">
-				WHERE BOARD_TITLE LIKE '%'||'${keyword}'||'%' AND BOARD_NO >0
-			</when>
-			
-			<when test="searchType == 'w'.toString()">
-				WHERE BOARD_WRITER LIKE '%'||'${keyword}'||'%' AND BOARD_NO >0
-			</when>
-			
-			<when test="searchType == 'tc'.toString()">
-				WHERE BOARD_TITLE LIKE '%'||'${keyword}'||'%' OR (BOARD_CONTENT LIKE '%'||'${keyword}'||'%') AND BOARD_NO >0
-			</when>
-		</choose>
-		
-		</if>
-=======
 	<select id="countSearch" resultType="int" parameterType="map">
 		SELECT COUNT(BOARD_NO)
 		FROM BOARD
@@ -172,7 +133,6 @@
 		SELECT COUNT(*)
 		FROM REPLY
 		WHERE BOARD_NO = #{board_no}
->>>>>>> 9687002ac38ef25060b772e92240cb614accb3dd
 	</select>
 	
 </mapper>

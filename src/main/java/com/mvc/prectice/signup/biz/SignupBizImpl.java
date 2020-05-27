@@ -29,6 +29,12 @@ public class SignupBizImpl implements SignupBiz{
 		// TODO Auto-generated method stub
 		return dao.insertAllinfo(signupdto);
 	}
+	
+	@Override
+	public int insertSNSinfo(SignupDto signupdto) {
+		// TODO Auto-generated method stub
+		return dao.insertSNSinfo(signupdto);
+	}
 
 	
 }
