@@ -200,6 +200,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		<c:otherwise>
 			<input type="button" value="내정보" onclick="">
 			<input type="button" value="로그아웃" onclick="logout.do">
+			<a href= "logout.do">로그아웃</a>
 		</c:otherwise>
 	</c:choose>
 

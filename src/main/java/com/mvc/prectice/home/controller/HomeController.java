@@ -29,11 +29,6 @@ public class HomeController {
 		return "chat/read";
 	}
 	
-	@RequestMapping("/payment.do")
-	public String payment() {
-		return "payment";
-	}
-	
 	
 	
 	
