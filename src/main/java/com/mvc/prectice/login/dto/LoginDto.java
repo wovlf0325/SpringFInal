@@ -49,10 +49,6 @@ public class LoginDto {
 
 	public LoginDto() {
 		// TODO Auto-generated constructor stub
-<<<<<<< HEAD
-
-=======
->>>>>>> 27b2e6ade85b8e561cd4282e9f9b9198b14ba3af
 	}
 
 	public LoginDto(String member_id, String member_pw, String member_name, String member_phone, String member_email,

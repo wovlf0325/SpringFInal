@@ -71,28 +71,22 @@ public class LoginController {
 	@RequestMapping(value = "/loginRes.do",method = RequestMethod.POST)
 	public String LoginRes(LoginDto logindto, HttpServletRequest request) {
 		LoginDto dto = new LoginDto();
-<<<<<<< HEAD
 		dto = loginbiz.selectInfo(logindto);
 		if (dto == null || dto.getId() == null) return "redirect:login.do";
-		System.out.println(dto.getId());
-		System.out.println(dto.getMember_pw());
+			System.out.println(dto.getId());
+			System.out.println(dto.getMember_pw());
 		if (logindto.getId().equals(dto.getId())) {
-=======
-
-		dto = loginbiz.selectInfo(logindto); 
-		
-		System.out.println(dto.getId());
-		
+			dto = loginbiz.selectInfo(logindto); 
+			System.out.println(dto.getId());
 		if(dto != null) {
->>>>>>> 27b2e6ade85b8e561cd4282e9f9b9198b14ba3af
 			HttpSession session = request.getSession();
 			System.out.println("정상 - " + dto.getId());
 			session.setAttribute("logininfo", dto);
 			return "section";
-		} else {
-			System.out.println("로그인 실패");
-			return "redirect:login.do";
+			}
 		}
+		System.out.println("로그인 실패");
+		return "redirect:login.do";
 	}
 	
 	
