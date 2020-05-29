@@ -266,7 +266,7 @@
 			</c:choose>
 		</c:forEach>
 		
-		<c:if test="${paging.endPage > paging.lastPage}">
+		<c:if test="${paging.endPage < paging.lastPage}">
 			<a onclick="nextPage()">&gt;</a>
 		</c:if>
 	</div>

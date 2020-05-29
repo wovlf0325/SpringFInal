@@ -13,7 +13,9 @@
 		<typeAlias type="com.mvc.prectice.gagu.dto.GaguDto" alias="gaguDto"/>
 		<typeAlias type="com.mvc.prectice.payment.dto.Payment" alias="paymentDto"/>
 		<typeAlias type="com.mvc.prectice.house.dto.HouseDto" alias="houseDto" />
-
+		<typeAlias type="com.mvc.prectice.chat.dto.ChatRoomDto" alias="chatRoomDto"/>
+		<typeAlias type="com.mvc.prectice.chat.dto.ChatListDto" alias="chatListDto"/>
+		<typeAlias type="com.mvc.prectice.chat.dto.MassageDto" alias="massageDto"/>
 	</typeAliases>
 	
     <mappers>
@@ -23,7 +25,12 @@
      	<mapper resource="/mybatis/fullcalendar-mapper.xml"/>
      	<mapper resource="/mybatis/board-mapper.xml"/>
      	<mapper resource="/mybatis/reply-mapper.xml"/>
+<<<<<<< HEAD
 		<mapper resource="/mybatis/gagu-mapper.xml"/>     	
+=======
+     	<mapper resource="/mybatis/chat-mapper.xml"/>
+		<mapper resource="/mybatis/gagu-mapper.xml"/>    
+>>>>>>> 86b3714ef4c6af2b5ab7886db398f48b30419380
      	<mapper resource="/mybatis/house-mapper.xml"/>
     </mappers>
     <!-- resource : src/main/resources 를 뜻한다. -->

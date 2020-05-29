@@ -193,18 +193,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	<c:choose>
 		<c:when test="${empty logininfo }">
-			<a href="login.do">로그인</a> <a href="agreement.do">회원가입</a>	
-			<a href="fullcalendar.do">풀캘린더</a>
-			<a href="loading.do">로딩</a>
+			<a href="login.do">로그인</a> <a href="agreement.do">회원가입</a>
 		</c:when>
 		<c:otherwise>
-			<input type="button" value="내정보" onclick="">
-			<input type="button" value="로그아웃" onclick="logout.do">
-<<<<<<< HEAD
+			<a href="myinfo.do">내정보</a>
+			<a href="logout.do">로그아웃</a>
 			<input type="button" value="쪽지함" onclick="location.href='letterlist.do'">
-=======
-			<a href= "logout.do">로그아웃</a>
->>>>>>> a1d5a26bea4b1cafe177edd21b79b44fd313d1d4
+			<a href="fullcalendar.do">풀캘린더</a>
+			<a href="loading.do">로딩</a>
 		</c:otherwise>
 	</c:choose>
 
