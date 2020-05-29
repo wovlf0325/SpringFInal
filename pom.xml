@@ -20,16 +20,9 @@
 			<id>datanucleus</id>
 			<url>http://www.datanucleus.org/downloads/maven2/</url>
 		</repository>
-		
-		
+
 	</repositories>
 	
-			
-		
-	
-
-	
-
 	<!-- ojdbc6를 사용하기 위한 repository 추가 -->
 	<dependencies>
 		<!-- Spring -->
@@ -289,6 +282,14 @@
 		    <artifactId>json</artifactId>
 		    <version>20180813</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+		<dependency>
+		    <groupId>javax.activation</groupId>
+		    <artifactId>activation</artifactId>
+		    <version>1.1</version>
+		</dependency>
+		
 				
 
 	</dependencies>

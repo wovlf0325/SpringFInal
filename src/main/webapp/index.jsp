@@ -15,7 +15,6 @@
 <body class="postid-4397">
 <%@ include file="WEB-INF/views/form/header.jsp" %>
   <div class="outer-container">
-<%@ include file="WEB-INF/views/form/header.jsp" %>
     <div class="header-img-container">
       <h1 class="header-title">What is coliving? Commmon's Complete Guide to Coliving</h1>
       
