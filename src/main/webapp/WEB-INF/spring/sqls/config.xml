@@ -9,6 +9,9 @@
 		<typeAlias type="com.mvc.prectice.board.dto.BoardDto" alias="boardDto"/>
 		<typeAlias type="com.mvc.prectice.board.dto.PagingDto" alias="pagingDto"/>
 		<typeAlias type="com.mvc.prectice.reply.dto.ReplyDto" alias="replyDto"/>
+		<typeAlias type="com.mvc.prectice.chat.dto.ChatRoomDto" alias="chatRoomDto"/>
+		<typeAlias type="com.mvc.prectice.chat.dto.ChatListDto" alias="chatListDto"/>
+		<typeAlias type="com.mvc.prectice.chat.dto.MassageDto" alias="massageDto"/>
 	</typeAliases>
 	
     <mappers>
@@ -17,6 +20,7 @@
      	<mapper resource="/mybatis/login-mapper.xml"/>
      	<mapper resource="/mybatis/board-mapper.xml"/>
      	<mapper resource="/mybatis/reply-mapper.xml"/>
+     	<mapper resource="/mybatis/chat-mapper.xml"/>
     </mappers>
     <!-- resource : src/main/resources 를 뜻한다. -->
   

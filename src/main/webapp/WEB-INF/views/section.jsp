@@ -17,6 +17,12 @@
 <a href="updateform.do">내 정보</a> 
 <a href="boardlist.do?nowPage=1">게시판</a>
 <a href="read.do">read.jsp</a>
+<br/>
+<a href="chat.do?chatroomnum=1">채팅방1</a>
+<a href="chat.do?chatroomnum=2">채팅방2</a>
+<a href="chat.do?chatroomnum=3">채팅방3</a>
+<br/>
+<a href="chatlist.do">채팅방 리스트</a>
 
 
 </section>
