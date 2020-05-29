@@ -67,24 +67,13 @@
 <h1>Main Home Page</h1>
 <a href="updateform.do">내 정보</a> 
 <a href="boardlist.do?nowPage=1">게시판</a>
-<<<<<<< HEAD
 <a href="read.do">read.jsp</a>
-<br/>
-<a href="chat.do?chatroomnum=1">채팅방1</a>
-<a href="chat.do?chatroomnum=2">채팅방2</a>
-<a href="chat.do?chatroomnum=3">채팅방3</a>
 <br/>
 <a href="chatlist.do">채팅방 리스트</a>
-=======
-<<<<<<< HEAD
->>>>>>> 0a5a31f501ad2fde6a8906079fd398d557f1f63f
 
-=======
 <a href="houselist.do">코리빙 하우스</a>
-<a href="read.do">read.jsp</a>
 <a href="payment.do">결제하기</a>
 <a href="fullcalendar.do">풀캘린더</a>
->>>>>>> a1d5a26bea4b1cafe177edd21b79b44fd313d1d4
 
 </section>
 <%@ include file="form/footer.jsp" %>

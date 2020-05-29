@@ -107,6 +107,7 @@ public class LoginController {
 		LoginDto dto = (LoginDto) session.getAttribute("logininfo");
 		return loginbiz.selectInfoWhereId(dto);
 	}
+	
 	@RequestMapping(value = "/updateMember",method = RequestMethod.POST)
 	public String updateMember(
 
@@ -122,7 +123,7 @@ public class LoginController {
 			@RequestParam("member_role")String member_role,
 			@RequestParam("member_status")String member_status) {
 		loginbiz.updateMypage(new LoginDto(member_id, member_pw, member_name, member_phone, member_email, member_address, member_role, member_area, member_interest, member_status));
-		return "redirect:updateform.do";
+		return "section";
 	}
 	
 	
