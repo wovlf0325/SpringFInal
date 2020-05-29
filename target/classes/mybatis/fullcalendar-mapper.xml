@@ -11,10 +11,19 @@
 		<result property="end" column="PLAN_END"/>		
 	</resultMap>
 	
-  <select id="selectList" resultMap="fullcalendarMap">
-  	SELECT * FROM PLAN WHERE HOUSE_ID = 1
-  </select>
-  <insert id="insert" parameterType="fullcalendarDto">
-  	INSERT INTO PLAN VALUES(PLAN_SEQ.NEXTVAL,1,#{plan_title},#{plan_start},#{plan_end})
-  </insert>
+ 	<select id="selectOne" resultMap="fullcalendarMap" parameterType="int">
+ 		SELECT * FROM PLAN WHERE PLAN_NO = #{plan_no}
+ 	</select>
+    <select id="selectList" resultMap="fullcalendarMap">
+      	SELECT * FROM PLAN WHERE HOUSE_ID = 48
+    </select>
+    <insert id="insert" parameterType="fullcalendarDto">
+    	 INSERT INTO PLAN VALUES(PLAN_SEQ.NEXTVAL,48,#{title},#{start},#{end})
+    </insert>
+    <update id="update" parameterType="fullcalendarDto">
+    	UPDATE PLAN SET PLAN_TITLE = #{title}, PLAN_START = #{start}, PLAN_END = #{end} WHERE PLAN_NO = #{plan_no}
+    </update>
+    <delete id="delete" parameterType="fullcalendarDto">
+    	DELETE FROM PLAN WHERE PLAN_NO = #{plan_no}
+    </delete>
 </mapper>
