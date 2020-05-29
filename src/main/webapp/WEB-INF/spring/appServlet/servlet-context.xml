@@ -37,16 +37,8 @@
 		class="com.mvc.prectice.login.biz.NaverLoginBO" />
 
 	<!-- KakakoLogin BO에 대한 Bean 설정 -->
-<<<<<<< HEAD
+
 	<beans:bean id="KakaoLoginBo" class="com.mvc.prectice.login.biz.KakaoLoginBO"/>
-	
-	
-=======
-	<beans:bean id="KakaoLoginBo"
-		class="com.mvc.prectice.login.biz.KakaoLoginBO" />
-
->>>>>>> a1d5a26bea4b1cafe177edd21b79b44fd313d1d4
-
 	
 
 	<!-- 파일 업로드를 위한 디렉토리 설정 -->
