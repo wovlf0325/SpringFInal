@@ -13,6 +13,11 @@
 
 		INSERT INTO MEMBER
 		VALUES(#{member_id},#{member_pw},#{member_name},#{member_email},#{member_phone},#{member_address},#{member_addone},#{member_detailadd},#{member_profileimg})
-
 	</insert>
+	
+	<insert parameterType="signupDto" id="insertSNSinfo">
+		INSERT INTO MEMBERVALUES 
+		(MEMBER_SEQ.NEXTVAL, 0 , #{member_id}, #{member_pw}, #{member_email}, #{member_name}, 'GUEST', '', '','','', 'N', '1' ) 
+	</insert>
+	
 </mapper>

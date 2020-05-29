@@ -70,23 +70,26 @@ public class LoginController {
 	
 	@RequestMapping(value = "/loginRes.do",method = RequestMethod.POST)
 	public String LoginRes(LoginDto logindto, HttpServletRequest request) {
-		System.out.println("ok");
 		LoginDto dto = new LoginDto();
-
-		dto = loginbiz.selectInfo(logindto); 
-		System.out.println(dto.getId());
+		dto = loginbiz.selectInfo(logindto);
+		if (dto == null || dto.getId() == null) return "redirect:login.do";
+			System.out.println(dto.getId());
+			System.out.println(dto.getMember_pw());
+		if (logindto.getId().equals(dto.getId())) {
+			dto = loginbiz.selectInfo(logindto); 
+			System.out.println(dto.getId());
 		if(dto != null) {
 			HttpSession session = request.getSession();
 			System.out.println("정상 - " + dto.getId());
 			session.setAttribute("logininfo", dto);
 			return "section";
-
-		}else {
-
-			System.out.println("로그인 실패");
-			return "redirect:login.do";
+			}
 		}
+		System.out.println("로그인 실패");
+		return "redirect:login.do";
 	}
+	
+	
 	@RequestMapping("/updateform.do")
 	public String updateform(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -96,35 +99,29 @@ public class LoginController {
 		return "updateform";
 	}
 	
-
+	// 내 정보
 	@RequestMapping(value = "/getLoginInfo",method = RequestMethod.GET)
 	@ResponseBody
 	public LoginDto getLastLetterSeq(HttpServletRequest request) throws IOException {
-		// 임의적으로 아이디: admin 값 받는지 확인
-		LoginDto dto = new LoginDto();
-		dto.setId("admin");
-		dto = loginbiz.selectInfoWhereId(dto);
-		
-		//로그인 문제가 해결되면 위 3줄 제거후 아래 주석 해제하자
-//		HttpSession session = request.getSession();
-//		dto = loginDao.selectInfoWhereId((LoginDto) session.getAttribute("logininfo"));
-
-		return dto;
+		HttpSession session = request.getSession();
+		LoginDto dto = (LoginDto) session.getAttribute("logininfo");
+		return loginbiz.selectInfoWhereId(dto);
 	}
 	@RequestMapping(value = "/updateMember",method = RequestMethod.POST)
 	public String updateMember(
 
-			@RequestParam("id")String id, 
-			@RequestParam("pw")String pw,
-			@RequestParam("name")String name,
-			@RequestParam("email")String email,
-			@RequestParam("phone")String phone,
-			@RequestParam("address")String address,
-			@RequestParam("interest")String interest,
-			@RequestParam("area")String area,
-			@RequestParam("role")String role,
-			@RequestParam("status")String status) {
-		loginbiz.updateMypage(new LoginDto(id, pw, name, phone, email, address, role, area, interest, status));
+
+			@RequestParam("member_id")String member_id, 
+			@RequestParam("member_pw")String member_pw,
+			@RequestParam("member_name")String member_name,
+			@RequestParam("member_email")String member_email,
+			@RequestParam("member_phone")String member_phone,
+			@RequestParam("member_address")String member_address,
+			@RequestParam("member_interest")String member_interest,
+			@RequestParam("member_area")String member_area,
+			@RequestParam("member_role")String member_role,
+			@RequestParam("member_status")String member_status) {
+		loginbiz.updateMypage(new LoginDto(member_id, member_pw, member_name, member_phone, member_email, member_address, member_role, member_area, member_interest, member_status));
 		return "redirect:updateform.do";
 	}
 	
@@ -143,35 +140,30 @@ public class LoginController {
 	@RequestMapping(value="/kakaoLoginRes.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String KaKaoLoginRes(Model model, @RequestParam("code") String code, HttpServletRequest request, HttpServletResponse response) {
 		// 로그인 후에 code get
-		System.out.println(code);
+System.out.println(code);
 		
 		JsonNode node = KakaoLoginBO.getAccessToken(code);
 		JsonNode accessToken = node.get("access_token");
 		JsonNode userInfo = KakaoLoginBO.getKakaoUserInfo(accessToken);
 		
-		// 카카오에서 유저정보 가져오기 
- 		String id = userInfo.path("id").asText();
- 		String nickname = null;
- 		String email = null;
- 		String thumbnailImage = null;
- 		String profileImage = null;
-
-        // 유저정보 카톡에서 가져오기 Get properties
 		JsonNode properties = userInfo.path("properties");
+		JsonNode kakao_account = userInfo.path("kakao_account");
+				
+		// 카카오에서 유저정보 가져오기 
+		 String id = userInfo.get("id").toString();
+		 //System.out.println(id);
+		 String email = kakao_account.get("email").toString();
+		 //System.out.println(email);
+		 //String image = userInfo.get("properties").get("profile_image").toString();
+		 String name = userInfo.get("properties").get("nickname").toString();
+		 //System.out.println(name);
 
-		if (properties.isMissingNode()) {
-			// if "name" node is missing
-		} else {
-			nickname = properties.path("nickname").asText();
-			thumbnailImage = properties.path("thumbnail_image").asText();
-			profileImage = properties.path("profile_image").asText();
-			//System.out.println("nickname : " + nickname);
-			//System.out.println("thumbnailImage : " + thumbnailImage);
-			//System.out.println("profileImage : " + profileImage);
-		}
-		model.addAttribute("result", apiResult);
+      
+		model.addAttribute("id", id);
+		model.addAttribute("email", email);
+		model.addAttribute("name", name);
 		
-		return "testview";
+		return "kakaologin";
 		
 	}
 	
@@ -192,13 +184,14 @@ public class LoginController {
 		System.out.println("여기는 callback");
 		OAuth2AccessToken oauthToken;
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
+		apiResult = naverLoginBO.getUserProfile(oauthToken);
 		// 로그인 사용자 정보를 읽어온다.
-        System.out.println(naverLoginBO.getUserProfile(oauthToken).toString());
+        //System.out.println(naverLoginBO.getUserProfile(oauthToken).toString());
         model.addAttribute("result", apiResult);
-        System.out.println("result"+apiResult);
+        //System.out.println("result"+apiResult);
 		
 		/* 네이버 로그인 성공 페이지 View 호출 */
-		return "testview";
+		return "naverlogin";
 	}
 
 }

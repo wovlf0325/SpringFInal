@@ -10,4 +10,5 @@ public interface SignupBiz {
 	public int idchk(String id);
 	public int emailchk(String email);
 	public int insertAllinfo(SignupDto signupdto);
+	public int insertSNSinfo(SignupDto signupdto);
 }

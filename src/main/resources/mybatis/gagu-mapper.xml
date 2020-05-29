@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="gagu">
+
+
+	<insert id="gaguInsert" parameterType="gaguDto">
+		INSERT INTO GAGU VALUES(
+		'${region}', '${gender}',
+		${agesum},${miman_20},${n_20},${n_30},
+		${n_40},${n_50},${n_60},${n_70},${isang_80})
+	</insert>
+	
+	
+	
+
+</mapper>

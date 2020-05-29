@@ -101,6 +101,7 @@
 	function AjaxLetterCall(){
 		
 		console.log("세션에 저장되어있을 시 계속 나와야되는 id:" + memberid);
+		console.log(memberno);
 		$.ajax({
 			url:"ajaxLetterCall.do",
 			type:"post",
