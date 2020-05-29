@@ -10,7 +10,7 @@
 		<result property="board_regdate" column="BOARD_REGDATE"/>
 		<result property="board_views" column="BOARD_VIEWS"/>
 		<result property="board_like" column="BOARD_LIKE"/>
-		<result property="board_kind" column="BOARD_KIND"/>
+		<result property="board_category" column="BOARD_CATEGORY"/>
 	</resultMap>
 	
 	<select id="selectBoard" resultType="BoardDto" parameterType="pagingDto">
@@ -28,7 +28,7 @@
  	</select>
  	
  	<insert id="insert" parameterType="boardDto">
-  		INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL, #{board_writer},#{board_title},#{board_content},SYSDATE,0,0,1)
+  		INSERT INTO BOARD VALUES(BOARD_SEQ.NEXTVAL, #{board_writer},#{board_title},#{board_content},SYSDATE,0,0,#{board_category})
     </insert>
  	
 	<update id="update" parameterType="boardDto">

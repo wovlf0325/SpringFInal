@@ -13,7 +13,7 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<!-- custom -->
 	<link href="resources/fullcalendar/custom/css/schedule.css" rel="stylesheet" />	
-	<script src="resources/fullcalendar/custom/js/schedule.js" type="text/javascript"></script>
+	<script src="resources/fullcalendar/custom/js/fullcalendar.js" type="text/javascript"></script>
 </head>
 <body>
 <div class = "group" id = "popupGroup">	
@@ -38,7 +38,8 @@
 			<input class = "date" id = "endDate" type = "text" name = "end">
 		</div>
 	</form>
-		<button class = "ok-button" type= "button" onclick="click_ok();">확인</button>
+		<button class = "ok-button" type= "button" onclick="window.close()">취소</button>
+		<button class = "ok-button" type= "button" onclick="click_ok();">확인</button> 
 	</div>	
 </div>
 	

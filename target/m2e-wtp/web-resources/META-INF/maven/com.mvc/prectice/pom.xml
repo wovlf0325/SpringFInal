@@ -20,8 +20,9 @@
 			<id>datanucleus</id>
 			<url>http://www.datanucleus.org/downloads/maven2/</url>
 		</repository>
-	</repositories>
 
+	</repositories>
+	
 	<!-- ojdbc6를 사용하기 위한 repository 추가 -->
 	<dependencies>
 		<!-- Spring -->
@@ -173,12 +174,17 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
 		</dependency>
+		
+
 		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.4</version>
 		</dependency>
+		
+
+	
 
 		<!-- https://mvnrepository.com/artifact/org.imgscalr/imgscalr-lib -->
 		<dependency>
@@ -188,7 +194,6 @@
 		</dependency>
 
 		<!-- Java Mail API -->
-
 
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -258,16 +263,35 @@
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-websocket</artifactId>
-			<version>4.2.4.RELEASE</version>
-		</dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-websocket</artifactId>
+		    <version>${org.springframework-version}</version>
+	    </dependency>
 		<!-- 웹소켓 -->
-
-
-
-
-
+		
+		<!-- https://mvnrepository.com/artifact/xmlpull/xmlpull -->
+		<!-- xml파싱 -->
+		<dependency>
+		    <groupId>xmlpull</groupId>
+		    <artifactId>xmlpull</artifactId>
+		    <version>1.1.3.1</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20180813</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+		<dependency>
+		    <groupId>javax.activation</groupId>
+		    <artifactId>activation</artifactId>
+		    <version>1.1</version>
+		</dependency>
+		
+				
 
 	</dependencies>
 	<build>

@@ -32,4 +32,16 @@ public class FullCalendarBizImpl implements FullCalendarBiz {
 		return dao.insert(fullcalendarDto);
 	}
 
+	@Override
+	public int update(FullCalendarDto fullcalendarDto) {
+		// TODO Auto-generated method stub
+		return dao.update(fullcalendarDto);
+	}
+
+	@Override
+	public int delete(int plan_no) {
+		// TODO Auto-generated method stub
+		return dao.delete(plan_no);
+	}
+
 }

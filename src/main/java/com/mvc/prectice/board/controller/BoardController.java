@@ -1,7 +1,18 @@
 package com.mvc.prectice.board.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.omg.PortableServer.ServantLocatorPackage.CookieHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mvc.prectice.board.biz.BoardBiz;
 import com.mvc.prectice.board.dto.BoardDto;
 import com.mvc.prectice.board.dto.PagingDto;
+import com.mvc.prectice.login.dto.LoginDto;
 
 @Controller
 public class BoardController {
@@ -64,11 +76,35 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/boarddetail.do")
-	public String selectOne(Model model, int board_no) {
+	public String selectOne(Model model,HttpSession session, int board_no, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 
 		logger.info("SELECT ONE");
+		
+		BoardDto boarddto = boardbiz.selectOne(board_no);
+		
+		/*
+		 * LoginDto logindto = (LoginDto) session.getAttribute("logininfo");
+		 * 
+		 * String id = URLEncoder.encode(logindto.getMember_id(),"UTF-8");
+		 * 
+		 * 
+		 * String url =
+		 * URLEncoder.encode("boarddetail.do?board_no="+boarddto.getBoard_no(),"UTF-8");
+		 * String title = URLEncoder.encode(boarddto.getBoard_title(),"UTF-8"); String
+		 * content = URLEncoder.encode(boarddto.getBoard_content(), "UTF-8");
+		 * 
+		 * Cookie url_ = new Cookie("board_url"+boarddto.getBoard_no()+id,url); Cookie
+		 * title_ = new Cookie("board_title" + boarddto.getBoard_no()+id, title); Cookie
+		 * content_ = new Cookie("board_content" + boarddto.getBoard_no()+id, content);
+		 * 
+		 * 
+		 * url_.setMaxAge(60 * 3); title_.setMaxAge(60 * 3); content_.setMaxAge(60 * 3);
+		 * 
+		 * response.addCookie(url_); response.addCookie(title_);
+		 * response.addCookie(content_);
+		 */
 
-		model.addAttribute("boarddto", boardbiz.selectOne(board_no));
+		model.addAttribute("boarddto", boarddto);
 
 		return "board/boarddetail";
 	}

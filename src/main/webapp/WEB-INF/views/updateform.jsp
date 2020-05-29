@@ -39,7 +39,7 @@
   <div class="emailchkRes" title="n"></div>
   <br/>
   <label for="username">PHONE</label>
-  <input type="text" name="member_phone" id = "userPhone" placeholder="연락처를 입력해주세요." autocomplete="off" required />
+  <input type="text" name="member_phone" id ="userPhone" placeholder="연락처를 입력해주세요." autocomplete="off" required />
   
   <label for="username">Address</label>
   <input type="text" name="member_address" id="address" onclick="Postcode();" placeholder="클릭 후 주소를 입력해주세요." autocomplete="off" readonly/>	
