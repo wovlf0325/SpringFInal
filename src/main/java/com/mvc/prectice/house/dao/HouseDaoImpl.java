@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mvc.prectice.house.dto.HouseDto;
+import com.mvc.prectice.house.dto.PagingDto;
 
 @Repository
 public class HouseDaoImpl implements HouseDao {
@@ -16,16 +17,15 @@ public class HouseDaoImpl implements HouseDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<HouseDto> selectList() {
+	public List<HouseDto> selectList(PagingDto pagingdto) {
 		List<HouseDto> list = new ArrayList<HouseDto>();
 		
 		try {
-			list = sqlSession.selectList(NAMESPACE+"selectList");
+			list = sqlSession.selectList(NAMESPACE+"selectList", pagingdto);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("ERROR: select list");
 		}
-		
 		
 		return list;
 	}
@@ -90,6 +90,22 @@ public class HouseDaoImpl implements HouseDao {
 		}
 		return res;
 	}
+
+	@Override
+	public int countHouse() {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(NAMESPACE+"countHouse");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("ERROR : counthouse");
+		}
+		
+		return res;
+	}
+
 
 	
 

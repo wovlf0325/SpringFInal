@@ -19,11 +19,33 @@
 }
 </style>
 
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script type="text/javascript">
+
+function movePage(p){
+	location.href="houselist.do?nowPage="+p;
+}
+
+function prevPage(){
+	var sel = $('#cntPerPage').val();
+	location.href="houselist.do?nowPage=${paging.startPage - 1 }";
+}
+
+function nextPage(){
+	var sel = $('#cntPerPage').val();
+	location.href="houselist.do?nowPage=${paging.endPage+1 }";
+}
+</script>
+
 </head>
 <body>
 
 	<h1>LIST</h1>
-
+	
+	<div>
+		<input type="button" value="글쓰기"
+			onclick="location.href='houseinsert.do'">
+	</div>
 
 
 	<c:choose>
@@ -34,33 +56,46 @@
 
 		</c:when>
 		<c:otherwise>
-			<div class="container">
+			<div class="container" id="contatiner">
 				<c:forEach items="${houselist }" var="housedto">
 
 					<div class="item" style="cursor: pointer"
 						onclick="location.href='housedetail.do?house_id=${housedto.house_id}'">
-						<img
-							src="resources/images/houseimgstorage/${housedto.house_image }"
-							width="90%" height="90%"><br /> ${housedto.house_name }
-						<p />
+						<img src="resources/images/houseimgstorage/${housedto.house_image }"
+							width="90%" height="90%"><br /> 
+							${housedto.house_name }
+						<p/>
 					</div>
 
 				</c:forEach>
 			</div>
 		</c:otherwise>
 	</c:choose>
+	
 
-
-
-
-
-	<div>
-		<input type="button" value="글쓰기"
-			onclick="location.href='houseinsert.do'">
+ 	<div id="pageselect" style="display: block;" align="center">
+		<c:if test="${paging.startPage != 1 }">
+			<a onclick="prevPage()">&lt;</a>
+		</c:if>
+		
+		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == paging.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				
+				<c:when test="${p != paging.nowPage }">
+					<a onclick="movePage(${p })">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		
+		<c:if test="${paging.endPage > paging.lastPage}">
+			<a onclick="nextPage()">&gt;</a>
+		</c:if>
 	</div>
 
-
-
+	
 
 
 
