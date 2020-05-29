@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +25,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mvc.prectice.house.biz.HouseBiz;
 import com.mvc.prectice.house.dto.HouseDto;
+import com.mvc.prectice.house.dto.PagingDto;
 
 @Controller
 public class HouseController {
@@ -33,15 +35,36 @@ public class HouseController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HouseController.class);
 
-	@RequestMapping(value="/houselist.do")
-	public String selectList(HouseDto housedto, Model model) {
+	@RequestMapping(value="/houselist.do", method = RequestMethod.GET)
+	public String selectList(@ModelAttribute("housedto") HouseDto housedto, 
+			@ModelAttribute("pagingdto") PagingDto pagingdto, Model model,
+			@RequestParam(value="nowPage", required=false) String nowPage,
+			@RequestParam(value="cntPerPage", required=false) String cntPerPage) {
 		
 		logger.info("SELECT LIST");
 		
-		model.addAttribute("houselist", housebiz.selectList());
+		if (nowPage == null) {
+			nowPage ="1";
+		}
+		if (cntPerPage == null) {
+			cntPerPage = Integer.toString(pagingdto.getCntPage());
+		}
+		
+		pagingdto = new PagingDto(Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		int total = housebiz.countHouse();
+		pagingdto.calcLastPage(total, Integer.parseInt(cntPerPage));
+		pagingdto.calcStartEndPage(Integer.parseInt(nowPage), Integer.parseInt(cntPerPage) );
+		
+		
+		model.addAttribute("houselist", housebiz.selectList(pagingdto));
+		model.addAttribute("paging", pagingdto);
+		model.addAttribute("housedto", housedto);
+		
 		
 		return "house/houselist";
 	}
+	
+
 	
 	
 	@RequestMapping(value="/houseinsert.do")
