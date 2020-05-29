@@ -8,224 +8,136 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style type="text/css">
-body {
-  background: #ede9de; 
+
+#wall {
+  position:relative;
+  width: 100%;
+  height: 150px;
+  top: -10px;
+  background: #fff;
+  text-align: center;
+  padding-top: 30px;
+  font-family: Quicksand, Helvetica, sans;
+  color: red;
 }
-.container {
-  left: 50%;
-  margin: auto -50px;
-  position: absolute;
-  top: 50%;
-}
-.swing div {
+
+#eye-l, #eye-r {
+  position:absolute;
+  z-index: 20;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  float: left;
-  height: 1em;
-  width: 1em;
+  background: white;
+  margin-top:5px;
+  left: 5px;
+  margin-left: -5px;
+  -webkit-animation: search 2s infinite;
+  box-sizing: border-box;
+  border: 3px solid red;
 }
-.swing div:nth-of-type(1) {
-  background: -webkit-linear-gradient(left, #385c78 0%, #325774 100%);
-  background: linear-gradient(to right, #385c78 0%, #325774 100%);
+
+#eye-r {
+  margin-left: 5px;
 }
-.swing div:nth-of-type(2) {
-  background: -webkit-linear-gradient(left, #325774 0%, #47536a 100%);
-  background: linear-gradient(to right, #325774 0%, #47536a 100%);
-}
-.swing div:nth-of-type(3) {
-  background: -webkit-linear-gradient(left, #4a5369 0%, #6b4d59 100%);
-  background: linear-gradient(to right, #4a5369 0%, #6b4d59 100%);
-}
-.swing div:nth-of-type(4) {
-  background: -webkit-linear-gradient(left, #744c55 0%, #954646 100%);
-  background: linear-gradient(to right, #744c55 0%, #954646 100%);
-}
-.swing div:nth-of-type(5) {
-  background: -webkit-linear-gradient(left, #9c4543 0%, #bb4034 100%);
-  background: linear-gradient(to right, #9c4543 0%, #bb4034 100%);
-}
-.swing div:nth-of-type(6) {
-  background: -webkit-linear-gradient(left, #c33f31 0%, #d83b27 100%);
-  background: linear-gradient(to right, #c33f31 0%, #d83b27 100%);
-}
-.swing div:nth-of-type(7) {
-  background: -webkit-linear-gradient(left, #da3b26 0%, #db412c 100%);
-  background: linear-gradient(to right, #da3b26 0%, #db412c 100%);
-}
-.shadow {
-  clear: left;
-  padding-top: 1.5em;
-}
-.shadow div {
-  -webkit-filter: blur(1px);
-  filter: blur(1px);
-  float: left;
-  width: 1em;
-  height: .25em;
+
+#nose {
+  position:relative;
+  width: 15px;
+  height: 15px;
+  border: 3px solid red;
   border-radius: 50%;
-  background: #e3dbd2;
+  border-top-color: transparent;
+  background: white;
+  top:12px;
+  left:-7px;
+  -webkit-transform: rotate(35deg);
+  -webkit-animation: noser 2s infinite;
 }
-.shadow .shadow-l {
-  background: #d5d8d6;
+
+#mouth{
+  position:relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: red;
+  margin-top:20px;
+  float:left;
+  margin-left: 3px;
+  -webkit-animation: search 2s infinite;
 }
-.shadow .shadow-r {
-  background: #eed3ca;
+
+#man {
+  position:relative;
+  width: 50px;
+  height: 70px;
+  border: 5px solid red;
+  border-radius: 50%;
+  margin-left:50%;
+  left: -25px;
+  -webkit-animation: pop 8s infinite;
 }
-@-webkit-keyframes ball-l {
-  0%, 50% {
-    -webkit-transform: rotate(0) translateX(0);
-    transform: rotate(0) translateX(0);
-  }
-  100% {
-    -webkit-transform: rotate(50deg) translateX(-2.5em);
-    transform: rotate(50deg) translateX(-2.5em);
-  }
+
+@-webkit-keyframes search {
+  0%, 100% { -webkit-transform:translate(0px, 0px);}
+  50% {-webkit-transform:translate(32px, 0px);}
 }
-@keyframes ball-l {
-  0%, 50% {
-    -webkit-transform: rotate(0) translate(0);
-    transform: rotate(0) translateX(0);
-  }
-  100% {
-    -webkit-transform: rotate(50deg) translateX(-2.5em);
-    transform: rotate(50deg) translateX(-2.5em);
-  }
+
+@-webkit-keyframes noser {
+  0%, 100% { -webkit-transform:translate(0px, 0px) rotate(35deg);}
+  50% {-webkit-transform:translate(43px, 0px) rotate(-35deg);}
 }
-@-webkit-keyframes ball-r {
-  0% {
-    -webkit-transform: rotate(-50deg) translateX(2.5em);
-    transform: rotate(-50deg) translateX(2.5em);
-  }
-  50%,
-  100% {
-    -webkit-transform: rotate(0) translateX(0);
-    transform: rotate(0) translateX(0);
-  }
+
+@-webkit-keyframes pop {
+  0%, 100% { -webkit-transform:translate(0px, 80px)}
+  20%, 80% { -webkit-transform:translate(0px, 10px)}
 }
-@keyframes ball-r {
-  0% {
-    -webkit-transform: rotate(-50deg) translateX(2.5em);
-    transform: rotate(-50deg) translateX(2.5em);
-  }
-  50%,
-  100% {
-    -webkit-transform: rotate(0) translateX(0);
-    transform: rotate(0) translateX(0)
-  }
+.loading{
+    width:100%;
+    height:100%;
+    position:fixed;
+    left:0px;
+    top:0px;
+    background:#fff;
+    z-index:1000; /* 이 값으로 레이어의 위치를 조정합니다. */
 }
-@-webkit-keyframes shadow-l-n {
-  0%, 50% {
-    opacity: .5;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-  100% {
-    opacity: .125;
-    -webkit-transform: translateX(-1.57em);
-    transform: translateX(-1.75em);
-  }
-}
-@keyframes shadow-l-n {
-  0%, 50% {
-    opacity: .5;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-  100% {
-    opacity: .125;
-    -webkit-transform: translateX(-1.75);
-    transform: translateX(-1.75em);
-  }
-}
-@-webkit-keyframes shadow-r-n {
-  0% {
-    opacity: .125;
-    -webkit-transform: translateX(1.75em);
-    transform: translateX(1.75em);
-  }
-  50%,
-  100% {
-    opacity: .5;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
-@keyframes shadow-r-n {
-  0% {
-    opacity: .125;
-    -webkit-transform: translateX(1.75em);
-    transform: translateX(1.75em);
-  }
-  50%,
-  100% {
-    opacity: .5;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
-.swing-l {
-  -webkit-animation: ball-l .425s ease-in-out infinite alternate;
-  animation: ball-l .425s ease-in-out infinite alternate;
-}
-.swing-r {
-  -webkit-animation: ball-r .425s ease-in-out infinite alternate;
-  animation: ball-r .425s ease-in-out infinite alternate;
-}
-.shadow-l {
-  -webkit-animation: shadow-l-n .425s ease-in-out infinite alternate;
-  animation: shadow-l-n .425s ease-in-out infinite alternate;
-}
-.shadow-r {
-  -webkit-animation: shadow-r-n .425s ease-in-out infinite alternate;
-  animatio
-  }
 </style>
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-  	requestAnimationFrame(function() {
-			document.getElementById("wall").style.width = "100%";
-      });
-    });
+<script>
+
+  	setTimeout(function(){
+  		$(".loading").css("display","none");
+  	},2000)
+    
 </script>
 </head>
 <body>
 <header align="right">
-
+<a href="logo.do"><img align="left" width="70" height="90" src="https://s3.orbi.kr/data/file/united2/1838c353-5e34-48fe-814c-83c353e2a2e1D013A0F3-D20B-4FBD-ABA0-E4C5213C9C3E.jpeg"></a>
 	<c:choose>
 		<c:when test="${empty logininfo }">
-			<a href="login.do">로그인</a> <a href="agreement.do">회원가입</a>
+			<a href="login.do">로그인</a> <a href="agreement.do">회원가입</a>	
 		</c:when>
 		<c:otherwise>
 			<a href="myinfo.do">내정보</a>
 			<a href="logout.do">로그아웃</a>
-			<input type="button" value="쪽지함" onclick="location.href='letterlist.do'">
+			<a href="letterlist.do">족지함</a>
 			<a href="fullcalendar.do">풀캘린더</a>
 			<a href="loading.do">로딩</a>
+			<a href="chart.do">차트</a>
+			<a href="mainchart.do">메인차트</a>
 		</c:otherwise>
 	</c:choose>
-
-<div aria-busy="true" aria-label="Loading" role="progressbar" class="container">
-  <div class="swing">
-    <div class="swing-l"></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div class="swing-r"></div>
-  </div>
-  <div class="shadow">
-    <div class="shadow-l"></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div class="shadow-r"></div>
-  </div>
- </div>
-
-
+	
+<div class="loading">
+<div id="man">
+  <div id="eye-l"></div>
+  <div id="eye-r"></div>
+  <div id="nose"></div>
+  <div id="mouth"></div>
+</div>
+<div id="wall">로딩중이오이다...</div>
+</div>
 
 </header>
 </body>

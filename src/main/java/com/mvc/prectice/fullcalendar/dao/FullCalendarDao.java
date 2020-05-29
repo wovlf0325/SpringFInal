@@ -11,5 +11,7 @@ public interface FullCalendarDao {
 	public List<FullCalendarDto> selectList();
 	public FullCalendarDto selectOne(int plan_no);
 	public int insert(FullCalendarDto fullcalendarDto);
+	public int update(FullCalendarDto fullcalendarDto);
+	public int delete(int plan_no);
 	
 }
