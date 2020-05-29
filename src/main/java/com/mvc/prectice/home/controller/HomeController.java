@@ -29,6 +29,24 @@ public class HomeController {
 		return "chat/read";
 	}
 	
+	@RequestMapping("/chatpractice.do")
+	public String chat() {
+		return "chat/chatpractice";
+	}
+	
+	@RequestMapping("/navi.do")
+	public String navi() {
+		return "navi/kakaonavi";
+	}
+	
+	@RequestMapping("/openroute.do")
+	public String openroute() {
+		return "navi/openroute";
+	}
+	
+	
+	
+	
 	
 	
 }

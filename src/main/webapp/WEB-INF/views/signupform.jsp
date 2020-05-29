@@ -126,9 +126,9 @@ function emailchk(){
     		success:function(data){
     			console.log(data);
     			if(data == 0){  //사용가능
-    				//alert("사용가능");
+    				alert("사용가능");
     				emailSendStart(email);
-    				//$(".emailchkRes").html("<label class='emailResStatus' title='y' style='color:blue; font-weight:bold; margin: -6.5% 0% 0% 32%;'>사용가능한 이메일 입니다.</label>");
+    				$(".emailchkRes").html("<label class='emailResStatus' title='y' style='color:blue; font-weight:bold; margin: -6.5% 0% 0% 32%;'>사용가능한 이메일 입니다.</label>");
     			}else{			//사용불가
     				$(".emailchkRes").html("<label class='emailResStatus' title='n' style='color:red; font-weight:bold; margin: -6.5% 0% 0% 32%;'>이미 사용중인 이메일 입니다.</label>");
     			}

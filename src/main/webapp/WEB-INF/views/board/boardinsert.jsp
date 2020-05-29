@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,6 +42,20 @@ $(document).ready(function() {
 			<tr>
 				<th>제목</th>
 				<td><input type="text" name="board_title"></td>
+			</tr>
+			
+			<tr>
+				<th>카테고리</th>
+				<td>
+					<select name="board_category">
+						<c:if test="${sessionScope.logininfo.member_id eq 'admin'  }">
+							<option value="2">공지사항</option>
+						</c:if>
+						<option value="3">자유게시판</option>
+						<option value="4">불만사항</option>
+						<option value="5">카풀리스트</option>
+					</select>
+				</td>
 			</tr>
 			
 			<tr>

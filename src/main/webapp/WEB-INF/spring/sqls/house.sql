@@ -15,8 +15,9 @@ CREATE TABLE HOUSE(
 );
 
 INSERT INTO HOUSE VALUES(
-	HOUSE_SEQ.NEXTVAL,1,'푸르지오','032-651-5002','중동역','','좋다','없다','1'
+	HOUSE_SEQ.NEXTVAL, 1,'푸르지오','032-651-5002','중동역','defaulthouse.jpg','좋다','없다','1'
 );
+
 
 
 SELECT * FROM HOUSE;
