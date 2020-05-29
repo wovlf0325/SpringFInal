@@ -23,6 +23,7 @@ function uploadimg(){
 	}
 </style>
 <body>
+
 <div class="body">
   <form id="signupTotalChk" method="post" action="signupRes.do">
 

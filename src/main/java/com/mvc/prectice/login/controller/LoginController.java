@@ -200,5 +200,10 @@ public class LoginController {
 		/* 네이버 로그인 성공 페이지 View 호출 */
 		return "testview";
 	}
+	
+	@RequestMapping(value = "/logo.do")
+	public String logo(HttpSession session) {
+		return "redirect:index.jsp";
+	}
 
 }

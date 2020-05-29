@@ -172,6 +172,8 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
 		</dependency>
+		
+
 		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -181,12 +183,12 @@
 
 		<!-- Java Mail API -->
 
- 	    <dependency>
-   			 <groupId>javax.mail</groupId>
-    		 <artifactId>mail</artifactId>
-		     <version>1.4.3</version>
-		</dependency>	
-		
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.3</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
@@ -237,24 +239,24 @@
 			<version>4.7</version>
 			<scope>test</scope>
 
-		</dependency>    
-		
+		</dependency>
+
 		<!-- 웹소켓 -->
 		<dependency>
-		    <groupId>javax.websocket</groupId>
-		    <artifactId>javax.websocket-api</artifactId>
-		    <version>1.1</version>
-		</dependency>    
-		
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-websocket</artifactId>
-		    <version>4.2.4.RELEASE</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>4.2.4.RELEASE</version>
 		</dependency>
 		<!-- 웹소켓 -->
-		
-				
+
+
 	</dependencies>
 	<build>
 		<plugins>

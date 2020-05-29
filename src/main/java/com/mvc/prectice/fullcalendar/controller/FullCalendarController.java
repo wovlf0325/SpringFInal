@@ -1,9 +1,6 @@
 package com.mvc.prectice.fullcalendar.controller;
 
 
-
-
-
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
@@ -39,22 +36,21 @@ public class FullCalendarController {
 	@RequestMapping(value = "/fullcalendar.do")
 	public String FullCalendar(Model model) {
 
-       logger.info("SELECT LIST로 잘왔다 !");	
-       model.addAttribute("selectList",biz.selectList());
+       logger.info("SELECT LIST");	
+       model.addAttribute("fullcalendarDto",biz.selectList());
 		return "fullcalendar";
 	}
 	
 	@RequestMapping(value = "/planList.do")
 	@ResponseBody
 	public void planList(HttpSession sesion, HttpServletResponse response) throws Exception{
-		
 		logger.info("planList!!!!!!!!");
-		
         List<FullCalendarDto> list = biz.selectList();
+        
         
        Gson gson = new Gson();
        String plan = gson.toJson(list);
-       System.out.println("우와 잠깐 들렸다 갑니다. : 영우"+plan);
+       System.out.println("우와 잠깐 들렸다 갑니다"+plan);
        PrintWriter out = response.getWriter();
        out.print(plan);
 	
@@ -62,10 +58,8 @@ public class FullCalendarController {
 	
 	@RequestMapping(value = "/fullcalendarpopup.do")
 	public String FullCalendarPopup() {
-		
+	
 		logger.info("팝업들어갑니다~");
-		
-		
 		
 		return "fullcalendarpopup";
 	}
@@ -81,11 +75,74 @@ public class FullCalendarController {
 			return map;
 		}
 		
-		@RequestMapping("/loading.do")
-		public String loading() {
-			return "loading";
+		
+		
+		@RequestMapping("/fullcalendardetail.do")
+		public String FullCalendarDetail(Model model, int plan_no) {
+			logger.info("디테일 들어왔다잉");
+			System.out.println("fullcalendardetail 컨트롤러!!!!!!!!"+ plan_no);
+			
+			
+			System.out.println(plan_no);
+			
+			model.addAttribute("fullcalendarDto", biz.selectOne(plan_no));
+			
+			return "fullcalendardetail";
 		}
 		
+		
+		@RequestMapping(value = "/fullcalendarupdateform.do")
+		public String FullCalendarUpdateForm(Model model, int plan_no) {
+			
+			
+			logger.info("updateform");
+			FullCalendarDto fullcalendarDto = biz.selectOne(plan_no);
+			model.addAttribute("fullcalendarDto",fullcalendarDto);
+			System.out.println(plan_no);
+			System.out.println(fullcalendarDto);
+			return "fullcalendarupdateform";
+		}
+		
+		@RequestMapping(value = "/fullcalendarupdateres.do", method = RequestMethod.GET)
+		public String FullCalendarUpdateRes(FullCalendarDto fullcalendarDto) {
+			
+			logger.info("update result");
+			int res = biz.update(fullcalendarDto);
+			System.out.println(res);
+			
+			if(res>0) {
+				return "redirect:fullcalendardetail.do?plan_no="+ fullcalendarDto.getPlan_no();
+			}else {
+				logger.info("업덷이트실패");
+				return "redirect:fullcalendarupdateform.do?plan_no="+fullcalendarDto.getPlan_no();	
+			}
+		}
+		
+		@RequestMapping(value = "/fullcalendardelete.do", method = RequestMethod.GET)
+		public String deleteres(Model model, int plan_no) {
+			
+			logger.info("delete result");
+			
+			int res = biz.delete(plan_no);
+			
+			if(res > 0) {
+				return "redirect:fullcalendar.do";
+			}else {
+				return "redirect:fullcalendardetail.do";
+			}
+		}
+		
+		@RequestMapping(value = "/chart.do")
+		public String chart() {
+			
+			
+			return "chart";
+		}
+		
+		@RequestMapping(value = "/mainchart.do")
+		public String mainchart() {
+			return "mainchart";
+		}
 
 	}
 
