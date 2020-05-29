@@ -25,12 +25,9 @@
      	<mapper resource="/mybatis/fullcalendar-mapper.xml"/>
      	<mapper resource="/mybatis/board-mapper.xml"/>
      	<mapper resource="/mybatis/reply-mapper.xml"/>
-<<<<<<< HEAD
-		<mapper resource="/mybatis/gagu-mapper.xml"/>     	
-=======
+		<mapper resource="/mybatis/gagu-mapper.xml"/>     
      	<mapper resource="/mybatis/chat-mapper.xml"/>
-		<mapper resource="/mybatis/gagu-mapper.xml"/>    
->>>>>>> 86b3714ef4c6af2b5ab7886db398f48b30419380
+		<mapper resource="/mybatis/gagu-mapper.xml"/>  
      	<mapper resource="/mybatis/house-mapper.xml"/>
     </mappers>
     <!-- resource : src/main/resources 를 뜻한다. -->
