@@ -135,6 +135,7 @@ html, body {
 
 </script>
 </head>
+<%@ include file="/WEB-INF/views/form/header.jsp" %>
 <body>
 
 	    <div class="row">
@@ -167,5 +168,6 @@ html, body {
   <!--custome script for all page-->
   <script src="resources/fullcalendar/origin/js/scripts.js"></script>
   <!-- 부트스트랩 기본 템플릿 end -->
+  <%@ include file="/WEB-INF/views/form/footer.jsp" %>
 </body>
 </html>

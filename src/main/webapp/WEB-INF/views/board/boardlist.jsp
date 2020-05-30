@@ -9,47 +9,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%-- <%
-	Cookie[] cook = request.getCookies();
-	
-
-	if(cook != null){
-		out.println("<div style='position:fixed;right:20px;bottom:20px;'>");
-		
-		out.println("<h4>최근 본 게시물</h4>");
-		for(Cookie c: cook){
-			
-			LoginDto logindto = (LoginDto) session.getAttribute("logininfo");
-			String id = logindto.getMember_id();
-			
-			if(c.getName().indexOf("url")!=-1 && c.getName().indexOf(id) != -1){
- 				String cookieValue = c.getValue();
- 				String url = URLDecoder.decode(cookieValue, "UTF-8");
- 				out.println("<a href="+url+">게시물 보기</a><br/>");
- 			}
-	
-			if (c.getName().indexOf("title") != -1 && c.getName().indexOf(id) != -1) {
-				String cookieValue = c.getValue();
-				String title = URLDecoder.decode(cookieValue, "UTF-8");
-				//out.println("name: "+name);
-				out.println("제목: " + title + "<br/>");
-			}
-
-			if (c.getName().indexOf("content") != -1 && c.getName().indexOf(id) != -1) {
-
-				String cookieValue = c.getValue();
-				String content = URLDecoder.decode(cookieValue, "UTF-8");
-				//out.println("name: "+name);
-				out.println("내용: " + content + "<br/><br/>---------------------<br/>");
-			}
-
-		}
-		out.println("</div>");
-	} else {
-		out.println("최근본 게시물이 없습니다.");
-	}
-%>    
- --%>
 
 <!DOCTYPE html>
 <html>
@@ -69,6 +28,7 @@
 </head>
 
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	
 	function pageChange(){
@@ -118,13 +78,8 @@
 	}
 </style>
 <body>
-	<%-- <div style="position:fixed;right:20px;bottom:20px;">
-		<h3>최근 본 게시물</h3>
-		<c:forEach items="cook" value="c">
-		
-		
-		</c:forEach>
-	</div> --%>
+<%@ include file="/WEB-INF/views/form/header.jsp" %>
+
 
 	<h1>LIST</h1>
 	
@@ -286,6 +241,6 @@
 	</div>
 	
 
-
+	<%@ include file="/WEB-INF/views/form/footer.jsp" %>
 </body>
 </html>

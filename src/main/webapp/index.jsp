@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8");%>
-<% response.setContentType("text/html; charset=UTF-8");%>     
+<% response.setContentType("text/html; charset=UTF-8");%> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 
@@ -11,11 +12,69 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="resources/css/landingpage.css" rel="stylesheet">
   <title>Document</title>
+  
+  <!-- Bootstrap core CSS -->
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/theme.css" rel="stylesheet">
+    <link href="resources/css/bootstrap-reset.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!--external css-->
+    <link href="resources/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="resources/css/flexslider.css"/>
+    <link href="resources/assets/bxslider/jquery.bxslider.css" rel="stylesheet" />
+    <link rel="stylesheet" href="resources/css/animate.css">
+    <link rel="stylesheet" href="resources/assets/owlcarousel/owl.carousel.css">
+    <link rel="stylesheet" href="resources/assets/owlcarousel/owl.theme.css">
+
+    <link href="resources/css/superfish.css" rel="stylesheet" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="resources/css/component.css">
+    <link href="resources/css/style.css" rel="stylesheet">
+    <link href="resources/css/style-responsive.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="resources/css/parallax-slider/parallax-slider.css" />
+    <script type="text/javascript" src="resources/js/parallax-slider/modernizr.custom.28468.js">
+    </script>
 </head>
 <body class="postid-4397">
-<%@ include file="WEB-INF/views/form/header.jsp" %>
+	<c:choose>
+      <c:when test="${empty logininfo }">
+      	 <br/>
+     	 <br/>
+		<div align="right" style="margin-right:18%;">
+         <a href="login.do">로그인</a>
+         &nbsp;&nbsp;&nbsp;&nbsp; 
+         <a href="agreement.do">회원가입</a>
+         </div>
+         <br/>
+         <br/>
+      </c:when>
+      <c:otherwise>
+  	     <br/>	
+     	 <br/>
+     	 <div align="right" style="margin-right:18%;">
+         <a>${logininfo.member_id }님</a>
+         &nbsp;&nbsp;&nbsp;
+         <a href="myinfo.do">내정보</a>
+         &nbsp;&nbsp;&nbsp;
+         <a href="letterlist.do">쪽지함</a>
+         &nbsp;&nbsp;&nbsp;
+         <a href="logout.do">로그아웃</a>
+         &nbsp;&nbsp;&nbsp;
+         </div>
+         <br/>
+         <br/>
+      </c:otherwise>
+   </c:choose>
+   
+   
+   
   <div class="outer-container">
-<%@ include file="WEB-INF/views/form/header.jsp" %>
     <div class="header-img-container">
       <h1 class="header-title">What is coliving? Commmon's Complete Guide to Coliving</h1>
       
