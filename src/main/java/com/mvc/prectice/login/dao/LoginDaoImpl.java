@@ -52,6 +52,16 @@ public class LoginDaoImpl implements LoginDao{
 	}
 	@Override
 	public int addPayment(Payment p) {
+		
+		int res = 0;
+		
+		try {
+			res = sqlSession.update(NAMESPACE+"updatePayment", p);
+		} catch (Exception e) {
+			System.out.println("[ERROR]:updatePayment");
+			e.printStackTrace();
+		}
+		
 		return sqlSession.insert("addPayment", p);
 	}
 }
