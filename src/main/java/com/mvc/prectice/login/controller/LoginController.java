@@ -68,26 +68,26 @@ public class LoginController {
 	}
 	
 	
-	   @RequestMapping(value = "/loginRes.do",method = RequestMethod.POST)
-	   public String LoginRes(LoginDto logindto, HttpServletRequest request) {
-	      LoginDto dto = new LoginDto();
-	      dto = loginbiz.selectInfo(logindto);
-	      if (dto == null || dto.getId() == null) return "redirect:login.do";
-	         System.out.println(dto.getId());
-	         System.out.println(dto.getMember_pw());
-	      if (logindto.getId().equals(dto.getId())) {
-	         dto = loginbiz.selectInfo(logindto); 
-	         System.out.println(dto.getId());
-	      if(dto != null) {
-	         HttpSession session = request.getSession();
-	         System.out.println("정상 - " + dto.getId());
-	         session.setAttribute("logininfo", dto);
-	         return "section";
-	         }
-	      }
-	      System.out.println("로그인 실패");
-	      return "redirect:login.do";
-	   }
+	@RequestMapping(value = "/loginRes.do",method = RequestMethod.POST)
+	public String LoginRes(LoginDto logindto, HttpServletRequest request) {
+		LoginDto dto = new LoginDto();
+		dto = loginbiz.selectInfo(logindto);
+		if (dto == null || dto.getId() == null) return "redirect:login.do";
+			System.out.println(dto.getId());
+			System.out.println(dto.getMember_pw());
+		if (logindto.getId().equals(dto.getId())) {
+			dto = loginbiz.selectInfo(logindto); 
+			System.out.println(dto.getId());
+		if(dto != null) {
+			HttpSession session = request.getSession();
+			System.out.println("정상 - " + dto.getId());
+			session.setAttribute("logininfo", dto);
+			return "section";
+			}
+		}
+		System.out.println("로그인 실패");
+		return "redirect:login.do";
+	}
 	
 	
 	@RequestMapping("/updateform.do")
@@ -192,6 +192,11 @@ System.out.println(code);
 		
 		/* 네이버 로그인 성공 페이지 View 호출 */
 		return "naverlogin";
+	}
+	
+	@RequestMapping(value = "/logo.do")
+	public String logo(HttpSession session) {
+		return "redirect:index.jsp";
 	}
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.mvc.prectice.fullcalendar.dto.FullCalendarDto" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,34 +11,13 @@
 <link href="resources/fullcalendar/fullcalendar-4.3.1/daygrid/main.css"rel="stylesheet" />
 <link href="resources/fullcalendar/fullcalendar-4.3.1/timegrid/main.css"rel="stylesheet" />
 <link href="resources/fullcalendar/fullcalendar-4.3.1/list/main.css"rel="stylesheet" />
-
 <script src="resources/fullcalendar/fullcalendar-4.3.1/core/main.js"></script>
 <script src="resources/fullcalendar/fullcalendar-4.3.1/interaction/main.js"></script>
 <script src="resources/fullcalendar/fullcalendar-4.3.1/daygrid/main.js"></script>
 <script src="resources/fullcalendar/fullcalendar-4.3.1/timegrid/main.js"></script>
 <script src="resources/fullcalendar/fullcalendar-4.3.1/list/main.js"></script>
-<!-- fullcalendar end -->
-
-<!-- 부트스트랩 기본 템플릿 -->
-<!-- Bootstrap CSS -->
-<link href="resources/fullcalendar/origin/css/bootstrap.min.css" rel="stylesheet">
-<!-- bootstrap theme -->
-<link href="resources/fullcalendar/origin/css/bootstrap-theme.css" rel="stylesheet">
-<!--external css-->
-<!-- font icon -->
-<link href="resources/fullcalendar/origin/css/elegant-icons-style.css" rel="stylesheet" />
-<link href="resources/fullcalendar/origin/css/font-awesome.min.css" rel="stylesheet" />
-<!-- Custom styles -->
-<link href="resources/fullcalendar/origin/css/style.css" rel="stylesheet">
-<link href="resources/fullcalendar/origin/css/style-responsive.css" rel="stylesheet" />
-
-<!-- custom -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-	
 <link href="resources/fullcalendar/custom/css/schedule.css" rel="stylesheet">
-<script src='resources/fullcalendar/custom/js/schedule.js'></script>
-
+<script src="resources/fullcalendar/custom/js/fullcalendar.js"></script>
 <style type="text/css">
 html, body {
 	left: 30px;
@@ -103,21 +83,26 @@ html, body {
 				{
 				url : '/prectice/planList.do',
 				type : 'POST',
-				success : function() {
-					alert('성공')
+				success : function(msg) {
+					console.log(msg);
 				},
 				error : function() {
 					alert('제발.... 돼라');
 				},
 				color:'red'
 			}],
-			
-			  eventClick: function(event) {
-				    var title = event.event._def.title;
-				    
-				    $.ajax({
-				    	url : '/prectice/'
-				    });
+			  eventRender: function(info){
+				
+				plan_no = info.event.extendedProps.plan_no;
+				console.info(plan_no);
+			  },
+			  eventClick: function(info){
+					
+				  plan_no = info.event.extendedProps.plan_no;
+				  var openpopup;
+				  var popurl = "fullcalendardetail.do?plan_no="+plan_no;
+				  var popoption = "width = 600, height = 600 left = 100, top=50,location=no"
+				  openpopup = window.open(popurl, "fullcalendardetail", popoption); 
 				  },
 			  eventResize: function(info) {
 				    alert(info.event.title + " end is now " + info.event.end.toISOString());
@@ -153,15 +138,7 @@ html, body {
             </section>
           </div>
         </div>
-        
-  <!-- javascripts -->
-  <script src="resources/fullcalendar/origin/js/jquery.js"></script>
-  <script src="resources/fullcalendar/origin/js/bootstrap.min.js"></script>
-  <!-- nice scroll -->
-  <script src="resources/fullcalendar/origin/js/jquery.scrollTo.min.js"></script>
-  <script src="resources/fullcalendar/origin/js/jquery.nicescroll.js" type="text/javascript"></script>
-  <!-- jquery validate js -->
-  <script type="text/javascript" src="resources/fullcalendar/origin/js/jquery.validate.min.js"></script>
+
 
   <!-- custom form validation script for this page-->
   <script src="resources/fullcalendar/origin/js/form-validation-script.js"></script>
@@ -169,5 +146,6 @@ html, body {
   <script src="resources/fullcalendar/origin/js/scripts.js"></script>
   <!-- 부트스트랩 기본 템플릿 end -->
   <%@ include file="/WEB-INF/views/form/footer.jsp" %>
+
 </body>
 </html>

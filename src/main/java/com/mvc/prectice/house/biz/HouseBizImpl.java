@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mvc.prectice.house.dao.HouseDao;
 import com.mvc.prectice.house.dto.HouseDto;
+import com.mvc.prectice.house.dto.PagingDto;
 
 @Service
 public class HouseBizImpl implements HouseBiz {
@@ -15,8 +16,8 @@ public class HouseBizImpl implements HouseBiz {
 	private HouseDao housedao;
 	
 	@Override
-	public List<HouseDto> selectList() {
-		return housedao.selectList();
+	public List<HouseDto> selectList(PagingDto pagingdto) {
+		return housedao.selectList(pagingdto);
 	}
 
 	@Override
@@ -38,5 +39,12 @@ public class HouseBizImpl implements HouseBiz {
 	public int delete(int house_id) {
 		return housedao.delete(house_id);
 	}
+
+	@Override
+	public int countHouse() {
+		return housedao.countHouse();
+	}
+
+
 
 }

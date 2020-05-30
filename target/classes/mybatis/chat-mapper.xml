@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="chat">
+
+	<insert id="chatroom_insert" parameterType="chatRoomDto">
+		INSERT INTO CHATROOM(CHATROOM_NO, CHATROOM_TITLE) VALUES(CHATROOM_SEQ.NEXTVAL, #{chatroom_title})
+	</insert>
+	
+	<select id="chatroom_selectList" resultType="chatRoomDto">
+		SELECT * FROM CHATROOM ORDER BY CHATROOM_NO DESC
+	</select>
+	
+	<select id="TotalCount" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM CHATLIST WHERE CHATROOM_NO = #{chatroom_no}
+	</select>
+	
+	<update id="chatroom_update" parameterType="map">
+		UPDATE CHATROOM SET CHATROOM_TOTALCOUNT = #{chatroom_totalcount} WHERE CHATROOM_NO = #{chatroom_no}
+	</update>
+	
+	<insert id="chatlist_insert" parameterType="map">
+		INSERT INTO CHATLIST VALUES(CHATLIST_SEQ.NEXTVAL, #{chatroom_no}, #{member_no})
+	</insert>
+	
+	<select id="chatList_check" parameterType="map" resultType="int">
+		SELECT COUNT(*) FROM CHATLIST WHERE CHATROOM_NO = #{chatroom_no} AND MEMBER_NO = #{member_no} 
+	</select>
+	
+	<insert id="chat_insert" parameterType="massageDto">
+		INSERT INTO MASSAGE VALUES(MASSAGE_SEQ.NEXTVAL, #{chatroom_no}, #{massage_content}, SYSDATE)
+	</insert>
+	
+	<delete id="chatlist_delete" parameterType="map">
+		DELETE FROM CHATLIST WHERE CHATROOM_NO = #{chatroom_no} AND MEMBER_NO = #{member_no}
+	</delete>
+	
+	<select id="chatList" parameterType="int" resultType="massageDto">
+		SELECT * FROM MASSAGE WHERE CHATROOM_NO = #{chatroom_no} ORDER BY MASSAGE_NO 
+	</select>
+	
+
+</mapper>

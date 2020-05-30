@@ -42,6 +42,7 @@
     </script>
 </head>
 <body class="postid-4397">
+
 	<c:choose>
       <c:when test="${empty logininfo }">
       	 <br/>
@@ -74,6 +75,10 @@
    
    
    
+
+
+<%@ include file="WEB-INF/views/form/header.jsp" %>
+>>>>>>> cece08afd31d303c05fea2d815cbb77291b4651b
   <div class="outer-container">
     <div class="header-img-container">
       <h1 class="header-title">What is coliving? Commmon's Complete Guide to Coliving</h1>

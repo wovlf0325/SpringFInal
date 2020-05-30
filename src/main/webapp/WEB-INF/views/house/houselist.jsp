@@ -9,6 +9,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style type="text/css">
+#container {
+	width: 800px;
+	display: grid;
+	grid-template-rows: repeat(2, 200px);
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-rows: 200px;
+	column-gap: 10px;
+	row-gap: 10px;
+}
+
+#recent {
+    background-color: rgba(232, 232, 232, 1);
+    text-align: center;
+    height: 60%;
+    width: 13%;
+}
+
+#in {
+ display: inline-block;
+}
+
+.image{
+	width: 100px;
+	height: 100px;
+}
+</style>
 	<link rel="stylesheet" href="resources/css/board.css">
   <!-- Bootstrap core CSS -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -43,35 +71,34 @@
 <%@ include file="/WEB-INF/views/form/header.jsp" %>
 
 
-<style type="text/css">
-#container {
-	width: 800px;
-	display: grid;
-	grid-template-rows: repeat(2, 200px);
-	grid-template-columns: repeat(3, 1fr);
-	grid-auto-rows: 200px;
-	column-gap: 10px;
-	row-gap: 10px;
+
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script type="text/javascript">
+
+function movePage(p){
+	location.href="houselist.do?nowPage="+p;
 }
 
-#recent {
-    background-color: rgba(232, 232, 232, 1);
-    text-align: center;
-    height: 60%;
-    width: 13%;
+function prevPage(){
+	var sel = $('#cntPerPage').val();
+	location.href="houselist.do?nowPage=${paging.startPage - 1 }";
 }
 
-#in {
- display: inline-block;
+function nextPage(){
+	var sel = $('#cntPerPage').val();
+	location.href="houselist.do?nowPage=${paging.endPage+1 }";
 }
+</script>
 
-.image{
-	width: 100px;
-	height: 100px;
-}
+</head>
+<body>
 
-
-</style>
+	<h1>LIST</h1>
+	
+	<div>
+		<input type="button" value="글쓰기"
+			onclick="location.href='houseinsert.do'">
+	</div>
 
 	<c:choose>
 		<c:when test="${empty houselist }">
@@ -81,30 +108,47 @@
 
 		</c:when>
 		<c:otherwise>
+
 			<div class="container" id="container">
+
 				<c:forEach items="${houselist }" var="housedto">
 
 					<div class="item" style="cursor: pointer"
 						onclick="location.href='housedetail.do?house_id=${housedto.house_id}'">
-						<img
-							src="resources/images/houseimgstorage/${housedto.house_image }"
-							width="90%" height="90%"><br /> ${housedto.house_name }
-						<p />
+						<img src="resources/images/houseimgstorage/${housedto.house_image }"
+							width="90%" height="90%"><br /> 
+							${housedto.house_name }
+						<p/>
 					</div>
 
 				</c:forEach>
 			</div>
 		</c:otherwise>
 	</c:choose>
+	
 
-
-
-
-
-	<div>
-		<input type="button" value="글쓰기"
-			onclick="location.href='houseinsert.do'">
+ 	<div id="pageselect" style="display: block;" align="center">
+		<c:if test="${paging.startPage != 1 }">
+			<a onclick="prevPage()">&lt;</a>
+		</c:if>
+		
+		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == paging.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				
+				<c:when test="${p != paging.nowPage }">
+					<a onclick="movePage(${p })">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		
+		<c:if test="${paging.endPage > paging.lastPage}">
+			<a onclick="nextPage()">&gt;</a>
+		</c:if>
 	</div>
+
 
 
 <%
@@ -113,9 +157,7 @@
 
 	if(cook != null){
 		
-		/* if(cook.getClass().getName().indexOf("image") != -1){
-			out.println("최근 본 게시물이 없습니다.");
-		} */
+		
 		
 		out.println("<div style='overflow:auto;position:fixed;right:20px;bottom:80px;' id='recent'>");
 		out.println("<div id='in'>");
@@ -156,5 +198,6 @@
 %>    
 
 <%@ include file="/WEB-INF/views/form/footer.jsp" %>
+
 </body>
 </html>
