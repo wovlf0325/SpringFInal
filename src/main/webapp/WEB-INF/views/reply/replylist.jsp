@@ -66,8 +66,6 @@
 </head>
 <body>
 	
-
-	
 		<c:forEach var="row" items="${replylist }">
 			
 				<div>
@@ -75,15 +73,15 @@
 				</div>
 				<div class="${row.reply_no }">
 					<div>
-						<input type="text" readonly="readonly" value="${row.reply_content }">
+						<input type="text" readonly="readonly" class="form-control" value="${row.reply_content }">
 					</div>
 					<div>
 						<fmt:formatDate value="${row.reply_regdate }" pattern="yyyy-MM-dd HH:mm:ss"/>
 					</div>
 					<div>
 						<c:if test="${sessionScope.logininfo.member_id == row.member_id  }">
-							<input type="button" value="삭제" id="replydelete" onclick="replydelete(${row.reply_no})">
-							<input type="button" value="수정" id="replyupdate" onclick="replyupdate(${row.reply_no },'${row.reply_content}')">
+							<input type="button" class="btn btn-info" value="삭제" id="replydelete" onclick="replydelete(${row.reply_no})">
+							<input type="button" class="btn btn-info" value="수정" id="replyupdate" onclick="replyupdate(${row.reply_no },'${row.reply_content}')">
 									
 						</c:if>
 					</div>

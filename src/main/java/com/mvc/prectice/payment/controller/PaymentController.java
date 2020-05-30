@@ -58,11 +58,11 @@ public class PaymentController {
 	) {
 		String member_email = email;
 		String member_name = memberName;
-		System.out.println(member_email);
-		System.out.println(member_name);
-		System.out.println(house_id);
-		System.out.println(paymentUID);
-		System.out.println(paymentAmount);
+		//System.out.println(member_email);
+		//System.out.println(member_name);
+		//System.out.println(house_id);
+		//System.out.println(paymentUID);
+		//System.out.println(paymentAmount);
 		
 		
 		return "{ \"result\" : "+ loginDao.addPayment(new Payment(0, member_email, member_name, house_id, paymentUID, paymentAmount)) +" }";

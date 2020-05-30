@@ -17,6 +17,16 @@
       Coliving | Home
     </title>
 
+
+    <style type="text/css">
+    .top{
+    	color: lightgray;
+    }
+    
+    
+    
+    </style>
+    
     <!-- Bootstrap core CSS -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="resources/css/theme.css" rel="stylesheet">
@@ -34,6 +44,56 @@
     <link href="resources/css/superfish.css" rel="stylesheet" media="screen">
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="resources/css/component.css">
+    <link href="resources/css/style.css" rel="stylesheet">
+    <link href="resources/css/style-responsive.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="resources/css/parallax-slider/parallax-slider.css" />
+    <script type="text/javascript" src="resources/js/parallax-slider/modernizr.custom.28468.js">
+    </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js">
+    </script>
+    <script src="js/respond.min.js">
+    </script>
+    <![endif]-->
+
+</head>
+<body>
+	<c:choose>
+	      <c:when test="${empty logininfo }">
+	      	 <br/>
+	     	 <br/>
+			<div align="right" style="margin-right:18%;" class="top">
+	         <a href="login.do">로그인</a>
+	         &nbsp;&nbsp;&nbsp;&nbsp; 
+	         <a href="agreement.do">회원가입</a>
+	         </div>
+	         <br/>
+	         <br/>
+	      </c:when>
+	      <c:otherwise>
+	  	     <br/>	
+	     	 <div align="right" style="margin-right:10%;" class="top">
+	         <a>${logininfo.member_id }님</a>
+	         &nbsp;&nbsp;&nbsp;
+	         <a href="myinfo.do">내정보</a>
+	         &nbsp;&nbsp;&nbsp;
+	         <a href="letterlist.do">쪽지함</a>
+	         &nbsp;&nbsp;&nbsp;
+	         <a href="logout.do">로그아웃</a>
+	         &nbsp;&nbsp;&nbsp;
+	         </div>
+	         <br/>
+	         <br/>
+	      </c:otherwise>
+	   </c:choose>
+	   
+
+
 
 
     <!-- Custom styles for this template -->
@@ -187,6 +247,7 @@
 
 </header>
 
+>>>>>>> cece08afd31d303c05fea2d815cbb77291b4651b
 <!--header start-->
     <header class="head-section">
       <div class="navbar navbar-default navbar-static-top container">
@@ -201,8 +262,8 @@
           <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                   <li class="dropdown">
-                      <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-                      "dropdown" data-toggle="dropdown" href="index.jsp">Home <i class="fa fa-angle-down"></i>
+                      <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover="dropdown" 
+                      data-toggle="dropdown" href="houselist.do">코리빙하우스 <i class="fa fa-angle-down"></i>
                       </a>
                       <ul class="dropdown-menu">
                           <li>
@@ -218,8 +279,22 @@
                   </li>
                   <li class="dropdown">
                       <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-                      "dropdown" data-toggle="dropdown" href="#">Feature <i class="fa fa-angle-down"></i>
+                      "dropdown" data-toggle="dropdown" href="boardlist.do?nowPage=1">게시판 <i class="fa fa-angle-down"></i>
                       </a>
+                      <ul class="dropdown-menu">
+                          <li>
+                              <a href="boardlist.do?nowPage=1&cntPerPage=10&boardcategory=2">공지게시판</a>
+                          </li>
+                          <li>
+                              <a href="boardlist.do?nowPage=1&cntPerPage=10&boardcategory=3">자유게시판</a>
+                          </li>
+                          <li>
+                              <a href="boardlist.do?nowPage=1&cntPerPage=10&boardcategory=4">불만게시판</a>
+                          </li>
+                          <li>
+                              <a href="boardlist.do?nowPage=1&cntPerPage=10&boardcategory=5">카풀게시판</a>
+                      </ul>
+                      
                       <ul class="dropdown-menu">
                           <li>
                               <a href="typography.html">Typography</a>
@@ -262,8 +337,16 @@
                   </li>
                   <li class="dropdown">
                       <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-                      "dropdown" data-toggle="dropdown" href="#">Pages <i class="fa fa-angle-down"></i>
+						"dropdown" data-toggle="dropdown" href="fullcalendar.do">일정/관리 <i class="fa fa-angle-down"></i>
                       </a>
+                      
+                  </li>
+                  <li class="dropdown">
+                      <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+                      "dropdown" data-toggle="dropdown" href="#">채팅 <i class="fa fa-angle-down"></i>
+                      </a>
+                      
+                  </li>
                       <ul class="dropdown-menu">
                           <li>
                               <a href="about.html">About</a>
@@ -305,7 +388,7 @@
                               <a href="privacy.html">Privacy policy</a>
                           </li>
                       </ul>
-                  </li>
+                  
                   <li class="dropdown">
                       <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
                       "dropdown" data-toggle="dropdown" href="#">Portfolio <i class="fa fa-angle-down"></i>
@@ -348,6 +431,7 @@
                       <a href="contact.html">Contact</a>
                   </li>
                   <li><input class="form-control search" placeholder=" Search" type="text"></li>
+
               </ul>
           </div>
       </div>

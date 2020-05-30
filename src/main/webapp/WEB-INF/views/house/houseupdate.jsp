@@ -5,6 +5,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/board.css">
+  <!-- Bootstrap core CSS -->
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/theme.css" rel="stylesheet">
+    <link href="resources/css/bootstrap-reset.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!--external css-->
+    <link href="resources/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="resources/css/flexslider.css"/>
+    <link href="resources/assets/bxslider/jquery.bxslider.css" rel="stylesheet" />
+    <link rel="stylesheet" href="resources/css/animate.css">
+    <link rel="stylesheet" href="resources/assets/owlcarousel/owl.carousel.css">
+    <link rel="stylesheet" href="resources/assets/owlcarousel/owl.theme.css">
+
+    <link href="resources/css/superfish.css" rel="stylesheet" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="resources/css/component.css">
+    <link href="resources/css/style.css" rel="stylesheet">
+    <link href="resources/css/style-responsive.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="resources/css/parallax-slider/parallax-slider.css" />
+    <script type="text/javascript" src="resources/js/parallax-slider/modernizr.custom.28468.js">
+    </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 function uploadimg(){
@@ -16,7 +44,7 @@ function uploadimg(){
 <body>
 	<h1> 코리빙하우스 수정하기</h1>
 	
-	<form action="houseupdateres.do" method="post" enctype="multipart/form-data">
+	<form action="houseupdateres.do" method="post" enctype="multipart/form-data" class="bs-example">
 		<input type="hidden" name="house_id" value="${housedto.house_id }"/>
 		
 		<div class="inputArea">
