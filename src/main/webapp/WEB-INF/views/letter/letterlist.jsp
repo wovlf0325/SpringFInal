@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="resources/css/board.css">
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script type="text/javascript">
 
 	window.onload=function(){
@@ -39,13 +41,17 @@
 	}
 </script>
 </head>
-<h1>쪽지함</h1>
 <body>
+<%@ include file="/WEB-INF/views/form/header.jsp" %>
+
+
+
+<h1>쪽지함</h1>
 	<input type="button" value="보낸 쪽지함" onclick="location.href='lettersend.do'">
 	<form action="letterdelete.do" method="post">
 	<input type="hidden" name="command" value="multidelete">
 	<input type="hidden" name="command_2" value="receive"/>
-	<table border="1">
+	<table border="1" class="table table-striped table-hover">
 	
 		<colgroup>
 			<col width="50"/>
@@ -104,5 +110,6 @@
 	</form>
 
 
+<%@ include file="/WEB-INF/views/form/footer.jsp" %>
 </body>
 </html>
