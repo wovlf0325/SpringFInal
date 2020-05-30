@@ -72,7 +72,8 @@ public class LoginController {
 	public String LoginRes(LoginDto logindto, HttpServletRequest request) {
 		LoginDto dto = new LoginDto();
 		dto = loginbiz.selectInfo(logindto);
-		if (dto == null || dto.getId() == null) return "redirect:login.do";
+		if (dto == null || dto.getId() == null) 
+			return "redirect:login.do";
 			System.out.println(dto.getId());
 			System.out.println(dto.getMember_pw());
 		if (logindto.getId().equals(dto.getId())) {

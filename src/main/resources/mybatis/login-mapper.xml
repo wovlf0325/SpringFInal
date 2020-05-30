@@ -26,7 +26,14 @@
 		WHERE MEMBER_ID =#{member_id}
 			
 	</update>
+	
+	<update id="updatePayment" parameterType="paymentDto">
+		UPDATE MEMBER 
+		SET HOUSE_ID = #{house_id}, MEMBER_ROLE = 'RES', MEMBER_STATUS = '2'
+		WHERE MEMBER_EMAIL =#{member_email}
+	</update>
+	
 	<insert id = "addPayment" parameterType="paymentDto">
-		insert into PAYMENT VALUES(PAYMENT_SEQ.NEXTVAL, #{memberName}, #{paymentUID}, #{paymentAmount})
+		insert into PAYMENT VALUES(PAYMENT_SEQ.NEXTVAL, #{member_name}, #{paymentUID}, #{paymentAmount})
 	</insert>
 </mapper>

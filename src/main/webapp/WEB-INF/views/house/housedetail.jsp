@@ -47,13 +47,29 @@
 			<td>${housedto.house_status }</td>
 		</tr>	
 		
+		
+		
+		<tr>
+			<th>입주신청하기</th>
+			<td>
+				<input type="button" value="입주신청하기" onclick="window.open('payment.do?house_name=${housedto.house_name}&house_id=${housedto.house_id }','결제하기', 'width=500, height=500, location=no, status=no, scrollbars=yes');">
+			</td>
+		</tr>
+		
+		
 		<tr>
 			<td colspan="2" align="right">
 			<input type="button" value="수정 " onclick="location.href='houseupdateform.do?house_id=${housedto.house_id }'">
 			<input type="button" value="삭제" onclick="location.href='housedelete.do?house_id=${housedto.house_id }'">
 			<input type="button" value="목록" onclick="location.href='houselist.do'">
 			</td>
-		</tr>			
+		</tr>	
+		
+		
+		
+		
+		
+			
 					
 	
 	</table>
