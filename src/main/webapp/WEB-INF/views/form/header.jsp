@@ -93,26 +93,6 @@
 	   </c:choose>
 	   
 
-
-
-
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="resources/css/component.css">
-    <link href="resources/css/style.css" rel="stylesheet">
-    <link href="resources/css/style-responsive.css" rel="stylesheet" />
-
-    <link rel="stylesheet" type="text/css" href="resources/css/parallax-slider/parallax-slider.css" />
-    <script type="text/javascript" src="resources/js/parallax-slider/modernizr.custom.28468.js">
-    </script>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js">
-    </script>
-    <script src="js/respond.min.js">
-    </script>
-    <![endif]-->
-
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style type="text/css">
 
@@ -217,22 +197,7 @@
 </script>
 </head>
 <body>
-<header align="right">
-<a href="logo.do"><img align="left" width="70" height="90" src="https://s3.orbi.kr/data/file/united2/1838c353-5e34-48fe-814c-83c353e2a2e1D013A0F3-D20B-4FBD-ABA0-E4C5213C9C3E.jpeg"></a>
-	<c:choose>
-		<c:when test="${empty logininfo }">
-			<a href="login.do">로그인</a> <a href="agreement.do">회원가입</a>	
-		</c:when>
-		<c:otherwise>
-			<a href="myinfo.do">내정보</a>
-			<a href="logout.do">로그아웃</a>
-			<a href="letterlist.do">쪽지함</a>
-			<a href="fullcalendar.do">풀캘린더</a>
-			<a href="loading.do">로딩</a>
-			<a href="chart.do">차트</a>
-			<a href="mainchart.do">메인차트</a>
-		</c:otherwise>
-	</c:choose>
+
 
 	
 <div class="loading">
@@ -245,9 +210,7 @@
 <div id="wall">로딩중이오이다...</div>
 </div>
 
-</header>
 
->>>>>>> cece08afd31d303c05fea2d815cbb77291b4651b
 <!--header start-->
     <header class="head-section">
       <div class="navbar navbar-default navbar-static-top container">
