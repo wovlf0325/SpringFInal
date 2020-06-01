@@ -75,7 +75,7 @@
 <a href="payment.do">결제하기</a>
 <a href="fullcalendar.do">풀캘린더</a>
 
-</section>
 <%@ include file="form/footer.jsp" %>
+</section>
 </body>
 </html>
