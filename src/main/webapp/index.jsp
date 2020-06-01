@@ -13,10 +13,101 @@
   <link href="resources/css/landingpage.css" rel="stylesheet">
   <title>Coliving</title>
   
+  <style type="text/css">
+@import  url(https://fonts.googleapis.com/css?family=Montserrat);
+$width: 15px;
+$height: 15px;
+
+$bounce_height: 30px;
+
+body {
+  position: relative; 
+  width: 100%;
+  height: 100vh;
+  font-family: Montserrat;
+}
+
+.wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text {
+  color: #fbae17;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.bounceball {
+  position: relative;
+  display: inline-block;
+  height: 37px;
+  width: $width;
+  &:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 0;
+    width: $width;
+    height: $height;
+    border-radius: 50%;
+    background-color: #fbae17;
+    transform-origin: 50%;
+    animation: bounce 500ms alternate infinite ease;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    top: $bounce_height;
+    height: 5px;
+    border-radius: 60px 60px 20px 20px;
+    transform: scaleX(2);
+  }
+  35% {
+    height: $height;
+    border-radius: 50%;
+    transform: scaleX(1);
+  }
+  100% {
+    top: 0;
+  }
+}
+.loadings{
+    width:100%;
+    height:100%;
+    position:fixed;
+    left:0px;
+    top:0px;
+    background:#fff;
+    z-index:1000; /* 이 값으로 레이어의 위치를 조정합니다. */
+}
+</style>
+<script>
+
+     setTimeout(function(){
+        $(".loadings").css("display","none");
+     },2000)
+    
+</script>
+
 </head>
 <body class="postid-4397">
 
 <%@ include file="WEB-INF/views/form/header.jsp" %>
+
+<div class="loadings">
+<div class="wrap">
+  <div class="loading">
+    <div class="bounceball"></div>
+    <div class="text">LOADING</div>
+  </div>
+</div>
+</div>
+
+
   <div class="outer-container">
     <div class="header-img-container">
       <h1 class="header-title">What is coliving? Commmon's Complete Guide to Coliving</h1>

@@ -67,8 +67,6 @@
     </script>
 
 </head>
-<body>
-<%@ include file="/WEB-INF/views/form/header.jsp" %>
 
 
 
@@ -92,8 +90,9 @@ function nextPage(){
 
 </head>
 <body>
+<%@ include file="/WEB-INF/views/form/header.jsp" %>
 
-	<h1>LIST</h1>
+	<h1>HOUSE LIST</h1>
 	
 	<div>
 		<a href="houseinsert.do">하우스등록</a>

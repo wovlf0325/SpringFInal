@@ -12,11 +12,12 @@
 </head>
 <body>
 <%@include file="../form/header.jsp" %>
-	
+<div style="margin-left: auto; margin-right: auto; width: 40%; text-align: center;">
 	<form action="createchatroom.do" method="post" style="margin-left: auto; margin-right: auto;">
 		<input type="text" name="chatroom_title">
 		<input type="submit" value="방 생성">
 	</form>
+	<br/><br/>
 
 	<table border="1" style="margin-left: auto; margin-right: auto;">
 		<colgroup>
@@ -33,7 +34,8 @@
 			</tr>
 		</c:forEach>
 	</table>
-		
+</div>
+<%@ include file="../form/footer.jsp" %>
 
 </body>
 </html>

@@ -94,107 +94,7 @@
 	   
 
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-<style type="text/css">
 
-#wall {
-  position:relative;
-  width: 100%;
-  height: 150px;
-  top: -10px;
-  background: #fff;
-  text-align: center;
-  padding-top: 30px;
-  font-family: Quicksand, Helvetica, sans;
-  color: red;
-}
-
-#eye-l, #eye-r {
-  position:absolute;
-  z-index: 20;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: white;
-  margin-top:5px;
-  left: 5px;
-  margin-left: -5px;
-  -webkit-animation: search 2s infinite;
-  box-sizing: border-box;
-  border: 3px solid red;
-}
-
-#eye-r {
-  margin-left: 5px;
-}
-
-#nose {
-  position:relative;
-  width: 15px;
-  height: 15px;
-  border: 3px solid red;
-  border-radius: 50%;
-  border-top-color: transparent;
-  background: white;
-  top:12px;
-  left:-7px;
-  -webkit-transform: rotate(35deg);
-  -webkit-animation: noser 2s infinite;
-}
-
-#mouth{
-  position:relative;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: red;
-  margin-top:20px;
-  float:left;
-  margin-left: 3px;
-  -webkit-animation: search 2s infinite;
-}
-
-#man {
-  position:relative;
-  width: 50px;
-  height: 70px;
-  border: 5px solid red;
-  border-radius: 50%;
-  margin-left:50%;
-  left: -25px;
-  -webkit-animation: pop 8s infinite;
-}
-
-@-webkit-keyframes search {
-  0%, 100% { -webkit-transform:translate(0px, 0px);}
-  50% {-webkit-transform:translate(32px, 0px);}
-}
-
-@-webkit-keyframes noser {
-  0%, 100% { -webkit-transform:translate(0px, 0px) rotate(35deg);}
-  50% {-webkit-transform:translate(43px, 0px) rotate(-35deg);}
-}
-
-@-webkit-keyframes pop {
-  0%, 100% { -webkit-transform:translate(0px, 80px)}
-  20%, 80% { -webkit-transform:translate(0px, 10px)}
-}
-.loading{
-    width:100%;
-    height:100%;
-    position:fixed;
-    left:0px;
-    top:0px;
-    background:#fff;
-    z-index:1000; /* 이 값으로 레이어의 위치를 조정합니다. */
-}
-</style>
-<script>
-
-  	setTimeout(function(){
-  		$(".loading").css("display","none");
-  	},2000)
-    
-</script>
 </head>
 <body>
 
@@ -225,6 +125,9 @@
           </div>
           <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
+              	  <li>
+              	  	  <a href="main.do">Home</a>
+              	  </li>
                   <li class="dropdown">
                       <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover="dropdown" 
                       data-toggle="dropdown" href="houselist.do">코리빙하우스 </a>

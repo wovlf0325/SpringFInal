@@ -11,23 +11,25 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<body>
+<body style="align-content: center;">
+<%@ include file="../form/header.jsp" %>
+<div style="margin-left: auto; margin-right: auto; width: 40%;">
     <div>
     	<input type="text" id="chatroomnum" value="${chatroomnum }" style="display: none;">
         <input type="text" id="sender" value="${sessionScope.logininfo.member_id }" style="display: none;">
         <input type="text" id="messageinput" onkeydown="enter();">
-    </div>
-    <div>
+        
         <!-- <button type="button" onclick="openSocket();" style="display: none;">Open</button>
         <button type="button" onclick="closeSocket();" style="display: none;">Close</button> -->
-        <button type="button" onclick="send();">Send</button>
-        <button type="button" onclick="chatout();">Back</button>
-    </div>
+        <a onclick="send();">보내기</a>
+        <a onclick="chatout();">나가기</a>
+    </div><br/><br/>
     <!-- Server responses get written here -->
     <c:forEach items="${chatlist }" var="dto">
     	<div>${dto.massage_content }  /  <fmt:formatDate value="${dto.massage_regtime }" pattern="HH:mm"/></div>
     </c:forEach>
     <div id="messages"></div>
+</div>
     <!-- websocket javascript -->
     <script type="text/javascript">
         var ws;
@@ -100,6 +102,8 @@
         	});
         }
   </script>
+  
+  <%@ include file="../form/footer.jsp" %>
 </body>
 
 </html>
