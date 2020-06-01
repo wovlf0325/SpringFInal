@@ -200,7 +200,7 @@
 
 
 	
-<div class="loading">
+<!-- <div class="loading">
 <div id="man">
   <div id="eye-l"></div>
   <div id="eye-r"></div>
@@ -208,7 +208,7 @@
   <div id="mouth"></div>
 </div>
 <div id="wall">로딩중이오이다...</div>
-</div>
+</div> -->
 
 
 <!--header start-->

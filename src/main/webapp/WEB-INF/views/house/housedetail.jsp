@@ -36,10 +36,13 @@
     </script>
 </head>
 <body>
-
-	<h1> 코리빙하우스 상세보기 </h1>
+<%@ include file="../form/header.jsp" %>
 	
-	<table border="1" class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+	<table border="1" class="table table-striped table-hover" style="margin-left: auto; margin-right: auto; width: 80%;">
+	<colgroup>
+		<col width="150px">
+		<col width="600px">
+	</colgroup>
 		<tr>
 			<th>코리빙하우스 이름</th>
 			<td>${housedto.house_name }</td>
@@ -57,7 +60,7 @@
 		
 		<tr>
 			<th>코리빙하우스 상세사진 </th>
-			<td><img src="resources/images/houseimgstorage/${housedto.house_image }"></td>
+			<td><img src="resources/images/houseimgstorage/${housedto.house_image }" style="width: 70%"></td>
 		</tr>
 		
 		<tr>

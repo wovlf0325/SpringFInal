@@ -179,7 +179,7 @@ $("#login-box-link").click(function(){
         <img width="90" height="45" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/>
       </a>
       <a href="kakaoLogin.do">
-        <img src="https://developers.kakao.com/tool/resource/static/img/button/login/simple/ko/kakao_login_btn_simple_medium.png"/>
+        <img src="https://developers.kakao.com/tool/resource/static/img/button/login/simple/ko/kakao_login_medium.png"/>
       </a>
     </form>
   </div>
