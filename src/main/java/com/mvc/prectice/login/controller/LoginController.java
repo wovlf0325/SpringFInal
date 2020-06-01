@@ -1,6 +1,7 @@
 package com.mvc.prectice.login.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,16 +20,29 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.mvc.prectice.board.dao.BoardDao;
+import com.mvc.prectice.board.dto.BoardDto;
+import com.mvc.prectice.house.biz.HouseBiz;
+import com.mvc.prectice.house.dao.HouseDao;
+import com.mvc.prectice.house.dto.HouseDto;
 import com.mvc.prectice.login.biz.KakaoLoginBO;
 import com.mvc.prectice.login.biz.LoginBiz;
 import com.mvc.prectice.login.biz.NaverLoginBO;
 import com.mvc.prectice.login.dto.LoginDto;
+import com.mvc.prectice.payment.dto.Payment;
 
 @Controller
 public class LoginController {
 
 	private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
+	@Autowired
+	private LoginBiz loginbiz;
+	@Autowired
+	private HouseDao housedao;
+	@Autowired
+	private BoardDao boarddao;
+	
 	/* NaverLoginBO */
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
@@ -47,8 +61,6 @@ public class LoginController {
 	}
 	
 
-	@Autowired
-	private LoginBiz loginbiz;
 
 	@RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
 	public String Login(Model model, HttpSession session) {
@@ -92,11 +104,24 @@ public class LoginController {
 	
 	
 	@RequestMapping("/updateform.do")
-	public String updateform(HttpServletRequest request) {
+	public String updateform(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		LoginDto dto = (LoginDto) session.getAttribute("logininfo");
-		if (dto == null) return "redirect:login.do";
-		System.out.println("test");
+		if (dto == null) {
+			return "redirect:login.do";
+		} else {
+			List<HouseDto> houselist = housedao.House_list(dto.getHouse_id());
+			model.addAttribute("house_list", houselist);
+			
+			List<BoardDto> boardlist = boarddao.board_list(dto.getMember_id());
+			model.addAttribute("board_list", boardlist);
+			
+			List<Payment> paymentlist = loginbiz.payment_list(dto.getMember_name());
+			model.addAttribute("payment_list", paymentlist);
+			
+			System.out.println("내정보 불러오기 성공");
+		}
+		
 		return "updateform";
 	}
 	
@@ -108,22 +133,17 @@ public class LoginController {
 		LoginDto dto = (LoginDto) session.getAttribute("logininfo");
 		return loginbiz.selectInfoWhereId(dto);
 	}
-	@RequestMapping(value = "/updateMember",method = RequestMethod.POST)
-	public String updateMember(
-
-
-			@RequestParam("member_id")String member_id, 
-			@RequestParam("member_pw")String member_pw,
-			@RequestParam("member_name")String member_name,
-			@RequestParam("member_email")String member_email,
-			@RequestParam("member_phone")String member_phone,
-			@RequestParam("member_address")String member_address,
-			@RequestParam("member_interest")String member_interest,
-			@RequestParam("member_area")String member_area,
-			@RequestParam("member_role")String member_role,
-			@RequestParam("member_status")String member_status) {
-		loginbiz.updateMypage(new LoginDto(member_id, member_pw, member_name, member_phone, member_email, member_address, member_role, member_area, member_interest, member_status));
-		return "redirect:updateform.do";
+	
+	@RequestMapping(value = "/updateMember", method = RequestMethod.POST)
+	public String UpdateMember(LoginDto logindto) {
+		int res = loginbiz.updateMypage(logindto);
+		if(res > 0) {
+			System.out.println("추가 정보 수정 성공");
+			return "redirect:updateform.do";
+		} else {
+			System.out.println("추가 정보 수정 실패");
+			return "redirect:updateform.do";
+		}
 	}
 	
 	
@@ -141,7 +161,7 @@ public class LoginController {
 	@RequestMapping(value="/kakaoLoginRes.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String KaKaoLoginRes(Model model, @RequestParam("code") String code, HttpServletRequest request, HttpServletResponse response) {
 		// 로그인 후에 code get
-System.out.println(code);
+		System.out.println(code);
 		
 		JsonNode node = KakaoLoginBO.getAccessToken(code);
 		JsonNode accessToken = node.get("access_token");

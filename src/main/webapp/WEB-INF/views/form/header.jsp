@@ -80,7 +80,7 @@
 	     	 <div align="right" style="margin-right:10%;" class="top">
 	         <a>${logininfo.member_id }님</a>
 	         &nbsp;&nbsp;&nbsp;
-	         <a href="myinfo.do">내정보</a>
+	         <a href="updateform.do">내정보</a>
 	         &nbsp;&nbsp;&nbsp;
 	         <a href="letterlist.do">쪽지함</a>
 	         &nbsp;&nbsp;&nbsp;
@@ -92,26 +92,6 @@
 	      </c:otherwise>
 	   </c:choose>
 	   
-
-
-
-
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="resources/css/component.css">
-    <link href="resources/css/style.css" rel="stylesheet">
-    <link href="resources/css/style-responsive.css" rel="stylesheet" />
-
-    <link rel="stylesheet" type="text/css" href="resources/css/parallax-slider/parallax-slider.css" />
-    <script type="text/javascript" src="resources/js/parallax-slider/modernizr.custom.28468.js">
-    </script>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js">
-    </script>
-    <script src="js/respond.min.js">
-    </script>
-    <![endif]-->
 
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style type="text/css">
@@ -217,22 +197,7 @@
 </script>
 </head>
 <body>
-<header align="right">
-<a href="logo.do"><img align="left" width="70" height="90" src="https://s3.orbi.kr/data/file/united2/1838c353-5e34-48fe-814c-83c353e2a2e1D013A0F3-D20B-4FBD-ABA0-E4C5213C9C3E.jpeg"></a>
-	<c:choose>
-		<c:when test="${empty logininfo }">
-			<a href="login.do">로그인</a> <a href="agreement.do">회원가입</a>	
-		</c:when>
-		<c:otherwise>
-			<a href="myinfo.do">내정보</a>
-			<a href="logout.do">로그아웃</a>
-			<a href="letterlist.do">쪽지함</a>
-			<a href="fullcalendar.do">풀캘린더</a>
-			<a href="loading.do">로딩</a>
-			<a href="chart.do">차트</a>
-			<a href="mainchart.do">메인차트</a>
-		</c:otherwise>
-	</c:choose>
+
 
 	
 <div class="loading">
@@ -245,9 +210,7 @@
 <div id="wall">로딩중이오이다...</div>
 </div>
 
-</header>
 
->>>>>>> cece08afd31d303c05fea2d815cbb77291b4651b
 <!--header start-->
     <header class="head-section">
       <div class="navbar navbar-default navbar-static-top container">
@@ -263,19 +226,7 @@
               <ul class="nav navbar-nav">
                   <li class="dropdown">
                       <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover="dropdown" 
-                      data-toggle="dropdown" href="houselist.do">코리빙하우스 <i class="fa fa-angle-down"></i>
-                      </a>
-                      <ul class="dropdown-menu">
-                          <li>
-                              <a href="index.html">Home Parallax</a>
-                          </li>
-                          <li>
-                              <a href="index1.html">Home Seq-slider1</a>
-                          </li>
-                          <li>
-                              <a href="index2.html">Home Seq-slider2</a>
-                          </li>
-                      </ul>
+                      data-toggle="dropdown" href="houselist.do">코리빙하우스 </a>
                   </li>
                   <li class="dropdown">
                       <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
@@ -294,144 +245,25 @@
                           <li>
                               <a href="boardlist.do?nowPage=1&cntPerPage=10&boardcategory=5">카풀게시판</a>
                       </ul>
-                      
-                      <ul class="dropdown-menu">
-                          <li>
-                              <a href="typography.html">Typography</a>
-                          </li>
-                          <li>
-                              <a href="button.html">Buttons</a>
-                          </li>
-                          <li>
-                              <a href="form.html">Form</a>
-                          </li>
-                          <li>
-                              <a href="table.html">Table</a>
-                          </li>
-                          <li class="dropdown-submenu">
-                              <a href="#" tabindex="-1">More options</a>
-                              <ul class="dropdown-menu">
-                                  <li>
-                                      <a href="#" tabindex="-1">Second level</a>
-                                  </li>
-                                  <li class="dropdown-submenu">
-                                      <a href="#">Even More..</a>
-                                      <ul class="dropdown-menu">
-                                          <li>
-                                              <a href="#">3rd level</a>
-                                          </li>
-                                          <li>
-                                              <a href="#">3rd level</a>
-                                          </li>
-                                      </ul>
-                                  </li>
-                                  <li>
-                                      <a href="#">Second level</a>
-                                  </li>
-                                  <li>
-                                      <a href="#">Second level</a>
-                                  </li>
-                              </ul>
-                          </li>
-                      </ul>
+
                   </li>
                   <li class="dropdown">
                       <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-						"dropdown" data-toggle="dropdown" href="fullcalendar.do">일정/관리 <i class="fa fa-angle-down"></i>
+						"dropdown" data-toggle="dropdown" href="fullcalendar.do">일정/관리 
                       </a>
                       
                   </li>
-                  <li class="dropdown">
-                      <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-                      "dropdown" data-toggle="dropdown" href="#">채팅 <i class="fa fa-angle-down"></i>
-                      </a>
-                      
-                  </li>
-                      <ul class="dropdown-menu">
-                          <li>
-                              <a href="about.html">About</a>
-                          </li>
-                          <li>
-                              <a href="404.html">404 page</a>
-                          </li>
-                          <li>
-                              <a href="career.html">career</a>
-                          </li>
-                          <li>
-                              <a href="login.html">Login</a>
-                          </li>
-                          <li>
-                              <a href="registration.html">Registration</a>
-                          </li>
-                          <li>
-                              <a href="faq.html">FAQ</a>
-                          </li>
-                          <li class="dropdown-submenu">
-                              <a href="#" tabindex="-1">Pricing table</a>
-                              <ul class="dropdown-menu">
-                                  <li class="dropdown-submenu"></li>
-                                  <li>
-                                      <a href="price-table-one.html">Pricing table one</a>
-                                  </li>
-                                  <li>
-                                      <a href="price-table-two.html">Pricing table two</a>
-                                  </li>
-                              </ul>
-                          </li>
-                          <li>
-                              <a href="service.html">Service</a>
-                          </li>
-                          <li>
-                              <a href="terms.html">Terms & Condition</a>
-                          </li>
-                          <li>
-                              <a href="privacy.html">Privacy policy</a>
-                          </li>
-                      </ul>
                   
                   <li class="dropdown">
                       <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-                      "dropdown" data-toggle="dropdown" href="#">Portfolio <i class="fa fa-angle-down"></i>
+                      "dropdown" data-toggle="dropdown" href="chatlist.do">채팅
                       </a>
-                      <ul class="dropdown-menu">
-                          <li>
-                              <a href="portfolio-3-col.html">Portfolio 3 column</a>
-                          </li>
-                          <li>
-                              <a href="portfolio-4-col.html">Portfolio 4 column</a>
-                          </li>
-                          <li>
-                              <a href="portfolio-single-image.html">Portfolio Single Image</a>
-                          </li>
-                          <li>
-                              <a href="portfolio-single-video.html">Portfolio Single Video</a>
-                          </li>
-                      </ul>
                   </li>
-                  <li class="dropdown">
-                      <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-                      "dropdown" data-toggle="dropdown" href="#">Blog <i class="fa fa-angle-down"></i>
-                      </a>
-                      <ul class="dropdown-menu">
-                          <li>
-                              <a href="blog.html">Blog</a>
-                          </li>
-                          <li>
-                              <a href="blog-two-col.html">Blog two column</a>
-                          </li>
-                          <li>
-                              <a href="blog-detail.html">Blog Single Image</a>
-                          </li>
-                          <li>
-                              <a href="blog-detail-video.html">Blog single video</a>
-                          </li>
-                      </ul>
-                  </li>
+             
                   <li>
                       <a href="contact.html">Contact</a>
                   </li>
                   <li><input class="form-control search" placeholder=" Search" type="text"></li>
-
               </ul>
           </div>
       </div>

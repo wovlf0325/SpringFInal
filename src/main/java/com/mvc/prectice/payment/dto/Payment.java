@@ -8,9 +8,11 @@ public class Payment {
 	private int house_id;
 	private String paymentUID;
 	private int paymentAmount;
+	
 	public Payment() {
 		
 	}
+	
 	public Payment(int paymentNo, String member_email, String member_name, int house_id, String paymentUID,
 			int paymentAmount) {
 		this.paymentNo = paymentNo;
@@ -20,6 +22,7 @@ public class Payment {
 		this.paymentUID = paymentUID;
 		this.paymentAmount = paymentAmount;
 	}
+	
 	public int getPaymentNo() {
 		return paymentNo;
 	}

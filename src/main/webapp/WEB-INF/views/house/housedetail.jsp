@@ -39,7 +39,7 @@
 
 	<h1> 코리빙하우스 상세보기 </h1>
 	
-	<table border="1" class="table table-striped table-hover">
+	<table border="1" class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
 		<tr>
 			<th>코리빙하우스 이름</th>
 			<td>${housedto.house_name }</td>
@@ -72,7 +72,14 @@
 		
 		<tr>
 			<th>코리비하우스 현재상황</th>
-			<td>${housedto.house_status }</td>
+			<td>
+				<c:if test="${housedto.house_status eq 1}">
+					<c:out value="모집중"/>
+				</c:if>
+				<c:if test="${housedto.house_status eq 2}">
+					<c:out value="모집완료"/>
+				</c:if>
+			</td>
 		</tr>	
 		
 		
@@ -80,26 +87,19 @@
 		<tr>
 			<th>입주신청하기</th>
 			<td>
-				<input type="button" value="입주신청하기" onclick="window.open('payment.do?house_name=${housedto.house_name}&house_id=${housedto.house_id }','결제하기', 'width=500, height=500, location=no, status=no, scrollbars=yes');">
+				<input type="button" class="btn btn-info" value="입주신청하기" onclick="window.open('payment.do?house_name=${housedto.house_name}&house_id=${housedto.house_id }','결제하기', 'width=500, height=500, location=no, status=no, scrollbars=yes');">
 			</td>
 		</tr>
 		
 		
 		<tr>
 			<td colspan="2" align="right">
-			<input type="button" value="수정 " onclick="location.href='houseupdateform.do?house_id=${housedto.house_id }'">
-			<input type="button" value="삭제" onclick="location.href='housedelete.do?house_id=${housedto.house_id }'">
-			<input type="button" value="목록" onclick="location.href='houselist.do'">
+			<input type="button" class="btn btn-info" value="수정 " onclick="location.href='houseupdateform.do?house_id=${housedto.house_id }'">
+			<input type="button" class="btn btn-info" value="삭제" onclick="location.href='housedelete.do?house_id=${housedto.house_id }'">
+			<input type="button" class="btn btn-info" value="목록" onclick="location.href='houselist.do'">
 			</td>
 		</tr>	
 		
-		
-		
-		
-		
-			
-					
-	
 	</table>
 
 

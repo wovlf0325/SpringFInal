@@ -96,8 +96,7 @@ function nextPage(){
 	<h1>LIST</h1>
 	
 	<div>
-		<input type="button" value="글쓰기"
-			onclick="location.href='houseinsert.do'">
+		<a href="houseinsert.do">하우스등록</a>
 	</div>
 
 	<c:choose>

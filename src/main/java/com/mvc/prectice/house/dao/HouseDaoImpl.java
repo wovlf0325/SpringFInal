@@ -106,6 +106,19 @@ public class HouseDaoImpl implements HouseDao {
 		return res;
 	}
 
+	@Override
+	public List<HouseDto> House_list(int house_id) {
+		// 파라미터로 받는 house_id는 MEMBER테이블의 house_id이다.
+		List<HouseDto> list = new ArrayList<HouseDto>();
+		try {
+			list = sqlSession.selectList(NAMESPACE+"house_List", house_id);
+		} catch (Exception e) {
+			System.out.println("ERROR : selectList");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 
 	
 

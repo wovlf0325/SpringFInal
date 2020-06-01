@@ -33,5 +33,9 @@ public interface BoardDao {
 
 	// 공지사항 3개 가져오기
 	public List<BoardDto> selectNotice();
+	
+	public List<BoardDto> board_list(String member_id);
+	
+	public int updateview(int board_no);
 
 }
