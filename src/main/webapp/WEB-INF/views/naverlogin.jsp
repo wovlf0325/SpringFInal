@@ -28,6 +28,8 @@
 	
 	$(document).ready(function(){
 		var id = ${result }.response.id;
+		var name = ${result }.response.name;
+		var email = ${result }.response.email;
 		var pw = "1111";
 		
 		$.ajax({
