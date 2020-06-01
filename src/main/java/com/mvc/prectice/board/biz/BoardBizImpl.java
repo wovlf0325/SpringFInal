@@ -63,4 +63,9 @@ public class BoardBizImpl implements BoardBiz {
 		return boarddao.selectNotice();
 	}
 
+	@Override
+	public int updateview(int board_no) {
+		return boarddao.updateview(board_no);
+	}
+
 }

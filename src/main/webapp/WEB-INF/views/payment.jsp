@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +13,7 @@
  
  <script type="text/javascript">
 
+ 
  $.ajax({
 	url:"getLoginInfo.do",
 	type:"get",
@@ -17,9 +21,9 @@
 	success:function(data){
 		console.log(data)
 		$("#phone").val(data.member_phone);
-		$("#address").val(data.member_address);
 		$("#email").val(data.member_email);
 		$("#name").val(data.member_name);
+	
 	},
 	error:function(){
 		console.log("통신 실패");
@@ -32,10 +36,12 @@ function requestPay(){
      var msg;
      var amount = $("#amount").val();
      var name = $("#name").val();
-     var email = $("#email").val();
+     var member_email = $("#email").val();
      var phone = $("#phone").val();
-     var address = $("#address").val();
      var productName = $("#productName").val();
+     var house_id = $("#house_id").val();
+
+   	  
      
      if (amount == null|| amount == "") {
     	 alert("금액 입력");
@@ -45,8 +51,6 @@ function requestPay(){
     	 alert("이메일 입력");
      } else if (phone == null|| phone == "") {
     	 alert("연락처 입력");
-     } else if (address == null|| address == "") {
-    	 alert("주소 입력");
      } else if (productName == null|| productName == "") {
     	 alert("상품명 입력");
      } else {
@@ -55,11 +59,11 @@ function requestPay(){
  	         pay_method : 'card', 
  	         merchant_uid : 'merchant_' + new Date().getTime(),
  	         name : productName,
+ 	         house_id : house_id,
  	         amount : amount,
  	         buyer_email : email,
  	         buyer_name : name,
  	         buyer_tel : phone,
- 	         buyer_addr : address,
  	         buyer_postcode : '123-456',
  	         m_redirect_url : 'http://localhost:8787/prectice/test.html' 
  	     };
@@ -68,6 +72,8 @@ function requestPay(){
 			if (rsp.success) {
 				// 2
 				var payParam = {
+					email : member_email,
+					house_id : house_id,
 					memberName : name,
 					paymentUID : rsp.imp_uid,
 					paymentAmount : rsp.paid_amount
@@ -86,9 +92,9 @@ function requestPay(){
 							msg += '상점 거래ID : ' + rsp.merchant_uid;
 							msg += '결제 금액 : ' + rsp.paid_amount;
 							msg += '카드 승인번호 : ' + rsp.apply_num;
-							alert(msg);
+							//alert("결제가 완료되었습니다.");
 							// 5
-							location.href = "paycomplete.do?uid="+rsp.imp_uid+"&name="+name+"&amount="+rsp.paid_amount;
+							location.href = "paycomplete.do?uid="+rsp.imp_uid+"&name="+name+"&amount="+rsp.paid_amount+"&member_email="+email;
 						}
 					}
 				})
@@ -120,14 +126,12 @@ function requestPay(){
 <label for="username">EMAIL</label>
 <input type="text" name="email" id = "email" placeholder="EMAIL을 입력해주세요." autocomplete="off" required />
 <br>
-<label for="username">address</label>
-<input type="text" name="address" id = "address" placeholder="address을 입력해주세요." autocomplete="off" required />
+<label for="username">가계약 금액</label>
+<input type="text" name="amount" id = "amount" value="50000" autocomplete="off" required />
 <br>
-<label for="username">금액</label>
-<input type="text" name="amount" id = "amount" placeholder="금액을 입력해주세요." autocomplete="off" required />
-<br>
-<label for="username">상품명</label>
-<input type="text" name="productName" id = "productName" placeholder="상품명을 입력해주세요." autocomplete="off" required />
+<label for="username">가계약 하우스</label>
+<input type="text" name="productName" id = "productName" value="${house_name }" placeholder="상품명을 입력해주세요." autocomplete="off" required />
+<input type="hidden" name="house_id" id="house_id" value="${house_id }">
 <br>
 <div>
 			<p>

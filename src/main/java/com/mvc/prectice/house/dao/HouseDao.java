@@ -18,4 +18,6 @@ public interface HouseDao {
 	// 게시물 총 개수
 	public int countHouse();
 	
+	public List<HouseDto> House_list(int house_id);
+	
 }

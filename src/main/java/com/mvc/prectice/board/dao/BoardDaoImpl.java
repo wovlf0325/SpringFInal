@@ -176,4 +176,28 @@ public class BoardDaoImpl implements BoardDao {
 		return boardlist;
 	}
 
+	@Override
+	public List<BoardDto> board_list(String member_id) {
+		List<BoardDto> list = new ArrayList<BoardDto>();
+		try {
+			list = sqlSession.selectList(NAMESPACE+"board_list", member_id);
+		} catch (Exception e) {
+			System.out.println("ERROR : board_list");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int updateview(int board_no) {
+		int res = 0;
+		try {
+			res = sqlSession.update(NAMESPACE+"updateview", board_no);
+		} catch (Exception e) {
+			System.out.println("ERRPR : updateview");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
 }

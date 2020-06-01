@@ -114,6 +114,7 @@
 			<col width="100"/>
 			<col width="300"/>
 			<col width="50"/>
+			<col width="50"/>
 		</colgroup>
 		
 		<thead>
@@ -121,6 +122,7 @@
 				<th>번호</th>
 				<th>작성자</th>
 				<th>제목</th>
+				<th>조회수</th>
 				<th>작성일</th>
 			</tr>
 		</thead>
@@ -131,6 +133,7 @@
 					<td>${boarddto.board_no }</td>
 					<td>${boarddto.board_writer }</td>
 					<td><a href="boarddetail.do?board_no=${boarddto.board_no }">${boarddto.board_title }</a></td>
+					<td>${boarddto.board_views }</td>
 					<td>
 					<c:set var="reg_date" value="${boarddto.board_regdate }"/>
 					<%
@@ -165,7 +168,7 @@
 							<td>${boarddto.board_no }</td>
 							<td>${boarddto.board_writer }</td>
 							<td><a href="boarddetail.do?board_no=${boarddto.board_no }">${boarddto.board_title }</a></td>
-
+							<td>${boarddto.board_views }</td>
 							<td>
 							<c:set var="reg_date" value="${boarddto.board_regdate }"/>
 							<%

@@ -3,7 +3,7 @@ package com.mvc.prectice.login.dto;
 public class LoginDto {
 
 	private int member_no;
-	private int house_no;
+	private int house_id;
 	private String member_id;
 	private String member_pw;
 	private String member_name;
@@ -22,13 +22,13 @@ public class LoginDto {
 	
 
 
-	public LoginDto(int member_no, int house_no, String member_id, String member_pw, String member_name,
+	public LoginDto(int member_no, int house_id, String member_id, String member_pw, String member_name,
 			String member_phone, String member_email, String member_address, String member_addone,
 			String member_detailadd, String member_profileimg, String member_role, String member_area,
 			String member_interest, String member_rating, String member_delflag, String member_status) {
 		super();
 		this.member_no = member_no;
-		this.house_no = house_no;
+		this.house_id = house_id;
 		this.member_id = member_id;
 		this.member_pw = member_pw;
 		this.member_name = member_name;
@@ -75,12 +75,12 @@ public class LoginDto {
 		this.member_no = member_no;
 	}
 
-	public int getHouse_no() {
-		return house_no;
+	public int getHouse_id() {
+		return house_id;
 	}
 
-	public void setHouse_no(int house_no) {
-		this.house_no = house_no;
+	public void setHouse_id(int house_id) {
+		this.house_id = house_id;
 	}
 
 	public String getMember_id() {

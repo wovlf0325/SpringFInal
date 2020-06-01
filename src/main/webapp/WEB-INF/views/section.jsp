@@ -16,15 +16,13 @@
 	margin-left: 10%;
 }
 </style>
-</head>
-
-<body>
-<%@ include file="form/header.jsp" %>
-
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
+
 <body>
 <%@ include file="form/header.jsp" %>
+
+
 
 <img src="resources/images/coliving_main.jpg" id="main_image">
 
