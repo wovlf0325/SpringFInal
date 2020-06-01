@@ -16,11 +16,13 @@
 <table style="margin-left: auto; maring-right: auto; width: 80%;" align="center">
 	<tr>
 		<td>
-		<form id="updateForm" method="post" action="updateMember.do">
+		<form id="updateForm" name="updateForm" method="post" action="updateMember.do">
 		<input type="hidden" name="member_no" value="${logininfo.member_no }">
 			추가 입력 정보 <br/>
-			관심사 : <input type="text" name="member_interest" placeholder="관심사">
-			선호지역 : <input type="text" name="member_area" placeholder="선호지역">
+			관심사 : <input type="text" name="member_interest" placeholder="관심사" value="${logininfo.member_interest }">
+			선호지역 : <input type="text" name="member_area" placeholder="선호지역" value="${logininfo.member_area }">
+			<input type="submit" value="입력">
+			<a href="javascript:updateForm.submit();">입력</a>
 			<br/>
 			내 상태 : 
 			<c:if test="${logininfo.member_status eq 1}">

@@ -79,10 +79,7 @@
 </style>
 <body>
 <%@ include file="/WEB-INF/views/form/header.jsp" %>
-
-
-	<h1>LIST</h1>
-	
+	<div style="margin-left: auto; margin-right: auto; width: 80%;">
 		<div><!-- 옵션선택 -->
 			<select id="cntPerPage" name="sel" onchange="pageChange()">
 				<option value="5"
@@ -230,20 +227,34 @@
 	</div>
 	
 	<div class="search">
-			
-		<select id="search_type" name="searchType">
-			<option value="n"<c:out value="${boarddto.searchType == null ? 'selected' : ''}"/>>---------</option>
-			<option value="t"<c:out value="${boarddto.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-			<option value="w"<c:out value="${boarddto.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-			<option value="tc"<c:out value="${boarddto.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
-		</select>
-		
-		<input type="text" name="keyword" id="keywordInput" value="${boarddto.keyword}"/>
-		<button id="searchBtn" class="btn-success">검색</button>	
-		
+		<table>
+			<colgroup>
+				<col width="200px;">
+				<col width="300px;">
+				<col width="150px;">
+			</colgroup>
+		<tr>
+			<th>
+			<select id="search_type" name="searchType" style="color: black !important; font-weight: normal !important;">
+				<option value="n"<c:out value="${boarddto.searchType == null ? 'selected' : ''}"/>>---------</option>
+				<option value="t"<c:out value="${boarddto.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+				<option value="w"<c:out value="${boarddto.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+				<option value="tc"<c:out value="${boarddto.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+			</select>
+			</th>
+	
+			<th>
+				<input type="text" name="keyword" id="keywordInput" value="${boarddto.keyword}" style="color: black !important; font-weight: normal !important;"/>
+			</th>
+			<th>
+				<button id="searchBtn" class="btn btn-info">검색</button>			
+			</th>
+		</tr>
+		</div>
+		</table>
 	</div>
 	
 
-	<%@ include file="/WEB-INF/views/form/footer.jsp" %>
+	<%@ include file="../form/footer.jsp" %>
 </body>
 </html>

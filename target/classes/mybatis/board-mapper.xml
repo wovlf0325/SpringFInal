@@ -136,7 +136,7 @@
 	</select>
 	
 	<select id="board_list" parameterType="String" resultType="boardDto">
-		SELECT B.* FROM (SELECT A.*, ROWNUM AS RNUM FROM (SELECT * FROM BOARD WHERE BOARD_WRITER = #{member_id} ORDER BY BOARD_NO DESC) A)B WHERE RNUM 1 AND 10
+		SELECT B.* FROM (SELECT A.*, ROWNUM AS RNUM FROM (SELECT * FROM BOARD WHERE BOARD_WRITER = #{member_id} ORDER BY BOARD_NO DESC) A)B WHERE RNUM BETWEEN 1 AND 10
 	</select>
 	
 	<update id="updateview" parameterType="int">
