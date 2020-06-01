@@ -6,15 +6,23 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,8 +30,12 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.mvc.prectice.board.dto.BoardDto;
 import com.mvc.prectice.house.biz.HouseBiz;
 import com.mvc.prectice.house.dto.HouseDto;
+import com.mvc.prectice.login.dto.LoginDto;
+import com.mvc.prectice.house.dto.PagingDto;
+
 
 @Controller
 public class HouseController {
@@ -33,15 +45,36 @@ public class HouseController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HouseController.class);
 
-	@RequestMapping(value="/houselist.do")
-	public String selectList(HouseDto housedto, Model model) {
+	@RequestMapping(value="/houselist.do", method = RequestMethod.GET)
+	public String selectList(@ModelAttribute("housedto") HouseDto housedto, 
+			@ModelAttribute("pagingdto") PagingDto pagingdto, Model model,
+			@RequestParam(value="nowPage", required=false) String nowPage,
+			@RequestParam(value="cntPerPage", required=false) String cntPerPage) {
 		
 		logger.info("SELECT LIST");
 		
-		model.addAttribute("houselist", housebiz.selectList());
+		if (nowPage == null) {
+			nowPage ="1";
+		}
+		if (cntPerPage == null) {
+			cntPerPage = Integer.toString(pagingdto.getCntPage());
+		}
+		
+		pagingdto = new PagingDto(Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		int total = housebiz.countHouse();
+		pagingdto.calcLastPage(total, Integer.parseInt(cntPerPage));
+		pagingdto.calcStartEndPage(Integer.parseInt(nowPage), Integer.parseInt(cntPerPage) );
+		
+		
+		model.addAttribute("houselist", housebiz.selectList(pagingdto));
+		model.addAttribute("paging", pagingdto);
+		model.addAttribute("housedto", housedto);
+		
 		
 		return "house/houselist";
 	}
+	
+
 	
 	
 	@RequestMapping(value="/houseinsert.do")
@@ -64,7 +97,7 @@ public class HouseController {
 		
 		HouseDto housedto = new HouseDto();
 		
-		String savePath = "C:\\Git_Coliving_sun\\src\\main\\webapp\\resources\\images\\houseimgstorage";
+		String savePath = "C:\\Git_Coliving\\src\\main\\webapp\\resources\\images\\houseimgstorage";
 		String fullPath = "";
 		String rename = "";
 		
@@ -123,12 +156,36 @@ public class HouseController {
 	}
 	
 	@RequestMapping(value="/housedetail.do")
-	public String selectOne(Model model, int house_id) {
+	public String selectOne(Model model, int house_id,HttpSession session, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 		
 		logger.info("SELECT ONE");
 		
-		model.addAttribute("housedto", housebiz.selectOne(house_id));
+		HouseDto housedto = housebiz.selectOne(house_id);
 		
+		LoginDto logindto = (LoginDto) session.getAttribute("logininfo");
+		String id = URLEncoder.encode(logindto.getMember_id(), "UTF-8");
+
+		String image = URLEncoder.encode(housedto.getHouse_image(),"UTF-8");
+		String name = URLEncoder.encode(housedto.getHouse_name(), "UTF-8");
+		String url = URLEncoder.encode("housedetail.do?house_id=" + housedto.getHouse_id(), "UTF-8");
+		
+
+		Cookie image_ = new Cookie("house_image"+housedto.getHouse_id() + id, image);
+		Cookie name_ = new Cookie("house_name" + housedto.getHouse_id() + id, name);
+		Cookie url_ = new Cookie("house_url" + housedto.getHouse_id() + id, url);
+		
+
+		image_.setMaxAge(60 * 1);
+		name_.setMaxAge(60 * 1);
+		url_.setMaxAge(60 * 1);
+		
+
+		response.addCookie(image_);
+		response.addCookie(name_);
+		response.addCookie(url_);
+		
+		
+		model.addAttribute("housedto", housedto);
 		
 		return "house/housedetail";
 	}
@@ -163,7 +220,7 @@ public class HouseController {
 		
 		HouseDto housedto = new HouseDto();
 		
-		String savePath = "C:\\Git_Coliving_sun\\src\\main\\webapp\\resources\\images\\houseimgstorage";
+		String savePath = "C:\\Git_Coliving\\src\\main\\webapp\\resources\\images\\houseimgstorage";
 		String fullPath = "";
 		String rename = "";
 		

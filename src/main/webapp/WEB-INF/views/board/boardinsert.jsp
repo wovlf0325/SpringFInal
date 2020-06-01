@@ -14,7 +14,37 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
 <script src="/resources/js/summernote-ko-KR.js"></script>
+
 <title>Insert title here</title>
+  <!-- Bootstrap core CSS -->
+ 	<link rel="stylesheet" href="resources/css/board.css">
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/theme.css" rel="stylesheet">
+    <link href="resources/css/bootstrap-reset.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!--external css-->
+    <link href="resources/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="resources/css/flexslider.css"/>
+    <link href="resources/assets/bxslider/jquery.bxslider.css" rel="stylesheet" />
+    <link rel="stylesheet" href="resources/css/animate.css">
+    <link rel="stylesheet" href="resources/assets/owlcarousel/owl.carousel.css">
+    <link rel="stylesheet" href="resources/assets/owlcarousel/owl.theme.css">
+
+    <link href="resources/css/superfish.css" rel="stylesheet" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="resources/css/component.css">
+    <link href="resources/css/style.css" rel="stylesheet">
+    <link href="resources/css/style-responsive.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="resources/css/parallax-slider/parallax-slider.css" />
+   	
+    <script type="text/javascript" src="resources/js/parallax-slider/modernizr.custom.28468.js">
+    </script>
 <script>
 $(document).ready(function() {
 	  $('#summernote').summernote({
@@ -33,7 +63,7 @@ $(document).ready(function() {
 
 	<form action="boardinsertres.do" method="post">
 
-		<table border="1">
+		<table border="1" class="table table-striped table-hover">
 			<tr>
 				<th>작성자</th>
 				<td><input type="text" name="board_writer" value="${sessionScope.logininfo.member_id }"></td>

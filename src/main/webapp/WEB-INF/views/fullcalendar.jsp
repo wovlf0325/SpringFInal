@@ -16,9 +16,6 @@
 <script src="resources/fullcalendar/fullcalendar-4.3.1/daygrid/main.js"></script>
 <script src="resources/fullcalendar/fullcalendar-4.3.1/timegrid/main.js"></script>
 <script src="resources/fullcalendar/fullcalendar-4.3.1/list/main.js"></script>
-
- 
-	
 <link href="resources/fullcalendar/custom/css/schedule.css" rel="stylesheet">
 <script src="resources/fullcalendar/custom/js/fullcalendar.js"></script>
 <style type="text/css">
@@ -123,6 +120,7 @@ html, body {
 
 </script>
 </head>
+<%@ include file="/WEB-INF/views/form/header.jsp" %>
 <body>
 
 	    <div class="row">
@@ -141,6 +139,13 @@ html, body {
           </div>
         </div>
 
+
+  <!-- custom form validation script for this page-->
+  <script src="resources/fullcalendar/origin/js/form-validation-script.js"></script>
+  <!--custome script for all page-->
+  <script src="resources/fullcalendar/origin/js/scripts.js"></script>
+  <!-- 부트스트랩 기본 템플릿 end -->
+  <%@ include file="/WEB-INF/views/form/footer.jsp" %>
 
 </body>
 </html>

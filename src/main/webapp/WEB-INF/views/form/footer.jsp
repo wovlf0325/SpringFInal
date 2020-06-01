@@ -8,12 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
 <style type="text/css">
 	footer {
     	height:100px;
     	width: 100%;
-		border: 1px dotted red;
 	}
 	 #toast {
             visibility: hidden;     
@@ -65,9 +65,10 @@
 		</div>
 	</div>
 <footer>
-	<address style="margin-left:25%;">Copy Allright reserved...</address>
+	<address style="margin-left: 45%;">Copy Allright reserved...</address>
 </footer>
 </body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	var memberid = "";
 	var lastLetterSeq = 0;
@@ -101,7 +102,6 @@
 	function AjaxLetterCall(){
 		
 		console.log("세션에 저장되어있을 시 계속 나와야되는 id:" + memberid);
-		console.log(memberno);
 		$.ajax({
 			url:"ajaxLetterCall.do",
 			type:"post",

@@ -135,4 +135,12 @@
 		WHERE BOARD_NO = #{board_no}
 	</select>
 	
+	<select id="board_list" parameterType="String" resultType="boardDto">
+		SELECT B.* FROM (SELECT A.*, ROWNUM AS RNUM FROM (SELECT * FROM BOARD WHERE BOARD_WRITER = #{member_id} ORDER BY BOARD_NO DESC) A)B WHERE RNUM BETWEEN 1 AND 10
+	</select>
+	
+	<update id="updateview" parameterType="int">
+		UPDATE BOARD SET BOARD_VIEWS = BOARD_VIEWS + 1 WHERE BOARD_NO = #{board_no}
+	</update>
+	
 </mapper>

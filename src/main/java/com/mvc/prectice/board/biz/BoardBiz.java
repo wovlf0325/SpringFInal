@@ -26,5 +26,7 @@ public interface BoardBiz {
 	
 	// 공지사항 3개 가져오기
 	public List<BoardDto> selectNotice();
+	
+	public int updateview(int board_no);
 
 }

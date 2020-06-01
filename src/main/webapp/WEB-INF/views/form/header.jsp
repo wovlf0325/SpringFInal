@@ -8,6 +8,91 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+    <meta name="description" content="Developed By M Abdur Rokib Promy">
+    <meta name="author" content="cosmic">
+    <meta name="keywords" content="Bootstrap 3, Template, Theme, Responsive, Corporate, Business">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>
+      Coliving | Home
+    </title>
+
+
+    <style type="text/css">
+    .top{
+    	color: lightgray;
+    }
+    
+    
+    
+    </style>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/theme.css" rel="stylesheet">
+    <link href="resources/css/bootstrap-reset.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!--external css-->
+    <link href="resources/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="resources/css/flexslider.css"/>
+    <link href="resources/assets/bxslider/jquery.bxslider.css" rel="stylesheet" />
+    <link rel="stylesheet" href="resources/css/animate.css">
+    <link rel="stylesheet" href="resources/assets/owlcarousel/owl.carousel.css">
+    <link rel="stylesheet" href="resources/assets/owlcarousel/owl.theme.css">
+
+    <link href="resources/css/superfish.css" rel="stylesheet" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="resources/css/component.css">
+    <link href="resources/css/style.css" rel="stylesheet">
+    <link href="resources/css/style-responsive.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="resources/css/parallax-slider/parallax-slider.css" />
+    <script type="text/javascript" src="resources/js/parallax-slider/modernizr.custom.28468.js">
+    </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js">
+    </script>
+    <script src="js/respond.min.js">
+    </script>
+    <![endif]-->
+
+</head>
+<body>
+	<c:choose>
+	      <c:when test="${empty logininfo }">
+	      	 <br/>
+	     	 <br/>
+			<div align="right" style="margin-right:18%;" class="top">
+	         <a href="login.do">로그인</a>
+	         &nbsp;&nbsp;&nbsp;&nbsp; 
+	         <a href="agreement.do">회원가입</a>
+	         </div>
+	         <br/>
+	         <br/>
+	      </c:when>
+	      <c:otherwise>
+	  	     <br/>	
+	     	 <div align="right" style="margin-right:10%;" class="top">
+	         <a>${logininfo.member_id }님</a>
+	         &nbsp;&nbsp;&nbsp;
+	         <a href="updateform.do">내정보</a>
+	         &nbsp;&nbsp;&nbsp;
+	         <a href="letterlist.do">쪽지함</a>
+	         &nbsp;&nbsp;&nbsp;
+	         <a href="logout.do">로그아웃</a>
+	         &nbsp;&nbsp;&nbsp;
+	         </div>
+	         <br/>
+	         <br/>
+	      </c:otherwise>
+	   </c:choose>
+	   
+
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style type="text/css">
 
@@ -112,24 +197,11 @@
 </script>
 </head>
 <body>
-<header align="right">
-<a href="logo.do"><img align="left" width="70" height="90" src="https://s3.orbi.kr/data/file/united2/1838c353-5e34-48fe-814c-83c353e2a2e1D013A0F3-D20B-4FBD-ABA0-E4C5213C9C3E.jpeg"></a>
-	<c:choose>
-		<c:when test="${empty logininfo }">
-			<a href="login.do">로그인</a> <a href="agreement.do">회원가입</a>	
-		</c:when>
-		<c:otherwise>
-			<a href="updateform.do">내 정보</a>
-			<a href="logout.do">로그아웃</a>
-			<a href="letterlist.do">쪽지함</a>
-			<a href="fullcalendar.do">풀캘린더</a>
-			<a href="loading.do">로딩</a>
-			<a href="chart.do">차트</a>
-			<a href="mainchart.do">메인차트</a>
-		</c:otherwise>
-	</c:choose>
 
-<div class="loading">
+
+
+	
+<!-- <div class="loading">
 <div id="man">
   <div id="eye-l"></div>
   <div id="eye-r"></div>
@@ -137,8 +209,66 @@
   <div id="mouth"></div>
 </div>
 <div id="wall">로딩중이오이다...</div>
-</div>
+</div> -->
 
-</header>
+
+<!--header start-->
+    <header class="head-section">
+      <div class="navbar navbar-default navbar-static-top container">
+          <div class="navbar-header">
+              <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.jsp">Co<span>living</span></a>
+          </div>
+          <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                  <li class="dropdown">
+                      <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover="dropdown" 
+                      data-toggle="dropdown" href="houselist.do">코리빙하우스 </a>
+                  </li>
+                  <li class="dropdown">
+                      <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+                      "dropdown" data-toggle="dropdown" href="boardlist.do?nowPage=1">게시판 <i class="fa fa-angle-down"></i>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li>
+                              <a href="boardlist.do?nowPage=1&cntPerPage=10&boardcategory=2">공지게시판</a>
+                          </li>
+                          <li>
+                              <a href="boardlist.do?nowPage=1&cntPerPage=10&boardcategory=3">자유게시판</a>
+                          </li>
+                          <li>
+                              <a href="boardlist.do?nowPage=1&cntPerPage=10&boardcategory=4">불만게시판</a>
+                          </li>
+                          <li>
+                              <a href="boardlist.do?nowPage=1&cntPerPage=10&boardcategory=5">카풀게시판</a>
+                      </ul>
+
+                  </li>
+                  <li class="dropdown">
+                      <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+						"dropdown" data-toggle="dropdown" href="fullcalendar.do">일정/관리 
+                      </a>
+                      
+                  </li>
+                  
+                  <li class="dropdown">
+                      <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+                      "dropdown" data-toggle="dropdown" href="chatlist.do">채팅
+                      </a>
+                  </li>
+             
+                  <li>
+                      <a href="contact.html">Contact</a>
+                  </li>
+                  <li><input class="form-control search" placeholder=" Search" type="text"></li>
+              </ul>
+          </div>
+      </div>
+    </header>
+    <!--header end-->
 </body>
 </html>

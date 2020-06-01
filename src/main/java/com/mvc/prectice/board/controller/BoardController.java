@@ -81,7 +81,10 @@ public class BoardController {
 		logger.info("SELECT ONE");
 		
 		BoardDto boarddto = boardbiz.selectOne(board_no);
-		
+		int res = boardbiz.updateview(board_no);
+		if(res > 0) {
+			System.out.println("조회수 증가 성공");
+		}
 		/*
 		 * LoginDto logindto = (LoginDto) session.getAttribute("logininfo");
 		 * 

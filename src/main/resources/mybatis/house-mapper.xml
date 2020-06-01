@@ -16,9 +16,14 @@
 	</resultMap>
 
 	<select id="selectList" resultMap="houseMap">
-		SELECT HOUSE_ID, HOUSE_KEEPER, HOUSE_NAME, HOUSE_PHONE, HOUSE_ADDR, HOUSE_IMAGE, HOUSE_CONTENT, HOUSE_DOCUMENT, HOUSE_STATUS
-		FROM HOUSE
-		ORDER BY HOUSE_ID DESC </select>
+		SELECT B.* 
+		FROM (SELECT A.*, ROWNUM AS RNUM
+			FROM (SELECT HOUSE_ID, HOUSE_KEEPER, HOUSE_NAME, HOUSE_PHONE, HOUSE_ADDR, HOUSE_IMAGE, HOUSE_CONTENT, HOUSE_DOCUMENT, HOUSE_STATUS
+			 	  FROM HOUSE 
+				  ORDER BY HOUSE_ID DESC) A) B
+		WHERE RNUM BETWEEN #{start} AND #{end} 
+		
+	</select>
 
 	<select id="selectOne" resultType="houseDto" parameterType="int">
 		SELECT HOUSE_ID, HOUSE_KEEPER, HOUSE_NAME, HOUSE_PHONE, HOUSE_ADDR, HOUSE_IMAGE, HOUSE_CONTENT, HOUSE_DOCUMENT, HOUSE_STATUS
@@ -36,5 +41,13 @@
 	<delete id="delete" parameterType="int">
 		DELETE FROM HOUSE WHERE HOUSE_ID = #{house_id} 
 	</delete>
+	
+	<select id="countHouse" resultType="int">
+		SELECT COUNT(*) FROM HOUSE
+	</select>
+	
+	<select id="house_List" parameterType="int" resultType="houseDto">
+		SELECT * FROM HOUSE WHERE HOUSE_ID = #{house_id}
+	</select>
 
 </mapper>

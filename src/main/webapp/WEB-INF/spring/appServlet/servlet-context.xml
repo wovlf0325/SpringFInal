@@ -44,7 +44,7 @@
 	<beans:bean class="java.lang.String" id="uploadPath">
 		<!-- 파일업로드 디렉토리 -->
 		<beans:constructor-arg
-			value="C:\\Git_Coliving_sun\\src\\main\\webapp\\resources\\images\\houseimgstorage" />
+			value="C:\\Git_Coliving\\src\\main\\webapp\\resources\\images\\houseimgstorage" />
 	</beans:bean>
 
 	<!-- 일반 파일 업로드 경로 -->
