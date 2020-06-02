@@ -110,6 +110,9 @@ public class LoginController {
 		if (dto == null) {
 			return "redirect:login.do";
 		} else {
+			LoginDto logindto = loginbiz.selectInfoWhereId(dto);
+			model.addAttribute("logindto", logindto);
+			
 			List<HouseDto> houselist = housedao.House_list(dto.getHouse_id());
 			model.addAttribute("house_list", houselist);
 			

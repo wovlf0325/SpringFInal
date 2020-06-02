@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <style type="text/css">
 #main_image{
-	margin-left: 10%;
+	margin-left: 25%;
 }
 </style>
 
@@ -214,7 +214,7 @@ axisBreak.breakSize = 0.05 * (1 - d) / d;
 var hoverState = axisBreak.states.create("hover");
 hoverState.properties.breakSize = 1;
 hoverState.properties.opacity = 0.1;
-hoverState.transitionDuration = 1500;
+hoverState.transitionDuration = 1000;
 
 axisBreak.defaultState.transitionDuration = 1000;
 /*

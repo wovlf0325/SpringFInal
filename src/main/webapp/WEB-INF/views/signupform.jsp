@@ -111,7 +111,7 @@ function readURL(input) {
 }
 
 function emailchk(){
-	var email =	$("input[name=email]").val();
+	var email =	$("input[name=member_email]").val();
 	var emailRegExp = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/; // 이메일이 적합한지 검사할 정규식
     if(email==""){
     	alert("이메일을 입력해주세요");

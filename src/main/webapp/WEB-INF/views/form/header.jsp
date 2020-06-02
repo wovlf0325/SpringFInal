@@ -164,10 +164,6 @@
                       </a>
                   </li>
              
-                  <li>
-                      <a href="contact.html">Contact</a>
-                  </li>
-                  <li><input class="form-control search" placeholder=" Search" type="text"></li>
               </ul>
           </div>
       </div>

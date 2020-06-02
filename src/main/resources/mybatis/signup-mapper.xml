@@ -16,7 +16,7 @@
 	</insert>
 	
 	<insert parameterType="signupDto" id="insertSNSinfo">
-		INSERT INTO MEMBERVALUES 
+		INSERT INTO MEMBER VALUES 
 		(MEMBER_SEQ.NEXTVAL, 0 , #{member_id}, #{member_pw}, #{member_email}, #{member_name}, 'GUEST', '', '','','', 'N', '1' ) 
 	</insert>
 	

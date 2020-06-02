@@ -19,9 +19,9 @@
 		<form id="updateForm" name="updateForm" method="post" action="updateMember.do">
 		<input type="hidden" name="member_no" value="${logininfo.member_no }">
 			추가 입력 정보 <br/>
-			관심사 : <input type="text" name="member_interest" placeholder="관심사" value="${logininfo.member_interest }">
-			선호지역 : <input type="text" name="member_area" placeholder="선호지역" value="${logininfo.member_area }">
-			<input type="submit" value="입력">
+			관심사 : <input type="text" name="member_interest" placeholder="관심사" value="${logindto.member_interest }">
+			선호지역 : <input type="text" name="member_area" placeholder="선호지역" value="${logindto.member_area }">
+
 			<a href="javascript:updateForm.submit();">입력</a>
 			<br/>
 			내 상태 : 
@@ -41,8 +41,16 @@
 	<br/><br/><br/><br/>
 	
 	<td>
-	<table border="1" style="margin-left: auto; maring-right: auto; width: 80%;">
+	<table border="1" style="margin-left: auto; maring-right: auto; width: 80%; text-align: center">
 	<caption>하우스리스트</caption>
+	<colgroup>
+	 	<col width="50px">
+	 	<col width="50px">
+	 	<col width="200px">
+	 	<col width="150px">
+	 	<col width="200px">
+	 	<col width="100px">
+	</colgroup>
 		<tr>
 			<th>번호</th>
 			<th>키퍼</th>
@@ -83,6 +91,7 @@
 	
 	<tr>
 	<td>
+	<br/><br/>
 	<table border="1" style="width: 80%;">
 	<caption>게시물리스트</caption>
 		<tr>

@@ -199,36 +199,39 @@ public class SignupController {
 	}
 	
 	@RequestMapping(value="snsSignupRes.do", method = RequestMethod.POST)
-	public String naverSignup(Model model, @RequestParam("member_id")String member_id,@RequestParam("member_pw")String member_pw, @RequestParam("member_name")String member_name, @RequestParam("member_email")String member_email, HttpServletRequest request) {
-		
-		logger.info("naverJoin");
-		int res = 0;
-		
-		SignupDto signupdto = new SignupDto();
+	   public String naverSignup(Model model, @RequestParam("member_id")String member_id,@RequestParam("member_pw")String member_pw, @RequestParam("member_name")String member_name, @RequestParam("member_email")String member_email, HttpServletRequest request) {
+	      
+	      logger.info("naverJoin");
+	      int res = 0;
+	      
+	      SignupDto signupdto = new SignupDto();
 
-		signupdto.setMember_id(member_id);
-		signupdto.setMember_pw(member_pw);
-		signupdto.setMember_name(member_name);
-		signupdto.setMember_email(member_email);
+	      signupdto.setMember_id(member_id);
+	      signupdto.setMember_pw(member_pw);
+	      signupdto.setMember_name(member_name);
+	      signupdto.setMember_email(member_email);
 
-		res = signupbiz.insertSNSinfo(signupdto);
-		
-		if(res > 0) {
-			System.out.println("회원가입 성공");
-		} else {
-			System.out.println("회원가입 실패");	
-		}
-		
-		
-		LoginDto logindto = new LoginDto();
-		logindto.setMember_id(member_id);
-		logindto.setMember_pw(member_pw);
-		
-		if(logindto !=null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("logininfo", logindto);		
-		}
-		return "section";
-		} 
+	      res = signupbiz.insertSNSinfo(signupdto);
+	      
+	      LoginDto logindto = new LoginDto();
+	      logindto.setMember_id(member_id);
+	      logindto.setMember_pw(member_pw);
+	      
+	      if(logindto !=null) {
+	         HttpSession session = request.getSession();
+	         session.setAttribute("logininfo", logindto);
+	         
+	      }
+	      
+	      if(res > 0) {
+	         System.out.println("회원가입 성공");
+	      } else {
+	         System.out.println("회원가입 실패");   
+	      }
+	      
+	      
+	      
+	      return "section";
+	}
 	
 	}
